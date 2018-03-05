@@ -30,7 +30,7 @@
 		}
 		
 		body {
-			background: #fff;
+			background-color:white;
 			color: #333;
 			font-size: 12px;
 			margin-top: 5px;
@@ -67,11 +67,11 @@
 			color: #c00;
 			text-decoration: underline;
 		}
-			
+		
 		.concent {
-			margin-left: 40px;
-			margin-right: 40px;
-			
+			margin-left: 20px;
+			margin-right: 20px;
+			background-color: white;
 		}
 		
 		
@@ -97,10 +97,11 @@
 		}
 	
 		.title {
+			height: 100px;
 			font-size: 35px;
-			text-align: center;
 			display: block;
 			font-weight: bold;
+			line-height: 100px;
 		}
 		
 		.small-img {
@@ -120,9 +121,13 @@
 			height: auto;
 			display: inline-block;
 		}
+		span{
+			color: red;
+		}
 	</style>
 
 	<body>
+		<div class="mian">
 		<div class="concent">
 			<p class="title">芒果智能led炫彩灯带</p>
 			<li>产品特点</li>
@@ -200,6 +205,15 @@
 					<td>单色灯爆闪1秒/td>
 				</tr>
 			</table>
+			<p>
+				<span>*</span>没有绑定的设备只有手机连接到该设备绑定的路由器才可以控制
+			</p>
+			<li>添加定时</li>
+				<p>
+					1：单次：只有一次有效，生效后需要重新设置<br />
+					2：每天：每天有效，无需重新设置<br />
+					<span>*</span>控制器断电后定时会失效
+				</p>
 			<li>注册并绑定账户</li>
 			<p>
 				1、点击注册，进入注册页面输入用户邮箱以及邮箱密码点击注册完成注册，返回登录界面进行登录。<br /> 
@@ -224,7 +238,7 @@
 				2、配网时尽量靠近路由器，避免因WiFi信号弱导致配网不成功！
 			</p>
 		</div>
-
+</div>
 	</body>
 
 </html>
