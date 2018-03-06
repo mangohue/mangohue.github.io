@@ -66,7 +66,6 @@ body,
 			display: block;
 			height: auto;
 			max-width: 100%;
-			border: 1px solid black;
 		}
 		
 		.small-title {
@@ -112,6 +111,7 @@ body,
 			width: 40%;
 			height: auto;
 			display: inline-block;
+			border: 1px solid black;
 		}
 		
 		.item{
@@ -123,9 +123,9 @@ body,
 			height: 100px;
 		}
 		
-		.notice{
-			color: red;
-		}
+.notice{
+	color: red;
+}
 .line{
 	background-color: #C0C0C0;
 	width: 100%;
@@ -135,6 +135,7 @@ body,
 	line-height: 50px;
 	font-size: 14px;
 	margin-left: 30px;
+	display: inline-block;
 }
 
 .page_title{
@@ -151,5 +152,13 @@ body,
 	border: 1px solid black;
 	border-radius: 300px;
 	padding: 10px;
-	margin: 0 5px 05px;
+	margin: 0 5px 0 5px;
+}
+
+.go{
+	display: inline-block;
+	float: right;
+	margin-right: 20px;
+	margin-top: 15px;
+	background-color: #e7e7e7;
 }
