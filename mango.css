@@ -87,9 +87,9 @@ body,
 		
 		.title {
 			height: 80px;
+			width: 100%;
 			font-size: 18px;
 			font-weight: bold;
-			line-height: 80px;
 			padding-left: 30px;
 			background-color: #FEB101;
 		}
