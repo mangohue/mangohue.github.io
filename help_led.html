@@ -192,6 +192,7 @@
 							If the LED strip do not display the color you selected, click the button above the “current color” to adjust the RGB order.
 						</li>
 					</ol>
+					<img class="screenshot" src="images/single_color.PNG"/>
 				</div>
 				
 				<div class="item"  id="timer">
@@ -202,10 +203,9 @@
 					</ul>
 					<ol>
 						<li>
-							
 							Single : Only once is valid, it needs to be reset after it takes effect.
 						</li>
-						<li>Every day : effective daily, don' t need to setting.
+						<li>Every day : Effective daily, don' t need to repeat setting.
 						</li>
 					</ol>
 					<p>
@@ -303,7 +303,7 @@
 			}
 			timer.hidden="hidden";
 			music.hidden="hidden";
-			custom.innerHTML="\n\t\t\t\t\t<ul><li class=\"small-title\">Customize</li></ul>\n\t\t\t\t\t<ol>\n\t\t\t\t\t\t<li>Click the LED strip name that you need to control, enter the control page, Users can choose any color in the black and white rings to let the light show the user's favorite color. The darker the darker the black light.</li>\n\t\t\t\t\t\t<li>Users can also slide the speed bar to choose their favorite speed. Speed is only valid for breathing lamp and jump flash.</li>\n\t\t\t\t\t</ol>\n\t\t\t\t\t<img class=\"screenshot\" src=\"images/single_color.PNG\">\n\t\t\t\t";
+			custom.hidden="hidden";
 		}else if(type=="magic"){
 			title.innerText="Magic LED Strip";
 			mode.innerText="Magic LED Strip";
