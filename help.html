@@ -56,15 +56,15 @@
 		<script>
 		function title1(){
 			location.href="#content1";
-//			setHeader(true);
+			setHeader(true);
 		}
 		function title2(){
 			location.href="#content2";
-//			setHeader(true);
+			setHeader(true);
 		}
 		function title3(){
 			location.href="#content3";
-//			setHeader(true);
+			setHeader(true);
 		}
 		
 		function setHeader(isHidden){
@@ -86,24 +86,25 @@
 			}
 		}
 		
-//		function scroll( fn ) {  
-//      	var beforeScrollTop = document.body.scrollTop;  
-//          fn = fn || function() {};  
-//      	window.addEventListener("scroll", function() {  
-//          	var afterScrollTop = document.body.scrollTop,  
-//              delta = afterScrollTop - beforeScrollTop;  
-//          	if( delta === 0 ) return false;  
-//          	fn( delta > 0 ? "down" : "up" );  
-//          		beforeScrollTop = afterScrollTop;  
-//      		},false);
-//  	}
-//		scroll(function(direction) { 
-//			if(direction=="up" && getHeaderHidden()== false){
-//				setHeader(false);
-//			}else{
-//				setHeader(true);
-//			}
-//		});
+		function scroll( fn ) {  
+        	var beforeScrollTop = document.body.scrollTop;  
+            fn = fn || function() {};  
+        	window.addEventListener("scroll", function() {  
+            	var afterScrollTop = document.body.scrollTop,  
+                delta = afterScrollTop - beforeScrollTop;  
+            	if( delta === 0 ) return false;  
+            	fn( delta > 0 ? "down" : "up" );  
+            		beforeScrollTop = afterScrollTop;  
+        		},false);
+    	}
+		scroll(function(direction) { 
+			if(direction=="up" && getHeaderHidden()== false){
+				setHeader(false);
+			}else{
+				setHeader(true);
+			}
+			
+		});
 	</script>
 	
 </html>
