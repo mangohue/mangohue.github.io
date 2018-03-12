@@ -5,30 +5,14 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>MangoHome Help</title>
 		<link rel="stylesheet" href="mango.css" />
-		<script type="text/javascript">
-			function type0(){
-				window.location.href="help_led.html?type=RGB";
-			}
-			function type1(){
-				window.location.href="help_led.html?type=single";
-			}
-			function type2(){
-				lwindow.location.href="help_led.html?type=RGB&W";
-			}
-			function type3(){
-				window.location.href="help_led.html?type=magic";
-			}
-			function test(){
-				alert("123");
-			}
-		</script>
+
 	</head>
 	
 	<body>
 		<div>
 			<table class="title">
 				<th>
-					<td><a href="javascript:;" ontouchstart="window.location.href='https://www.baidu.com/'">MangoHome intelligent LED controller</a></td>
+					<td onclick="test()">MangoHome intelligent LED controller...</td>
 				</th>
 			</table>
 			<div onclick="type0()">
@@ -55,5 +39,21 @@
 			<div class="line"></div>
 		</div>
 	</body>
-	
+		<script type="text/javascript">
+			function type0(){
+				window.location.href="help_led.html?type=RGB";
+			}
+			function type1(){
+				window.location.href="help_led.html?type=single";
+			}
+			function type2(){
+				lwindow.location.href="help_led.html?type=RGB&W";
+			}
+			function type3(){
+				window.location.href="help_led.html?type=magic";
+			}
+			function test(){
+				window.location.assign("help_led.html");
+			}
+		</script>
 </html>
