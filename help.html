@@ -7,25 +7,34 @@
 		<link rel="stylesheet" href="mango.css" />
 		<script type="text/javascript">
 			function type0(){
-				window.location.href="help_led.html?type=RGB";
+				window.location.href="#RGB";
 			}
 			function type1(){
-				window.location.href="help_led.html?type=single";
+				window.location.href="#single";
 			}
 			function type2(){
 				window.location.href="help_led.html?type=RGB&W";
 			}
 			function type3(){
-				window.location.href="help_led.html?type=magic";
+				window.location.href="#magic";
 			}
 			function test(){
-				window.open('https://baidu.com');
+				location.href="https://mbd.baidu.com/newspage/data/landingpage?s_type=news&dsp=wise&context=%7B%22nid%22%3A%22news_9476084661163610349%22%7D&pageType=1&n_type=1&p_from=-1";
+			}
+			
+			function setHeader(isHeader){
+				var header=document.getElementById("header");
+				if(isHeader){
+					header.hidden="hidden";
+				}else{
+					
+				}
 			}
 		</script>
 	</head>
 	
 	<body>
-		<div class="header">
+		<div id="header">
 			<table class="title">
 				<th>
 					<td onclick="test()">MangoHome intelligent LED controller</td>
@@ -53,6 +62,15 @@
 				<img class="go" src="images/go.png" />
 			</div>
 			<div class="line"></div>
+		</div>
+		<div id="RGB">
+			
+		</div>
+		<div id="single">
+			
+		</div>
+		<div id="magic">
+			
 		</div>
 	</body>
 
