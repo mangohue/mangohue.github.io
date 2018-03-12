@@ -87,15 +87,15 @@ body,
 		
 		.title {
 			height: 80px;
+			width: 100%;
 			font-size: 18px;
 			font-weight: bold;
-			line-height: 80px;
 			padding-left: 30px;
 			background-color: #FEB101;
 		}
 		
 		.feature {
-			width: 100%;
+			width: 80%;
 			height: auto;
 			max-width: 150%;
 		}
