@@ -5,39 +5,14 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>MangoHome Help</title>
 		<link rel="stylesheet" href="mango.css" />
-		<script type="text/javascript">
-			function type0(){
-				window.location.href="#RGB";
-			}
-			function type1(){
-				window.location.href="#single";
-			}
-			function type2(){
-				window.location.href="help_led.html?type=RGB&W";
-			}
-			function type3(){
-				window.location.href="#magic";
-			}
-			function test(){
-				location.href="https://mbd.baidu.com/newspage/data/landingpage?s_type=news&dsp=wise&context=%7B%22nid%22%3A%22news_9476084661163610349%22%7D&pageType=1&n_type=1&p_from=-1";
-			}
-			
-			function setHeader(isHeader){
-				var header=document.getElementById("header");
-				if(isHeader){
-					header.hidden="hidden";
-				}else{
-					
-				}
-			}
-		</script>
+		
 	</head>
 	
 	<body>
 		<div id="header">
 			<table class="title">
 				<th>
-					<td onclick="test()">MangoHome intelligent LED controller</td>
+					<td>MangoHome intelligent LED controller</td>
 				</th>
 			</table>
 			<div onclick="type0()">
@@ -63,15 +38,867 @@
 			</div>
 			<div class="line"></div>
 		</div>
-		<div id="RGB">
-			
-		</div>
-		<div id="single">
-			
-		</div>
-		<div id="magic">
-			
-		</div>
-	</body>
+		
+	<div id="rgb">
+		<div class="back" onclick="back()">
+			back
+		</div> 
+		<div class="mian">
+			<div class="concent">
+				<p class="page_title">
+					LED Strip(RGB/RGBW)
+				</p>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Product features
+						</li>
+					</ul>
+					<img class="feature" src="images/feature.jpg" />
+					<p>
+						<span class="notice">*</span>There are some differences in the characteristics of different products.
+					</p>
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Basic parameters
+						</li>
+					</ul>
+					<table class="tab">
+						<tr>
+							<td>Color mode:</td>
+							<td>&nbsp;&nbsp;<span>LED Strip(RGB/RGBW)</span>&nbsp;&nbsp;</td>
 
+						</tr>
+						<tr>
+							<td>Working temperature:</td>
+							<td>&nbsp;&nbsp;-10~50°C&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Working humidity:</td>
+							<td>&nbsp;&nbsp;0%-85%&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Control principle:</td>
+							<td>&nbsp;&nbsp;WiFi/button&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Application range:</td>
+							<td>&nbsp;&nbsp;Family, performance, lighting etc&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Mobile version:</td>
+							<td>&nbsp;&nbsp;Android/iOS</td>
+						</tr>
+						<tr>
+							<td>Wireless protocol:</td>
+							<td>&nbsp;&nbsp;Wi-Fi IEEE802/11b/g/n 2.4Ghz&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Maximum powe:</td>
+							<td>&nbsp;&nbsp;144w&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Input voltage:</td>
+							<td>&nbsp;&nbsp;DC5-24V&nbsp;&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Download application
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Apple users can search “MangoHome” in “APP store”to download and install; Android users can search “MangoHome” in “Google Play Store” to download and install. The APP is free to download and use.
+						</li>
+					</ol>
+					<div class="code">
+						<img class="code" src="images/code.png" />
+						<p>Scan the QR code to download the APP</p>
+					</div>
+				</div>
+				<div class="item">
+					<ul><li class="small-title">Directly connected to the device control</li></ul>
+					<ol>
+						<li>
+							After the LED strip is plugged in and indicator light turns on，search and connect the hotspot with cellphone.(WIFI hotspot ：Mangoxxxxxxxxxxxx).
+						</li>
+						<li>
+							Open the APP and click "Connect the device directly for control" and you can directly control it.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/settings_wifi.jpg" />
+					<img class="screenshot" src="images/app_connect.jpg" />
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Configure intelligent LED controller connected to the network
+						</li>
+					</ul>
+					<ol>
+						<li>
+							After the LED strip is plugged in and indicator light turns on，search and connect the hotspot with cellphone.(WIFI hotspot ：Mangoxxxxxxxxxxxx).
+						</li>
+						<li>
+							Open MangoHome APP, click “settings”, then enter select WiFi interface, and then enter your own WiFi name and enter the correct WiFi password, click “connect”.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/select_wifi.jpg" />
+					<table class="tab">
+						<tr>
+							<td>Configuring&nbsp;&nbsp;：</td>
+							<td>&nbsp;&nbsp;<span class="color">White</span> breathing light</td>
+						</tr>
+						<tr>
+							<td>Configuration success:</td>
+							<td>&nbsp;&nbsp;<span class="color">Green</span> light last for 1s</td>
+						</tr>
+						<tr>
+							<td>Configuration failure:</td>
+							<td>&nbsp;&nbsp;<span class="color">Red</span> light strobes on for 1s</td>
+						</tr>
+					</table>
+					<p>
+						<span class="notice">*</span>Unbound devices can only be controlled if the phone is connected to the router to which the device is bound.
+					</p>
+				</div>
+				
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Register and bind the device to my account
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Click “Register”, enter the registration page to enter the user's email address and password， then click “Register” to complete the registration, and then return to the login screen to log in.
+						</li>
+						<li>
+							You can also use a third party account to log in, directly click on the following WeChat or Facebook icons.
+						</li>
+						<li>
+							Enter into “My device” page after login success, long press “device name” and then click “bind to my Mango cloud” to bind the device. You can also modify the device name, restore the factory settings, unbound, delete devices and other operations.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/login.jpg" />
+					<img class="screenshot" src="images/more.jpg" />
+				</div>
+				
+				<div class="item">
+					<ul>
+						<li class="small-title" >
+							Light dance with music
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Open MangoHome app, select a LED strip, enter the control interface, click "music" to enter music mode, then click "choose a music" to choose your favorite music to play and you can freely switch the different music and lighting effects in play.
+						</li>
+						<li>
+							Microphone effect: Light effects change with the loudness and frequency of the user's voice.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/music.jpg"/>
+					<img class="screenshot" src="images/mic.jpg"/>
+				</div>
+				
+				<div class="item">
+					<ul>
+						<li class="small-title" >
+							Light effect control
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Click the LED strip name that you need to control, then enter the control page as shown on the right side: You can select any color in the color circle to let the LED strip display your favorite color. Once your favorite color is selected, you can click “save” to collect your favorite color.
+						</li>
+						<li>
+							You can also slide the bright bar to select the brightness you like. Slide to the left, the brightness decreases, slide to the right, the brightness increases.
+						</li>
+						<li>
+							If the LED strip do not display the color you selected, click the button above the “current color” to adjust the RGB order.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/single_color.jpg"/>
+					<img class="screenshot" src="images/classic.jpg"/>
+				</div>
+				
+				<div class="item"  id="timer">
+					<ul>
+						<li class="small-title">
+							Add timer
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Single : Only once is valid, it needs to be reset after it takes effect.
+						</li>
+						<li>Every day : Effective daily, don' t need to repeat setting.
+						</li>
+					</ol>
+					<p>
+						<span class="notice">*</span>The controller timing function will fail after power off
+					</p>
+				</div>
+				
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							How to set up with smart speakers
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Open MangoHome APP, enter “my device” surface, modify any device name to an customize name (like bedroom light) and bind the device to “my Mango cloud”.
+						</li>
+						<li>
+							Open the APP of the smart speaker that you are going to access, search the skill named “MangoHome” from Amazon Alexa/TmallGenie , search the skill named “SmartMango” from GoogleHome. 
+						</li>
+						<li>
+							According to the operating instructions for account binding, after the binding is completed ,enter the device binding account and password, then click “authorization”. If you use a Wechat or Facebook account to bind the device, please select the Wechat or Facebook account for login.
+						</li>
+						<li>
+							After the account is successfully bound and the Mango device is found, voice control can be performed. For example, say to Alexa:”Alexa,turn on the bedroom light”.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/oauth.jpg"/>
+					<p>
+						<span class="notice">*</span>MangoHome intelligent controller is compatible with the access control of three smart speakers ( GoogleHome, Amazon Alexa, Tmall Genis) . Before using a smart speaker to control the device, you must ensure that the controlled device had been bound to mango cloud.
+					</p>
+				</div>
+				
+				<div class="item" id="custom">
+					<ul>
+						<li>
+							Customize
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Click the LED strip name that you need to control, then enter the control page as shown on the right side: You can select any color in the color circle to let the LED strip display your favorite color. Once your favorite color is selected, you can click “save” to collect your favorite color. 
+						</li>
+					</ol>
+					<img src="cn/images/custom.jpg"/>
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							How to restore factory setup
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Press and hold the controller button for at least 10 seconds until the white light turns on and then disconnect the power adapter. After power is on again, you can restore the factory configuration.
+						</li>
+					</ol>
+
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Safety Precautions
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Avoid use in humid and hot environments.
+						</li>
+						<li>
+							When configuring network, please keep as close to the router as possible to avoid unsuccessful configuration due to weak WiFi signal. (Make sure the network is accessible).
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+			
+		</div>
+	
+	<div id="single" hidden="hidden">
+		<div class="back" onclick="back()">
+			back
+		</div> 
+		<div class="mian">
+			<div class="concent">
+				<p class="page_title">
+					LED Strip(Single Color)
+				</p>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Product features
+						</li>
+					</ul>
+					<img class="feature" src="images/feature.jpg" />
+					<p>
+						<span class="notice">*</span>There are some differences in the characteristics of different products.
+					</p>
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Basic parameters
+						</li>
+					</ul>
+					<table class="tab">
+						<tr>
+							<td>Color mode:</td>
+							<td>&nbsp;&nbsp;<span>LED Strip(Single Color)</span>&nbsp;&nbsp;</td>
+
+						</tr>
+						<tr>
+							<td>Working temperature:</td>
+							<td>&nbsp;&nbsp;-10~50°C&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Working humidity:</td>
+							<td>&nbsp;&nbsp;0%-85%&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Control principle:</td>
+							<td>&nbsp;&nbsp;WiFi/button&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Application range:</td>
+							<td>&nbsp;&nbsp;Family, performance, lighting etc&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Mobile version:</td>
+							<td>&nbsp;&nbsp;Android/iOS</td>
+						</tr>
+						<tr>
+							<td>Wireless protocol:</td>
+							<td>&nbsp;&nbsp;Wi-Fi IEEE802/11b/g/n 2.4Ghz&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Maximum powe:</td>
+							<td>&nbsp;&nbsp;144w&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Input voltage:</td>
+							<td>&nbsp;&nbsp;DC5-24V&nbsp;&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Download application
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Apple users can search “MangoHome” in “APP store”to download and install; Android users can search “MangoHome” in “Google Play Store” to download and install. The APP is free to download and use.
+						</li>
+					</ol>
+					<div class="code">
+						<img class="code" src="images/code.png" />
+						<p>Scan the QR code to download the APP</p>
+					</div>
+				</div>
+				<div class="item">
+					<ul><li class="small-title">Directly connected to the device control</li></ul>
+					<ol>
+						<li>
+							After the LED strip is plugged in and indicator light turns on，search and connect the hotspot with cellphone.(WIFI hotspot ：Mangoxxxxxxxxxxxx).
+						</li>
+						<li>
+							Open the APP and click "Connect the device directly for control" and you can directly control it.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/settings_wifi.jpg" />
+					<img class="screenshot" src="images/app_connect.jpg" />
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Configure intelligent LED controller connected to the network
+						</li>
+					</ul>
+					<ol>
+						<li>
+							After the LED strip is plugged in and indicator light turns on，search and connect the hotspot with cellphone.(WIFI hotspot ：Mangoxxxxxxxxxxxx).
+						</li>
+						<li>
+							Open MangoHome APP, click “settings”, then enter select WiFi interface, and then enter your own WiFi name and enter the correct WiFi password, click “connect”.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/select_wifi.jpg" />
+					<table class="tab">
+						<tr>
+							<td>Configuring&nbsp;&nbsp;：</td>
+							<td>&nbsp;&nbsp;<span class="color">White</span> breathing light</td>
+						</tr>
+						<tr>
+							<td>Configuration success:</td>
+							<td>&nbsp;&nbsp;<span class="color">Green</span> light last for 1s</td>
+						</tr>
+						<tr>
+							<td>Configuration failure:</td>
+							<td>&nbsp;&nbsp;<span class="color">Red</span> light strobes on for 1s</td>
+						</tr>
+					</table>
+					<p>
+						<span class="notice">*</span>Unbound devices can only be controlled if the phone is connected to the router to which the device is bound.
+					</p>
+				</div>
+				
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Register and bind the device to my account
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Click “Register”, enter the registration page to enter the user's email address and password， then click “Register” to complete the registration, and then return to the login screen to log in.
+						</li>
+						<li>
+							You can also use a third party account to log in, directly click on the following WeChat or Facebook icons.
+						</li>
+						<li>
+							Enter into “My device” page after login success, long press “device name” and then click “bind to my Mango cloud” to bind the device. You can also modify the device name, restore the factory settings, unbound, delete devices and other operations.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/login.jpg" />
+					<img class="screenshot" src="images/more.jpg" />
+				</div>
+				
+				<div class="item">
+					<ul>
+						<li class="small-title" >
+							Light dance with music
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Open MangoHome app, select a LED strip, enter the control interface, click "music" to enter music mode, then click "choose a music" to choose your favorite music to play and you can freely switch the different music and lighting effects in play.
+						</li>
+						<li>
+							Microphone effect: Light effects change with the loudness and frequency of the user's voice.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/music.jpg"/>
+					<img class="screenshot" src="images/mic.jpg"/>
+				</div>
+				
+				<div class="item">
+					<ul>
+						<li class="small-title" >
+							Light effect control
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Click the LED strip name that you need to control, then enter the control page as shown on the right side: You can select any color in the color circle to let the LED strip display your favorite color. Once your favorite color is selected, you can click “save” to collect your favorite color.
+						</li>
+						<li>
+							You can also slide the bright bar to select the brightness you like. Slide to the left, the brightness decreases, slide to the right, the brightness increases.
+						</li>
+						<li>
+							If the LED strip do not display the color you selected, click the button above the “current color” to adjust the RGB order.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/single_color.jpg"/>
+					<img class="screenshot" src="images/classic.jpg"/>
+				</div>
+				
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							How to set up with smart speakers
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Open MangoHome APP, enter “my device” surface, modify any device name to an customize name (like bedroom light) and bind the device to “my Mango cloud”.
+						</li>
+						<li>
+							Open the APP of the smart speaker that you are going to access, search the skill named “MangoHome” from Amazon Alexa/TmallGenie , search the skill named “SmartMango” from GoogleHome. 
+						</li>
+						<li>
+							According to the operating instructions for account binding, after the binding is completed ,enter the device binding account and password, then click “authorization”. If you use a Wechat or Facebook account to bind the device, please select the Wechat or Facebook account for login.
+						</li>
+						<li>
+							After the account is successfully bound and the Mango device is found, voice control can be performed. For example, say to Alexa:”Alexa,turn on the bedroom light”.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/oauth.jpg"/>
+					<p>
+						<span class="notice">*</span>MangoHome intelligent controller is compatible with the access control of three smart speakers ( GoogleHome, Amazon Alexa, Tmall Genis) . Before using a smart speaker to control the device, you must ensure that the controlled device had been bound to mango cloud.
+					</p>
+				</div>
+				
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							How to restore factory setup
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Press and hold the controller button for at least 10 seconds until the white light turns on and then disconnect the power adapter. After power is on again, you can restore the factory configuration.
+						</li>
+					</ol>
+
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Safety Precautions
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Avoid use in humid and hot environments.
+						</li>
+						<li>
+							When configuring network, please keep as close to the router as possible to avoid unsuccessful configuration due to weak WiFi signal. (Make sure the network is accessible).
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+			
+		</div>
+
+	<div id="magic">
+		<div class="back" onclick="back()">
+			back
+		</div> 
+		<div class="mian">
+			<div class="concent">
+				<p class="page_title">
+					Magic LED Strip
+				</p>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Product features
+						</li>
+					</ul>
+					<img class="feature" src="images/feature.jpg" />
+					<p>
+						<span class="notice">*</span>There are some differences in the characteristics of different products.
+					</p>
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Basic parameters
+						</li>
+					</ul>
+					<table class="tab">
+						<tr>
+							<td>Color mode:</td>
+							<td>&nbsp;&nbsp;<span>Magic LED Strip</span>&nbsp;&nbsp;</td>
+
+						</tr>
+						<tr>
+							<td>Working temperature:</td>
+							<td>&nbsp;&nbsp;-10~50°C&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Working humidity:</td>
+							<td>&nbsp;&nbsp;0%-85%&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Control principle:</td>
+							<td>&nbsp;&nbsp;WiFi/button&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Application range:</td>
+							<td>&nbsp;&nbsp;Family, performance, lighting etc&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Mobile version:</td>
+							<td>&nbsp;&nbsp;Android/iOS</td>
+						</tr>
+						<tr>
+							<td>Wireless protocol:</td>
+							<td>&nbsp;&nbsp;Wi-Fi IEEE802/11b/g/n 2.4Ghz&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Maximum powe:</td>
+							<td>&nbsp;&nbsp;144w&nbsp;&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Input voltage:</td>
+							<td>&nbsp;&nbsp;DC5-24V&nbsp;&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Download application
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Apple users can search “MangoHome” in “APP store”to download and install; Android users can search “MangoHome” in “Google Play Store” to download and install. The APP is free to download and use.
+						</li>
+					</ol>
+					<div class="code">
+						<img class="code" src="images/code.png" />
+						<p>Scan the QR code to download the APP</p>
+					</div>
+				</div>
+				<div class="item">
+					<ul><li class="small-title">Directly connected to the device control</li></ul>
+					<ol>
+						<li>
+							After the LED strip is plugged in and indicator light turns on，search and connect the hotspot with cellphone.(WIFI hotspot ：Mangoxxxxxxxxxxxx).
+						</li>
+						<li>
+							Open the APP and click "Connect the device directly for control" and you can directly control it.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/settings_wifi.jpg" />
+					<img class="screenshot" src="images/app_connect.jpg" />
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Configure intelligent LED controller connected to the network
+						</li>
+					</ul>
+					<ol>
+						<li>
+							After the LED strip is plugged in and indicator light turns on，search and connect the hotspot with cellphone.(WIFI hotspot ：Mangoxxxxxxxxxxxx).
+						</li>
+						<li>
+							Open MangoHome APP, click “settings”, then enter select WiFi interface, and then enter your own WiFi name and enter the correct WiFi password, click “connect”.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/select_wifi.jpg" />
+					<table class="tab">
+						<tr>
+							<td>Configuring&nbsp;&nbsp;：</td>
+							<td>&nbsp;&nbsp;<span class="color">White</span> breathing light</td>
+						</tr>
+						<tr>
+							<td>Configuration success:</td>
+							<td>&nbsp;&nbsp;<span class="color">Green</span> light last for 1s</td>
+						</tr>
+						<tr>
+							<td>Configuration failure:</td>
+							<td>&nbsp;&nbsp;<span class="color">Red</span> light strobes on for 1s</td>
+						</tr>
+					</table>
+					<p>
+						<span class="notice">*</span>Unbound devices can only be controlled if the phone is connected to the router to which the device is bound.
+					</p>
+				</div>
+				
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Register and bind the device to my account
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Click “Register”, enter the registration page to enter the user's email address and password， then click “Register” to complete the registration, and then return to the login screen to log in.
+						</li>
+						<li>
+							You can also use a third party account to log in, directly click on the following WeChat or Facebook icons.
+						</li>
+						<li>
+							Enter into “My device” page after login success, long press “device name” and then click “bind to my Mango cloud” to bind the device. You can also modify the device name, restore the factory settings, unbound, delete devices and other operations.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/login.jpg" />
+					<img class="screenshot" src="images/more.jpg" />
+				</div>
+				
+				<div class="item">
+					<ul>
+						<li class="small-title" >
+							Light dance with music
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Open MangoHome app, select a LED strip, enter the control interface, click "music" to enter music mode, then click "choose a music" to choose your favorite music to play and you can freely switch the different music and lighting effects in play.
+						</li>
+						<li>
+							Microphone effect: Light effects change with the loudness and frequency of the user's voice.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/music.jpg"/>
+					<img class="screenshot" src="images/mic.jpg"/>
+				</div>
+				
+				<div class="item">
+					<ul>
+						<li class="small-title" >
+							Light effect control
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Click the LED strip name that you need to control, then enter the control page as shown on the right side: You can select any color in the color circle to let the LED strip display your favorite color. Once your favorite color is selected, you can click “save” to collect your favorite color.
+						</li>
+						<li>
+							You can also slide the bright bar to select the brightness you like. Slide to the left, the brightness decreases, slide to the right, the brightness increases.
+						</li>
+						<li>
+							If the LED strip do not display the color you selected, click the button above the “current color” to adjust the RGB order.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/single_color.jpg"/>
+					<img class="screenshot" src="images/classic.jpg"/>
+				</div>
+				
+				<div class="item"  id="timer">
+					<ul>
+						<li class="small-title">
+							Add timer
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Single : Only once is valid, it needs to be reset after it takes effect.
+						</li>
+						<li>Every day : Effective daily, don' t need to repeat setting.
+						</li>
+					</ol>
+					<p>
+						<span class="notice">*</span>The controller timing function will fail after power off
+					</p>
+				</div>
+				
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							How to set up with smart speakers
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Open MangoHome APP, enter “my device” surface, modify any device name to an customize name (like bedroom light) and bind the device to “my Mango cloud”.
+						</li>
+						<li>
+							Open the APP of the smart speaker that you are going to access, search the skill named “MangoHome” from Amazon Alexa/TmallGenie , search the skill named “SmartMango” from GoogleHome. 
+						</li>
+						<li>
+							According to the operating instructions for account binding, after the binding is completed ,enter the device binding account and password, then click “authorization”. If you use a Wechat or Facebook account to bind the device, please select the Wechat or Facebook account for login.
+						</li>
+						<li>
+							After the account is successfully bound and the Mango device is found, voice control can be performed. For example, say to Alexa:”Alexa,turn on the bedroom light”.
+						</li>
+					</ol>
+					<img class="screenshot" src="images/oauth.jpg"/>
+					<p>
+						<span class="notice">*</span>MangoHome intelligent controller is compatible with the access control of three smart speakers ( GoogleHome, Amazon Alexa, Tmall Genis) . Before using a smart speaker to control the device, you must ensure that the controlled device had been bound to mango cloud.
+					</p>
+				</div>
+				
+				<div class="item" id="custom">
+					<ul>
+						<li>
+							Customize
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Click the LED strip name that you need to control, then enter the control page as shown on the right side: You can select any color in the color circle to let the LED strip display your favorite color. Once your favorite color is selected, you can click “save” to collect your favorite color. 
+						</li>
+						<li>
+							The selected color is the background color of magic LED strip. Only one color can be selected as the background color.
+						</li>
+						<li>
+							You can Click “Settings” in the upper right corner to set the RGB order, and you can set pixel quantity (the total number of lighted LED lamp beads) and the number of LED lamp beads in motion.
+						</li>
+					</ol>
+					<img src="cn/images/magic.jpg"/>
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							How to restore factory setup
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Press and hold the controller button for at least 10 seconds until the white light turns on and then disconnect the power adapter. After power is on again, you can restore the factory configuration.
+						</li>
+					</ol>
+
+				</div>
+				<div class="item">
+					<ul>
+						<li class="small-title">
+							Safety Precautions
+						</li>
+					</ul>
+					<ol>
+						<li>
+							Avoid use in humid and hot environments.
+						</li>
+						<li>
+							When configuring network, please keep as close to the router as possible to avoid unsuccessful configuration due to weak WiFi signal. (Make sure the network is accessible).
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+			
+		</div>
+
+			
+	</div>
+	
+		<div class="footer">
+			
+		</div>
+	
+	</body>
+		<script type="text/javascript">
+			var rgb=document.getElementById("rgb");
+			var single=document.getElementById("single");
+			var magic=document.getElementById("magic");
+			var header=document.getElementById("header");
+			function type0(){
+				header.hidden="hidden";
+				rgb.hidden="";
+			}
+			function type1(){
+				header.hidden="hidden";
+				single.hidden="";
+			}
+			function type2(){
+				header.hidden="hidden";
+				single.hidden="";
+			}
+			function type3(){
+				header.hidden="hidden";
+				magic.hidden="";
+			}
+			
+			function setHeader(isHeader){
+				var header=document.getElementById("header");
+				if(isHeader){
+					header.hidden="hidden";
+				}else{
+					header.hidden="";
+				}
+			}
+			
+			function back(){
+				rgb.hidden="hidden";
+				single.hidden="hidden";
+				magic.hidden="hidden";
+				header.hidden="";
+			}
+			
+			rgb.hidden="hidden";
+			single.hidden="hidden";
+			magic.hidden="hidden";
+		</script> 
 </html>
