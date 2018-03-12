@@ -3,57 +3,107 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>MangoHome Help</title>
-		<link rel="stylesheet" href="mango.css" />
-		<script type="text/javascript">
-			function type0(){
-				window.location.href="help_led.html?type=RGB";
-			}
-			function type1(){
-				window.location.href="help_led.html?type=single";
-			}
-			function type2(){
-				lwindow.location.href="help_led.html?type=RGB&W";
-			}
-			function type3(){
-				window.location.href="help_led.html?type=magic";
-			}
-			function test(){
-				window.open('https://baidu.com');
-			}
-		</script>
+		<title>Test</title>
+
 	</head>
-	
+	<style>
+		.header{
+			z-index: 9999; 
+			width: 100%;
+			height: 100px;
+			position: fixed ! important; 
+			top: 0px;
+			background-color: white;
+			text-align: center;
+		}
+		.title1,.title2,.title3{
+			font-size: 20px;
+			border-bottom: 1px solid black;
+		}
+		.main{
+			margin-top: 100px;			
+		}
+		.content1,.content2,.content3{
+			height: 500px;
+		}
+	</style>
 	<body>
-		<div>
-			<table class="title">
-				<th>
-					<td onclick="test()">MangoHome intelligent LED controller</td>
-				</th>
-			</table>
-			<div onclick="type0()">
-				<p class="type" id="type0">LED Strip(RGB/RGBW)</p>
-				<img class="go" src="images/go.png" />
+		<div class="header" id="header">
+			<div class="title1" onclick="title1()" id="title1">
+				LED Strip(RGB/RGBW)
 			</div>
-			<div class="line"></div>
-			<div onclick="type1()">
-				<p class="type" id="type1">LED Strip(Single Color)</p>
-				<img class="go" src="images/go.png" />
+			<div class="title2" onclick="title2()" id="title2">
+				LED Strip(Single Color)
 			</div>
-			<div class="line"></div>
-			<div onclick="type2()" hidden="hidden">
-				<p class="type" id="type2">LED Strip(Warm White)</p>
-				<img class="go" src="images/go.png" />
+			<div class="title3" onclick="title3()" id="title3">
+				LED Strip(Warm White)
 			</div>
-			<div class="line" hidden="hidden">
-				
-			</div>
-			<div onclick="type3()">
-				<p class="type" id="type3">Magic LED Strip</p>
-				<img class="go" src="images/go.png" />
-			</div>
-			<div class="line"></div>
 		</div>
+		<div class="main">
+			<div class="content1" id="content1">
+				content1
+			</div>
+			<div class="content2" id="content2">
+				content2
+			</div>
+			<div class="content3" id="content3">
+				content3
+			</div>
+		</div>
+		
 	</body>
 
+		<script>
+		function title1(){
+			location.href="#content1";
+//			setHeader(true);
+		}
+		function title2(){
+			location.href="#content2";
+//			setHeader(true);
+		}
+		function title3(){
+			location.href="#content3";
+//			setHeader(true);
+		}
+		
+		function setHeader(isHidden){
+			var header=document.getElementById("header");
+			if(!isHidden){
+				header.hidden="";
+			}else{
+				header.hidden="hidden";
+			}
+			
+		}
+		
+		function getHeaderHidden(){
+			var header=document.getElementById("header");
+			if(header.hidden=="hidden"){
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+//		function scroll( fn ) {  
+//      	var beforeScrollTop = document.body.scrollTop;  
+//          fn = fn || function() {};  
+//      	window.addEventListener("scroll", function() {  
+//          	var afterScrollTop = document.body.scrollTop,  
+//              delta = afterScrollTop - beforeScrollTop;  
+//          	if( delta === 0 ) return false;  
+//          	fn( delta > 0 ? "down" : "up" );  
+//          		beforeScrollTop = afterScrollTop;  
+//      		},false);
+//  	}
+//		scroll(function(direction) { 
+//			if(direction=="up" && getHeaderHidden()== false){
+//				setHeader(false);
+//			}else{
+//				setHeader(true);
+//			}
+//		});
+	</script>
+	
 </html>
