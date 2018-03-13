@@ -1,186 +1,53 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>5</title>
-	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
-	<link rel="stylesheet" href="css/discover.css">
-	<script src="js/swiper.min.js"></script>
-	<script src="js/swiper.animate.min.js"></script>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>fullPage.js — 基本演示_dowebok</title>
+<link rel="stylesheet" href="init.css" />
+<link rel="stylesheet" href="css/discover.css">
+<style>
+	img{
+		width: 100%;
+		height: auto;
+	}
+</style>
+<style>
+.section { text-align: center; font: 50px "Microsoft Yahei"; color: #fff;}
+</style>
 
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.fullPage.min.js"></script>
+<script>
+$(function(){
+	$('#dowebok').fullpage({
+//		sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90']
+	});
+});
+</script>
+</head>
 
-	</head>
+<body>
 
-	<body>
-		<div class="swiper-container">
-		    <div class="swiper-wrapper">
-		        <section class="swiper-slide swiper-slide1 white">
-		        	<div class="page">
-		        		<p class="page_title"></p>
-		        		<p class="page_content"></p>
-		        		<table style="margin-top: 15px; font-size: 16px;">
-							<tr>
-								<td class="tab"></td>
-								<td class="tab"></td>
-							</tr>
-							<tr>
-								<td class="tab"></td>
-								<td class="tab"></td>
-							</tr>
-							<tr>
-								<td class="tab"></td>
-								<td class="tab"></td>
-							</tr>
-		        		</table>
-		        	</div>
-					<img src="images/discover/discover1.jpg" />
-		        </section>
-		        
-		        <section class="swiper-slide swiper-slide2">
-		        	<div class="page">
-		        		<p class="page_title"></p>
-		        		<p class="page_content"></p>
-		        	</div>
-		        	<img src="images/discover/discover7.jpg" />
-		        </section>
-		        
-		        <section class="swiper-slide swiper-slide2">
-		        	<div class="page">
-		        		<p class="page_title"></p>
-		        		<p class="page_content"></p>
-		        	</div>
-		        	<img src="images/discover/discover3.jpg" />
-		        </section>
-		        
-		        <section class="swiper-slide swiper-slide2">
-		        	<div class="page">
-		        		<p class="page_title"></p>
-		        		<p class="page_content"></p>
-		        	</div>
-		        	<img src="images/discover/discover6.jpg" />
-		        </section>
-		        
-		        <section class="swiper-slide swiper-slide2">
-		        	<div class="page">
-		        		<p class="page_title"></p>
-		        		<p class="page_content"></p>
-		        	</div>
-		        	<img src="images/discover/discover2.jpg" />
-		        </section>
-		        
-		        <section class="swiper-slide swiper-slide2">
-		        <div class="page">
-		        		<p class="page_title"></p>
-		        		<p class="page_content"></p>
-		        	</div>
-		        	<img src="images/discover/discover4.jpg" />
-		        </section>
-		        
-		    </div>
-		    
-		  <div class="swiper-pagination"></div>  
-		</div>
-	
-	
-		<script>
-			var page_title=document.getElementsByClassName('page_title');
-			var page_content=document.getElementsByClassName('page_content');
-			var tab=document.getElementsByClassName("tab");
+<div id="dowebok">
+	<div class="section">
+		<img src="images/discover/discover1.jpg"/>
+	</div>
+	<div class="section">
+		<img src="images/discover/discover7.jpg"/>
+	</div>
+	<div class="section">
+		<img src="images/discover/discover3.jpg"/>
+	</div>
+	<div class="section">
+		<img src="images/discover/discover6.jpg"/>
+	</div>
+	<div class="section">
+		<img src="images/discover/discover2.jpg"/>
+	</div>
+	<div class="section">
+		<img src="images/discover/discover4.jpg"/>
+	</div>
+</div>
 
-
-			var pageTitle=new Array(
-				"Intelligent illumination experience",
-				"Perfect light control experience",
-				"Remote control",
-				"Voice control by intelligent speaker",
-				"DIY exclusive atmosphere",
-				"Light dance with music"
-			);
-			
-			var pageContent=new Array(
-				"Think what you think for giving you a brilliant life",
-				"Mango Home intelligent controller is a WIFI intelligent controller that specializes in connecting LED Strip. Our user can adjust the color and brightness of the LED lights by smartphone APP or computer, what the more amazing is, it also provides remote control and voice control support to make your lighting system more wisdom, more energy-saving, more security.",
-				"Mango Home covers the global server, supports the global remote control by mobile phone accesses 3g/4g/ WIFI signal from which you are not afraid to forget to turn off the lights. dual system design, after breaking the net, it also supports local control, and users do not need to do any handover settings.",
-				"Mango Home intelligent controller compatible with Google Home, Amazon Alexa, and Tmall Genie intelligent speaker access control, you only need to say the light you want, the light will change as what you say, without APP or other Terminal, bid farewell to manual control. Life should be so easy.",
-				"16 million colors of choice, like a kaleidoscope enrich your life. DIY exclusive atmosphere model, to add more sparks of life, to bring you the fun of DIY and surprise.",
-				"Light will dance with music rhythm when you play music. In the music without interruption condition, dynamic color can be freely switch to achieve the fusion of music and colorful color perfect."
-			);
-			
-			var tabCell=new Array(
-				"Remote control",
-				"  |  DIY exclusive atmosphere",
-				"Voice control",
-				"  |  Light dance with music",
-				"Timing control",
-				"  |  16 million color"
-			);
-
-			for (var i = 0; i < page_title.length; i++) {
-				page_title[i].innerText=pageTitle[i];
-				page_content[i].innerText=pageContent[i];
-			}
-
-			for (var i = 0; i<tab.length;i++) {
-				tab[i].innerText=tabCell[i];
-			}
-
-			
-			
-
-			scaleW=window.innerWidth/320;
-			scaleH=window.innerHeight/480;
-			var resizes = document.querySelectorAll('.resize');
-	            for (var j=0; j<resizes.length; j++) {
-		           resizes[j].style.width=parseInt(resizes[j].style.width)*scaleW+'px';
-				   resizes[j].style.height=parseInt(resizes[j].style.height)*scaleH+'px';
-				   resizes[j].style.top=parseInt(resizes[j].style.top)*scaleH+'px';
-				   resizes[j].style.left=parseInt(resizes[j].style.left)*scaleW+'px'; 
-		        }
-				  
-		    var mySwiper = new Swiper ('.swiper-container', {
-		    direction : 'vertical',
-		    pagination: '.swiper-pagination',
-		    //virtualTranslate : true,
-		    mousewheelControl : true,
-		    slidesPerView :'auto',//slider容器能够同时显示的slides数量(carousel模式)
-			autoHeight:true,//自动高度
-		    onInit: function(swiper){
-		    swiperAnimateCache(swiper);
-		    swiperAnimate(swiper);
-			   },
-		    onSlideChangeEnd: function(swiper){
-				swiperAnimate(swiper);
-		    },
-			onTransitionEnd: function(swiper){
-				swiperAnimate(swiper);
-		    },
-			
-			
-			watchSlidesProgress: true,
-		
-		      onProgress: function(swiper){
-		        for (var i = 0; i < swiper.slides.length; i++){
-		          var slide = swiper.slides[i];
-		          var progress = slide.progress;
-		          var translate = progress*swiper.height/4;  
-				  scale = 1 - Math.min(Math.abs(progress * 0.5), 1);
-		          var opacity = 1 - Math.min(Math.abs(progress/2),0.5);
-		          slide.style.opacity = opacity;
-				  es = slide.style;
-				  es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0,'+translate+'px,-'+translate+'px) scaleY(' + scale + ')';
-		
-		        }
-		      },
-			
-			   onSetTransition: function(swiper, speed) {
-		        for (var i = 0; i < swiper.slides.length; i++){
-		          es = swiper.slides[i].style;
-				  es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
-		
-		        }
-		      },
-			
-			})         
-		</script>
-	</body>
+</body>
 </html>
