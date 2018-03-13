@@ -43,13 +43,13 @@ img{
 	height: auto;
 }
 .swiper-pagination-bullet {
-width: 6px;
-height: 6px;
-background: #fff;
-opacity: .4;
+	width: 6px;
+	height: 6px;
+	background: #fff;
+	opacity: .4;
 }
 .swiper-pagination-bullet-active {
-opacity: 1;
+	opacity: 1;
 }
 @-webkit-keyframes start {
 	0%,30% {opacity: 0;-webkit-transform: translate(0,10px);}
@@ -73,14 +73,17 @@ opacity: 1;
 	position:absolute;
 }
 #array{
+	
 	position:absolute;z-index:999;-webkit-animation: start 1.5s infinite ease-in-out;
 }
 
 .page{
+	display: inline-block;
 	position: absolute;
 	z-index: 10;
 	top: 18px;
 	left: 18px;
+	width: 100%;
 }
 
 .page_title{
@@ -89,4 +92,5 @@ opacity: 1;
 
 .page_content{
 	font-size: 16px;
+	top: 40px;
 }
