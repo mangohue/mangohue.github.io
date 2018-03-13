@@ -85,8 +85,7 @@ img{
 	top: 18px;
 	left: 18px;
 	width: 100%;
-	overflow: hidden;
-	
+	height: 100%;
 }
 
 .page_title{
