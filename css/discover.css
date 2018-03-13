@@ -75,7 +75,6 @@ img{
 	position:absolute;
 }
 #array{
-	
 	position:absolute;z-index:999;-webkit-animation: start 1.5s infinite ease-in-out;
 }
 
@@ -86,6 +85,7 @@ img{
 	top: 18px;
 	left: 18px;
 	width: 100%;
+	overflow: hidden;
 	
 }
 
