@@ -79,4 +79,14 @@ opacity: 1;
 .page{
 	position: absolute;
 	z-index: 10;
+	top: 18px;
+	left: 18px;
+}
+
+.page_title{
+	font-size: 20px;
+}
+
+.page_content{
+	font-size: 16px;
 }
