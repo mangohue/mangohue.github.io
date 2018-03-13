@@ -1,7 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-}
+
 html,
 body {
     height: 100%;
@@ -9,7 +6,6 @@ body {
 }
 .container{
     height: 100%;
-    background-color: #efeff4;
 }
 .item{
     color: #ffffff;
