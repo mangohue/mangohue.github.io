@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>3</title>
+		<title>4</title>
 	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
 	<link rel="stylesheet" href="css/discover.css">
 	<script src="js/swiper.min.js"></script>
@@ -142,6 +142,8 @@
 		    pagination: '.swiper-pagination',
 		    //virtualTranslate : true,
 		    mousewheelControl : true,
+		    slidesPerView :'auto',//slider容器能够同时显示的slides数量(carousel模式)
+			autoHeight:true,//自动高度
 		    onInit: function(swiper){
 		    swiperAnimateCache(swiper);
 		    swiperAnimate(swiper);
