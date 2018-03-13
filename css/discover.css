@@ -41,6 +41,8 @@ body{
 img{
 	width: 100%;
 	height: auto;
+	position: absolute;
+	bottom: 0px;
 }
 .swiper-pagination-bullet {
 	width: 6px;
@@ -89,6 +91,7 @@ img{
 
 .page_title{
 	font-size: 22px;
+	word-wrap:break-word;
 	padding-right: 20px;
 }
 
