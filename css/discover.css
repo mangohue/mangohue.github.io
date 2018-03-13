@@ -81,7 +81,7 @@ img{
 .page{
 	display: inline-block;
 	position: absolute;
-	z-index: 10;
+	z-index: 100;
 	top: 18px;
 	left: 18px;
 	width: 100%;
