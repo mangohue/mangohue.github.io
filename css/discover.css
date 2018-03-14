@@ -5,6 +5,24 @@
 img{
 	width: 100%;
 	height: auto;
+	
+}
+
+.txt_page{
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 20px;
+	z-index: 100;
+}
+
+.page_title{
+	font-size: 25px;
+	
+}
+
+.page_content{
+	margin-top: 15px;
+	font-size: 20px;
 }
 
 
