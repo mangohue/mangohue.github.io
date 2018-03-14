@@ -4,36 +4,113 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<link rel="stylesheet" href="../init.css" />
+		<link rel="stylesheet" href="../css/discover.css" />
 		<title>MangoHome Discover</title>
-		<script type="text/javascript" src="../js/swiper.js" ></script>
-		<style>
-			img{
-				width: 100%;
-				height: auto;
-			}
-		</style>
 	</head>
 	
 	<body>
 		<div class="main">
-			<div>
-				<img src="../images/discover/discover1.jpg">
+			<div class="item">
+				<div class="txt_page white">
+					<p class="page_title"></p>
+					<p class="page_content"></p>
+					<table style="margin-top: 10px; font-size: 16px;">
+						<tr>
+							<td class="tab"></td>
+							<td class="tab"></td>
+						</tr>
+						<tr>
+							<td class="tab"></td>
+							<td class="tab"></td>
+						</tr>
+						<tr>
+							<td class="tab"></td>
+							<td class="tab"></td>
+						</tr>
+					</table>
+				</div>
+				<img src="../images/discover/discover1.jpg" />
 			</div>
-			<div>
-				<img src="../images/discover/discover7.jpg">
+			<div class="item">
+				<div class="txt_page black">
+					<p class="page_title"></p>
+					<p class="page_content"></p>
+				</div>
+				<img src="../images/discover/discover7.jpg" />
 			</div>
-			<div>
-				<img src="../images/discover/discover6.jpg">
+			<div class="item">
+				<div class="txt_page  white">
+					<p class="page_title"></p>
+					<p class="page_content"></p>
+				</div>
+				<img src="../images/discover/discover6.jpg" />
 			</div>
-			<div>
-				<img src="../images/discover/discover3.jpg">
+			<div class="item">
+				<div class="txt_page black">
+					<p class="page_title"></p>
+					<p class="page_content"></p>
+				</div>
+				<img src="../images/discover/discover3.jpg" />
 			</div>
-			<div>
-				<img src="../images/discover/discover2.jpg">
+			<div class="item">
+				<div class="txt_page black">
+					<p class="page_title"></p>
+					<p class="page_content"></p>
+				</div>
+				<img src="../images/discover/discover2.jpg" />
 			</div>
-			<div>
-				<img src="../images/discover/discover4.jpg">
+			<div class="item">
+				<div class="txt_page black">
+					<p class="page_title"></p>
+					<p class="page_content"></p>
+				</div>
+				<img src="../images/discover/discover4.jpg" />
 			</div>
+			
 		</div>
+		
+		<script>
+			var page_title=document.getElementsByClassName("page_title");
+			var page_content=document.getElementsByClassName("page_content");
+			var tab=document.getElementsByClassName("tab");
+			
+			var pageTitle = new Array(
+				"Mango Home智能照明",
+				"完美的光控体验",
+				"远程控制",
+				"智能音箱语音控制",
+				"随心所“色”",
+				"闻“音”起舞"
+			);
+//			
+			var pageContent = new Array(
+				"想你所想  点亮“芒”光溢“彩”家",
+				"Mango Home智能控制器是一款专门连接LED灯带的WIFI智能控制器。通过手机app、电脑终端控制LED灯带灯光亮度、色彩变化，更让人惊奇的是它同时支持语音和远程控制，让您的照明系统更智慧、更节能、更安全。",
+				"Mango Home覆盖全球服务器，支持手机全球远程控制，从此出门不怕忘记关灯；双系统设计，断网后支持局域网控制，用户不需要做任何切换设置。",
+				"Mango Home智能控制器同时兼容Google Home，Amazon Alexa，天猫精灵三款智能音箱接入控制，您只需说出你所想要的灯光效果，LED灯就会随你心意而改变，无需APP或者其它终端，告别手动控制，生活本该如此轻松。",
+				"1600万种颜色的选择，犹如万花筒丰富你的生活。DIY定制专属氛围模式，为生活增添更多的火花，让你感受DIY的乐趣与惊喜。",
+				"随机播放一首音乐，灯光便随着音乐一起律动。在音乐不中断的状态下，动态颜色可随意切换，实现音乐和流光溢彩的颜色完美融合。"
+			);
+			
+			var tabCell = new Array(
+				"远程控制",
+				"  |  随心所“色”",
+				"语音控制",
+				"  |  音乐灵动",
+				"定时控制",
+				"  |  1600万颜色"
+			);
+			
+			for (var i = 0; i<page_title.length; i++) {
+				page_title[i].innerText=pageTitle[i];
+				page_content[i].innerText=pageContent[i];
+			}
+			
+			for (var i = 0; i < tab.length; i++) {
+				tab[i].innerText = tabCell[i];
+			}
+			
+		</script>
 	</body>
 </html>
+
