@@ -1,21 +1,6 @@
-/**
- * fullPage 2.4.6
- * https://github.com/alvarotrigo/fullPage.js
- * MIT licensed
- *
- * Copyright (C) 2013 alvarotrigo.com - A project by Alvaro Trigo
- */
 img{
 	width: 100%;
-	height: 100%;
-	position: absolute;
-	bottom: 0px;
-}
-.fp-section {
-    position: relative;
-    -webkit-box-sizing: border-box; /* Safari<=5 Android<=3 */
-    -moz-box-sizing: border-box; /* <=28 */
-    box-sizing: border-box;
+	height: auto;
 }
 
 
