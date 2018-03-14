@@ -5,62 +5,62 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<link rel="stylesheet" href="init.css" />
 		<link rel="stylesheet" href="css/discover.css" />
-		<title>MangoHome Discover1</title>
+		<title>MangoHome Discover</title>
 	</head>
 	
 	<body>
 		<div class="main">
 			<div class="item">
-				<div class="txt_page">
+				<div class="txt_page white">
 					<p class="page_title"></p>
 					<p class="page_content"></p>
-					<table>
+					<table style="margin-top: 10px; font-size: 16px;">
 						<tr>
-							<td></td>
-							<td></td>
+							<td class="tab"></td>
+							<td class="tab"></td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
+							<td class="tab"></td>
+							<td class="tab"></td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
+							<td class="tab"></td>
+							<td class="tab"></td>
 						</tr>
 					</table>
 				</div>
 				<img src="images/discover/discover1.jpg" />
 			</div>
 			<div class="item">
-				<div class="txt_page">
+				<div class="txt_page black">
 					<p class="page_title"></p>
 					<p class="page_content"></p>
 				</div>
 				<img src="images/discover/discover7.jpg" />
 			</div>
 			<div class="item">
-				<div class="txt_page">
+				<div class="txt_page  white">
 					<p class="page_title"></p>
 					<p class="page_content"></p>
 				</div>
 				<img src="images/discover/discover6.jpg" />
 			</div>
 			<div class="item">
-				<div class="txt_page">
+				<div class="txt_page black">
 					<p class="page_title"></p>
 					<p class="page_content"></p>
 				</div>
 				<img src="images/discover/discover3.jpg" />
 			</div>
 			<div class="item">
-				<div class="txt_page">
+				<div class="txt_page black">
 					<p class="page_title"></p>
 					<p class="page_content"></p>
 				</div>
 				<img src="images/discover/discover2.jpg" />
 			</div>
 			<div class="item">
-				<div class="txt_page">
+				<div class="txt_page black">
 					<p class="page_title"></p>
 					<p class="page_content"></p>
 				</div>
@@ -72,6 +72,7 @@
 		<script>
 			var page_title=document.getElementsByClassName("page_title");
 			var page_content=document.getElementsByClassName("page_content");
+			var tab=document.getElementsByClassName("tab");
 			
 			var pageTitle = new Array(
 				"Intelligent illumination experience",
@@ -91,9 +92,22 @@
 				"Light will dance with music rhythm when you play music. In the music without interruption condition, dynamic color can be freely switch to achieve the fusion of music and colorful color perfect."
 			);
 			
+			var tabCell = new Array(
+				"Remote control",
+				"  |  DIY exclusive atmosphere",
+				"Voice control",
+				"  |  Light dance with music",
+				"Timing control",
+				"  |  16 million color"
+			);
+			
 			for (var i = 0; i<page_title.length; i++) {
 				page_title[i].innerText=pageTitle[i];
 				page_content[i].innerText=pageContent[i];
+			}
+			
+			for (var i = 0; i < tab.length; i++) {
+				tab[i].innerText = tabCell[i];
 			}
 			
 		</script>

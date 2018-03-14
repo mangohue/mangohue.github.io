@@ -8,24 +8,32 @@
 img{
 	width: 100%;
 	height: auto;
-	
 }
 
 .txt_page{
 	position: absolute;
-	margin-top: 20px;
-	margin-left: 20px;
+	margin: 20px 10px 0 20px;
 	z-index: 100;
 }
 
 .page_title{
 	font-size: 25px;
-	
+	font-weight: bold;
 }
 
 .page_content{
 	margin-top: 15px;
-	font-size: 20px;
+	font-size: 18px;
+}
+
+.white{
+	/*color: white;*/
+	color: #FEB101;
+}
+
+.black{
+	/*color: black;*/
+	color: #FEB101;
 }
 
 
