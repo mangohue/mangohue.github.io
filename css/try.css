@@ -8,13 +8,19 @@
 	height: 60px;
 	position: absolute;
 	bottom: 0;
+	background-color: #100000;
 }
+
 
 .f-tab{
 	display: inline-block;
+	float: right;
+}
+
+.f-img{
 	
 }
 
 .tab-txt{
-	display: inline;
+	
 }
