@@ -1,6 +1,9 @@
 
 
-
+.main{
+	width: 100%;
+	height: 100%;
+}
 
 
 .footer{
@@ -19,10 +22,14 @@
 }
 
 .f-img{
-	padding: 5px 0 5px 0;
-	width: 30px;
+	padding: 8px 0 5px 0;
+	width: 25px;
 }
 
-.tab-txt{
-	
+.tab-txt-true{
+	color: #FEB101;
+}
+
+.tab-txt-false{
+	color: #000000;
 }

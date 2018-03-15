@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<link rel="stylesheet" href="init.css" />
 		<link rel="stylesheet" href="css/try.css" />
+		<script type="text/javascript" src="js/try.js" ></script>
 		<title></title>
 	</head>
 	
@@ -13,30 +14,45 @@
 			
 		</div>
 		<div class="main">
-			
+			<div class="body-tab" id="color">
+				<div>
+					
+				</div>
+			</div>
+			<div class="body-tab" id="mode" hidden="hidden">
+				2222
+			</div>
+			<div class="body-tab" id="music"hidden="hidden">
+				3333
+			</div>
+			<div class="body-tab" id="timer"hidden="hidden">
+				444
+			</div>
 		</div>
 		<div class="footer">
-			<div class="f-tab">
+			<div class="f-tab" data-tab = "color" onclick="tab(this)">
 				<img class="f-img" src="images/try/tab_color_false.png" />
 				<br />
-				<span class="tab-txt">Color</span>
+				<span class="tab-txt-true">Color</span>
 			</div>
-			<div class="f-tab">
+			<div class="f-tab"  data-tab = "mode" onclick="tab(this)">
 				<img class="f-img" src="images/try/tab_mode_false.png" />
 				<br />
-				<span class="tab-txt">Mode</span>
+				<span class="tab-txt-false">Mode</span>
 			</div>
-			<div class="f-tab">
+			<div class="f-tab"  data-tab = "music" onclick="tab(this)">
 				<img class="f-img" src="images/try/tab_music_false.png" />
 				<br />
-				<span class="tab-txt">Music</span>
+				<span class="tab-txt-false">Music</span>
 			</div>
-			<div class="f-tab">
+			<div class="f-tab"  data-tab = "timer" onclick="tab(this)">
 				<img class="f-img" src="images/try/tab_timer_false.png" />
 				<br />
-				<span class="tab-txt">Timer</span>
+				<span class="tab-txt-false">Timer</span>
 			</div>
 		</div>
+		
+
 	</body>
 </html>
 
