@@ -4,122 +4,23 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<link rel="stylesheet" href="init.css" />
-		<link rel="stylesheet" href="css/discover.css"/>
-		<title>MangoHome Discover</title>
+		<title></title>
 	</head>
+	<style>
+		.test{
+			width: 50%;
+			background-color: #FEB101;
+			text-align: center; 
+		}
+		img{
+			display: inline-block;
+		}
+	</style>
 	
 	<body>
-		<div class="main" id="main">
-			<div class="item">
-				<div class="txt_page white">
-					<p class="page_title"></p>
-					<p class="page_content"></p>
-					<table style="margin-top: 10px; font-size: 16px;">
-						<tr>
-							<td class="tab"></td>
-							<td class="tab"></td>
-						</tr>
-						<tr>
-							<td class="tab"></td>
-							<td class="tab"></td>
-						</tr>
-						<tr>
-							<td class="tab"></td>
-							<td class="tab"></td>
-						</tr>
-					</table>
-				</div>
-				<img src="images/discover/discover1.jpg" />
-			</div>
-			<div class="item">
-				<div class="txt_page black">
-					<p class="page_title"></p>
-					<p class="page_content"></p>
-				</div>
-				<img src="images/discover/discover7.jpg" />
-			</div>
-			<div class="item">
-				<div class="txt_page  white">
-					<p class="page_title"></p>
-					<p class="page_content"></p>
-				</div>
-				<img src="images/discover/discover6.jpg" />
-			</div>
-			<div class="item">
-				<div class="txt_page black">
-					<p class="page_title"></p>
-					<p class="page_content"></p>
-				</div>
-				<img src="images/discover/discover3.jpg" />
-			</div>
-			<div class="item">
-				<div class="txt_page black">
-					<p class="page_title"></p>
-					<p class="page_content"></p>
-				</div>
-				<img src="images/discover/discover2.jpg" />
-			</div>
-			<div class="item">
-				<div class="txt_page black">
-					<p class="page_title"></p>
-					<p class="page_content"></p>
-				</div>
-				<img src="images/discover/discover4.jpg" />
-			</div>
-			
+		<div class="test">
+			<img src="images/try/tab_color_false.png"/>
 		</div>
-		
-		<script>
-			//设备检测  
-			if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
-// 				alert('手机端');
-			}else{
-// 				alert('PC端');
-				var main= document.getElementById("main");
-				main.className="pc-main"
-			}
-			
-			var page_title=document.getElementsByClassName("page_title");
-			var page_content=document.getElementsByClassName("page_content");
-			var tab=document.getElementsByClassName("tab");
-			
-			var pageTitle = new Array(
-				"Intelligent illumination experience",
-				"Perfect light control experience",
-				"Remote control",
-				"Voice control by intelligent speaker",
-				"DIY exclusive atmosphere",
-				"Light dance with music"
-			);
-//			
-			var pageContent = new Array(
-				"Think what you think for giving you a brilliant life",
-				"MangoHome intelligent controller is a WIFI intelligent controller that specializes in connecting LED Strip. Our user can adjust the color and brightness of the LED lights by smartphone APP or computer, what the more amazing is, it also provides remote control and voice control support to make your lighting system more wisdom, more energy-saving, more security.",
-				"MangoHome covers the global server, supports the global remote control by mobile phone accesses 3g/4g/ WIFI signal from which you are not afraid to forget to turn off the lights. dual system design, after breaking the net, it also supports local control, and users do not need to do any handover settings.",
-				"MangoHome intelligent controller compatible with Google Home, Amazon Alexa, and Tmall Genie intelligent speaker access control, you only need to say the light you want, the light will change as what you say, without APP or other Terminal, bid farewell to manual control. Life should be so easy.",
-				"16 million colors of choice, like a kaleidoscope enrich your life. DIY exclusive atmosphere model, to add more sparks of life, to bring you the fun of DIY and surprise.",
-				"Light will dance with music rhythm when you play music. In the music without interruption condition, dynamic color can be freely switch to achieve the fusion of music and colorful color perfect."
-			);
-			
-			var tabCell = new Array(
-				"Remote control",
-				"  |  DIY exclusive atmosphere",
-				"Voice control",
-				"  |  Light dance with music",
-				"Timing control",
-				"  |  16 million color"
-			);
-			
-			for (var i = 0; i<page_title.length; i++) {
-				page_title[i].innerText=pageTitle[i];
-				page_content[i].innerText=pageContent[i];
-			}
-			
-			for (var i = 0; i < tab.length; i++) {
-				tab[i].innerText = tabCell[i];
-			}
-			
-		</script>
 	</body>
 </html>
 
