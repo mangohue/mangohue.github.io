@@ -5,15 +5,14 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>MangoHome Try</title>
   		<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
-  		<link rel="stylesheet" href="init.css" />
   		<link rel="stylesheet" href="css/try.css" />
 	</head>
 	<body>
 	  <div id="page" class="page">
 	    <mt-tabbar v-model="tabbar">
-	  		<mt-tab-item id="color" @click.native="tabbarClick('color')">
+	  		<mt-tab-item id="color"  @click.native="tabbarClick('color')">
 	    		<img slot="icon"  src="images/try/tab_color_false.png">
-	    		<span>Color</span>
+	    		<span >Color</span>
 	  		</mt-tab-item >
 	  		<mt-tab-item id="mode" @click.native="tabbarClick('mode')">
 	    		<img slot="icon" src="images/try/tab_mode_false.png">
@@ -31,7 +30,25 @@
 		
 		<mt-tab-container value="color" v-model="tabpage">
   			<mt-tab-container-item id="color">
-  				123
+				<div>
+					<div class="block">
+						<img class="btn-switch" src="images/try/btn_true.png" />
+					</div>
+					<div class="block color-main">
+						<p>Color</p>
+						<img class="color" src="images/try/color.png" />
+					</div>
+					<div class="block">
+						<p>Color</p>
+						<p></p>
+						<p>Save</p>
+					</div>
+				</div>
+				<div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
   			</mt-tab-container-item>
   			<mt-tab-container-item id="mode">
   				456

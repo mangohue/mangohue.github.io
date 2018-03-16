@@ -1,0 +1,32 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+.txt-tabbar-true{
+	color: #FEB101;
+}
+
+.txt-tabbar-false{
+	color: #333333 ;
+}
+
+.btn-switch{
+	width: 25px;
+	padding: 5px 0 0 5px;
+	
+}
+
+
+
+.block{
+	display: inline-block;
+}
+
+.color{
+	width:300px;
+}
+
+.color-main{
+	text-align: center;
+}
