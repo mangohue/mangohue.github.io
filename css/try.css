@@ -13,16 +13,17 @@
 
 .btn-switch{
 	width: 25px;
-	padding: 5px 0 0 5px;
+	padding: 8px 0 0 8px;
 }
 
 .block{
-	float: left;
+	/*float: left;*/
+	display: inline-block;
 }
 
 
 .color{
-	width:300px;
+	width:240px;
 }
 
 .color-main{
@@ -30,5 +31,39 @@
 }
 
 .save-color{
+	padding: 8px 8px 0 0;
+}
+
+.color-save{
+	width: 25px;
+	height: 25px;
+	border: 1px solid #333333;
+	border-radius: 30px;
+}
+.inline{
+	display: inline;
+}
+
+.range{
+	width: 300px;
+}
+
+.item{
+	margin: 15px 10px 15px 10px;
+	position: relative;
+}
+
+.item-txt{
+	
+}
+
+.normal{
+	width: 15px;
+	height: 15px;
+	border: 1px solid #222222;
+	border-radius: 4px;
+	display: inline-block;
+	padding: 4px;
+	margin: 4px;
 	
 }

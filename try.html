@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>MangoHome Try</title>
-  		<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+  		<link rel="stylesheet" href="css/style.css">
   		<link rel="stylesheet" href="css/try.css" />
 	</head>
 	<body>
@@ -30,28 +30,45 @@
 		
 		<mt-tab-container value="color" v-model="tabpage">
   			<mt-tab-container-item id="color">
-				<div>
-					<div class="block">
-						<img class="btn-switch" src="images/try/btn_true.png" />
+  				<div>
+					<div class="inline">
+						<div class="block">
+							<img class="btn-switch" src="images/try/btn_true.png" />
+						</div>
+						<div class="block color-main">
+							<p>Color</p>
+							<img class="color" src="images/try/color.png" />
+						</div>
+						<div class="block save-color">
+							<p>Color</p>
+							<p class="color-save"></p>
+							<p class="txt-save">Save</p>
+						</div>
 					</div>
-					<div class="block color-main">
-						<p>Color</p>
-						<img class="color" src="images/try/color.png" />
+					<div >
+						<div class="item">
+							<span class="item-txt">Bright</span>
+							<mt-range></mt-range>
+							<img src="images/try/icon_light.png" />
+						</div>
+						<div class="item">
+							<span class="item-txt">Normal</span>
+							<p class="normal" 
+								v-for="item in normal"  
+								v-bind:style="[{'background-color': item.color},{'color':item.color}]">
+								
+							</p>
+						</div>
+						<div class="item">
+							<span class="item-txt">DIY</span>
+						</div>
 					</div>
-					<div class="block save-color">
-						<p>Color</p>
-						<p></p>
-						<p>Save</p>
-					</div>
-				</div>
-				<div>
-					<div></div>
-					<div></div>
-					<div></div>
 				</div>
   			</mt-tab-container-item>
   			<mt-tab-container-item id="mode">
-  				456
+  				<div>
+  					<div></div>
+  				</div>
 			</mt-tab-container-item>
 			<mt-tab-container-item id="music">
 				789
@@ -65,19 +82,25 @@
 		</div>
 	</body>
   	<!-- 先引入 Vue -->
-  	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+  	<script src="js/vue.js"></script>
   	<!-- 引入组件库 -->
-  	<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+  	<script src="js/mint-ui-index.js"></script>
   	<script>
     	new Vue({
 	      	el: '#page',
-	      	methods: {
-	      	  
-	      	},
 	      	data:{
 	      		tabbar: "color",
 	      		tabpage:"color",
 	      		
+	      		normal:[
+	      			{color:"red"},
+	      			{color:"green"},
+	      			{color:"blue"},
+	      			{color:"yellow"},
+	      			{color:"purple"},
+	      			{color:"#ADD8E6"},
+	      			{color:"white"}
+	      		]
 	      	},
 	      	methods:{
 	      		tabbarClick:function(e){
