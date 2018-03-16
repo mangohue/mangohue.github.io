@@ -2,57 +2,69 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<link rel="stylesheet" href="init.css" />
-		<link rel="stylesheet" href="css/try.css" />
-		<script type="text/javascript" src="js/try.js" ></script>
-		<title></title>
+  	<!-- 引入样式 -->
+  	<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+  	<link rel="stylesheet" href="css/try.css" />
 	</head>
-	
 	<body>
-		<div class="header">
-			
-		</div>
-		<div class="main">
-			<div class="body-tab" id="color">
-				<div>
-					
-				</div>
-			</div>
-			<div class="body-tab" id="mode" hidden="hidden">
-				2222
-			</div>
-			<div class="body-tab" id="music"hidden="hidden">
-				3333
-			</div>
-			<div class="body-tab" id="timer"hidden="hidden">
-				444
-			</div>
-		</div>
-		<div class="footer">
-			<div class="f-tab" data-tab = "color" onclick="tab(this)">
-				<img class="f-img" src="images/try/tab_color_false.png" />
-				<br />
-				<span class="tab-txt-true">Color</span>
-			</div>
-			<div class="f-tab"  data-tab = "mode" onclick="tab(this)">
-				<img class="f-img" src="images/try/tab_mode_false.png" />
-				<br />
-				<span class="tab-txt-false">Mode</span>
-			</div>
-			<div class="f-tab"  data-tab = "music" onclick="tab(this)">
-				<img class="f-img" src="images/try/tab_music_false.png" />
-				<br />
-				<span class="tab-txt-false">Music</span>
-			</div>
-			<div class="f-tab"  data-tab = "timer" onclick="tab(this)">
-				<img class="f-img" src="images/try/tab_timer_false.png" />
-				<br />
-				<span class="tab-txt-false">Timer</span>
-			</div>
-		</div>
+	  <div id="page" class="page">
+	    <mt-tabbar v-model="tabbar">
+	  		<mt-tab-item id="color" @click.native="tabbarClick('color')">
+	    		<img slot="icon"  src="images/try/tab_color_false.png">
+	    		<span>Color</span>
+	  		</mt-tab-item >
+	  		<mt-tab-item id="mode" @click.native="tabbarClick('mode')">
+	    		<img slot="icon" src="images/try/tab_mode_false.png">
+	    		<span>Mode</span>
+	  		</mt-tab-item>
+		  	<mt-tab-item id="music" @click.native="tabbarClick('music')">
+		    	<img slot="icon" src="images/try/tab_music_false.png">
+		    	<span>Music</span>
+		  	</mt-tab-item>
+		  	<mt-tab-item id="timer" @click.native="tabbarClick('timer')">
+		    	<img slot="icon" src="images/try/tab_timer_false.png">
+		    	<span>Timer</span>
+		  </mt-tab-item>
+		</mt-tabbar>
 		
+		<mt-tab-container value="color" v-model="tabpage">
+  			<mt-tab-container-item id="color">
+  				123
+  			</mt-tab-container-item>
+  			<mt-tab-container-item id="mode">
+  				456
+			</mt-tab-container-item>
+			<mt-tab-container-item id="music">
+				789
+			</mt-tab-container-item>
+			<mt-tab-container-item id="timer">
+				101112
+			</mt-tab-container-item>
+		</mt-tab-container>
 
+	
+		</div>
 	</body>
+  	<!-- 先引入 Vue -->
+  	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+  	<!-- 引入组件库 -->
+  	<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+  	<script>
+    	new Vue({
+	      	el: '#page',
+	      	methods: {
+	      	  
+	      	},
+	      	data:{
+	      		tabbar: "color",
+	      		tabpage:"color",
+	      		
+	      	},
+	      	methods:{
+	      		tabbarClick:function(e){
+	      			this.tabpage = e
+	      		}
+	      	}
+    	})
+  	</script>
 </html>
-

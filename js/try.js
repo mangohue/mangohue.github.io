@@ -1,23 +1,26 @@
+import Vue from 'vue'
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+import App from './App.vue'
 
-function tab(e){
-	console.log(e);
-	setTab(e.dataset.tab);
-		
-}
+Vue.use(MintUI)
 
-function setTab(tabName){
-	var tab = document.getElementsByClassName("f-tab");
-	var body_tab = document.getElementsByClassName("body-tab");
-	
-	console.log(body_tab);
-	for (var i= 0;i<tab.length;i++) {
-		if(tab[i].dataset.tab == tabName){
-			tab[i].lastElementChild.className="tab-txt-true";
-			body_tab[i].hidden="";
-		}else{
-			tab[i].lastElementChild.className="tab-txt-false";
-			body_tab[i].hidden="hidden";
-		}
-		
-	}
-}
+new Vue({
+      el: '#app',
+      methods: {
+        test: function() {
+          this.$toast('Hello world!')
+        },
+
+      }
+    })
+    new Vue({
+      el: '#test',
+      methods: {
+        test: function() {
+          this.$toast('test')
+        },
+
+      }
+    })
+
