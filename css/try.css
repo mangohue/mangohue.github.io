@@ -14,14 +14,12 @@
 .btn-switch{
 	width: 25px;
 	padding: 5px 0 0 5px;
-	
 }
-
-
 
 .block{
-	display: inline-block;
+	float: left;
 }
+
 
 .color{
 	width:300px;
@@ -29,4 +27,8 @@
 
 .color-main{
 	text-align: center;
+}
+
+.save-color{
+	
 }
