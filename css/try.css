@@ -65,6 +65,7 @@
 	border-bottom-left-radius: 20px;
 	border-top-left-radius: 20px;
 	border: 1px solid #FEB101;
+	padding: 4px 4px 4px 8px;
 }
 
 .tab-title-right-flase{
@@ -73,6 +74,7 @@
 	border-bottom-right-radius: 20px;
 	border-top-right-radius: 20px;
 	border: 1px solid #FEB101;
+	padding: 4px 8px 4px 4px;
 }
 
 .tab-title-left-flase{
@@ -81,6 +83,7 @@
 	border-bottom-left-radius: 20px;
 	border-top-left-radius: 20px;
 	border: 1px solid #FEB101;
+	padding: 4px 4px 4px 8px;
 }
 
 .tab-title-right-true{
@@ -89,7 +92,7 @@
 	border-bottom-right-radius: 20px;
 	border-top-right-radius: 20px;
 	border: 1px solid #FEB101;
-	/*padding: 3px 8px 3px 3px;*/
+	padding: 4px 8px 4px 4px;
 }
 
 .color-picker{
