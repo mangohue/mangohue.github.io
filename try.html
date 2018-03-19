@@ -26,6 +26,11 @@
 						<p>Color</p>
 						<img class="color" src="images/try/color.png"/>
 					</div>
+					<div class="current-color">
+						<p>Current</p>
+						<p class="current-color-bg"></p>
+						<p class="current-color-txt">save</p>
+					</div>
 					<div >
 						<div class="item">
 							<mt-range class="range">
@@ -50,6 +55,11 @@
 				</div>
 				<!--mode页面-->
 				<div class="body-tab" id="mode" hidden="hidden">
+					<div id="custom-current-color" class="current-color" hidden="hidden">
+						<p>Current</p>
+						<p class="current-color-bg"></p>
+						<p class="current-color-txt">save</p>
+					</div>
   					<div class="tab-title">
   							<span id="tab-title-classic" class="tab-title-left-true" @click="tabTitle('classic')">Classic</span><span id="tab-title-custom" class="tab-title-right-flase" @click="tabTitle('custom')">Customize</span>
   					</div>
@@ -75,7 +85,6 @@
   						</div>
   					</div>
   					<div  class="custom" id="custom" hidden="hidden">
-  						<div>
 							<div class="block color-main"> 
 								<img class="color" src="images/try/color.png"/>
 							</div>
@@ -104,7 +113,6 @@
 								</div>
 								
 							</div>
-						</div>
   					</div>
 				</div>
 				<!--Music页面-->
@@ -134,6 +142,7 @@
   						<mt-picker :slots="music_picker"></mt-picker>
   					</div>
 				</div>
+				<!--timer页面-->
 				<div class="body-tab" id="timer"  hidden="hidden">
 					<table>
 						<tr>
@@ -263,16 +272,19 @@
 	      			var custom = document.getElementById("custom");
 	      			var tabTitleClassic = document.getElementById("tab-title-classic");
 	      			var tabTitleCustom = document.getElementById("tab-title-custom");
+	      			var modeCurrent = document.getElementById("custom-current-color");
 	      			if(e == "classic"){
 	      				classic.hidden="";
 	      				custom.hidden="hidden";
 	      				tabTitleClassic.className="tab-title-left-true";
 	      				tabTitleCustom.className="tab-title-right-flase";
+	      				modeCurrent.hidden="hidden";
 	      			}else if(e == "custom"){
 	      				classic.hidden="hidden";
 	      				custom.hidden="";
 	      				tabTitleClassic.className="tab-title-left-flase";
 	      				tabTitleCustom.className="tab-title-right-true";
+	      				modeCurrent.hidden="";
 	      			}
 	      			var tabtitleMusic = document.getElementById("tab-title-music");
 	      			var tabtitleMic = document.getElementById("tab-title-mic");
@@ -289,6 +301,7 @@
 	      				tabtitleMusic.className="tab-title-left-flase";
 	      				tabtitleMic.className="tab-title-right-true";
 	      			}
+	      			
 	      		},
 	   		}
 	   		

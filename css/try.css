@@ -12,7 +12,6 @@
 	width: 25%;
 }
 .f-img{
-	padding: 5px 0 5px 0;
 	width: 25px;
 }
 .tab-txt-true{
@@ -49,7 +48,6 @@
 .tab-title-left-true{
 	background-color: #FEB101;
 	color: white;
-	padding: 8px 5px 8px 20px;
 	border-bottom-left-radius: 20px;
 	border-top-left-radius: 20px;
 	border: 1px solid #FEB101;
@@ -58,7 +56,6 @@
 .tab-title-right-flase{
 	background-color: white;
 	color: #FEB101;
-	padding: 8px 20px 8px 5px;
 	border-bottom-right-radius: 20px;
 	border-top-right-radius: 20px;
 	border: 1px solid #FEB101;
@@ -67,7 +64,6 @@
 .tab-title-left-flase{
 	background-color: white;
 	color: #FEB101;
-	padding: 8px 5px 8px 20px;
 	border-bottom-left-radius: 20px;
 	border-top-left-radius: 20px;
 	border: 1px solid #FEB101;
@@ -76,21 +72,18 @@
 .tab-title-right-true{
 	background-color: #FEB101;
 	color: white;
-	padding: 8px 20px 8px 5px;
 	border-bottom-right-radius: 20px;
 	border-top-right-radius: 20px;
 	border: 1px solid #FEB101;
 }
 
 .color-picker{
-	margin-top: 20px;
 	border-radius: 10px;
 	background-color: #E0E0E0;
 }
 
 .tab-title{
 	text-align: center;
-	margin-top: 16px;
 }
 
 .color-save{
@@ -98,18 +91,15 @@
 	height: 26px;
 	border: 1px solid #333333;
 	border-radius: 30px;
-	margin: 8px 0 8px 0;
 }
 
 .txt-save{
 	border: 1px solid #333333;
 	border-radius: 30px;
-	padding: 3px;
 }
 
 .color{
 	width: 85%;
-	margin-top: 8px;
 }
 
 
@@ -121,13 +111,7 @@
 	color: #333333 ;
 }
 
-
-
-
-
-
 .item{
-	margin: 15px 10px 15px 10px;
 	position: relative;
 }
 
@@ -137,7 +121,6 @@
 	border: 1px solid #222222;
 	border-radius: 4px;
 	display: inline-block;
-	padding: 4px;
 	margin: 4px;
 	
 }
@@ -152,11 +135,9 @@
 	height: 20px;
 }
 .item-change-mode{
-	margin-top: 18px;
 }
 .change-mode{
 	border: 1px solid #FEB101;
-	padding: 5px;
 	color: #FEB101;
 }
 
@@ -185,20 +166,35 @@
 
 .img-disk{
 	width: 60%;
-	margin-top: 15px;
 }
 
 .music-control{
 	text-align: center;
-	margin-top: 8px;
 }
 .music-control-item{
 	width: 12%;
-	padding: 8px;
 }
 
 .timer-tip{
-	padding: 5px 0 5px 5px;
+}
+
+.current-color{
+	float: right;
+	position: absolute;
+	right: 0;
+	text-align: center;
+}
+
+.current-color-bg{
+	width: 25px;
+	height: 25px;
+	border: 1px solid #999999;
+	border-radius: 25px;
+}
+
+.current-color-txt{
+	border: 1px solid #999999;
+	border-radius: 25px;
 }
 
 #wave{
