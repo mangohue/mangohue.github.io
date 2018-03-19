@@ -8,7 +8,7 @@
   		<link rel="stylesheet" href="css/style.css">
   		<link rel="stylesheet" href="css/try.css" />
 	</head>
-	<body>
+	<body id="body">
 	  	<div id="page" class="page">
 	  			
 	  		<!--头部-->
@@ -23,7 +23,7 @@
 				<!--color页面-->
 				<div class="body-tab" id="color">
 					<div class="block color-main">
-						<p class="title">Color</p>
+						<p class="title page-title">Color</p>
 						<img class="color" src="images/try/color.png"/>
 					</div>
 					<div class="current-color">
@@ -98,7 +98,7 @@
 						<p class="current-color-bg"></p>
 						<p class="current-color-txt">save</p>
 					</div>
-  					<div class="tab-title">
+  					<div class="tab-title page-title">
   							<span id="tab-title-classic" class="tab-title-left-true" @click="tabTitle('classic')">Classic</span><span id="tab-title-custom" class="tab-title-right-flase" @click="tabTitle('custom')">Customize</span>
   					</div>
   					<div class="classic" id="classic">
@@ -224,6 +224,14 @@
   	<!-- 引入组件库 -->
   	<script src="js/mint-ui-index.js"></script>
   	<script>
+  		//设备检测  
+			if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+// 				alert('手机端');
+			}else{
+// 				alert('PC端');
+				var body= document.getElementById("body");
+//				body.className="pc-body";
+			}
     	new Vue({
 	      	el: '#page',
 	      	data:{
