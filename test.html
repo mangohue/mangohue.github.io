@@ -1,55 +1,149 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
-		<script src="js/vue.js"></script>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>MangoHome Try</title>
+		<link rel="stylesheet" type="text/css" href="init.css"/>
+  		<link rel="stylesheet" href="css/style.css">
+  		<link rel="stylesheet" href="css/try.css" />
 	</head>
-	<style>
-		.line{
-			border-bottom: 1px solid red;
-		}
-		.test{
-			float: left;
-		}
-	</style>
 	<body>
-		<div id="page">
-			<p class="line">{{testp}}</p>
-			
-			<div v-for=" test in testfor" class="line">
-				<p>{{test.name}}</p>
-			</div>
-			
-			<p>{{ tmodel }}</p>
-			<input v-model="tmodel" /> 
-			
-			<div style="background-color: red; width: 100%; height: 400px;">
-				<div class="test" style="background-color: black; width: 10%; height: 100%;">
-					<img src="cn/images/help/go.png" />
-				</div>
-				<div class="test" style="background-color: red; width: 80%; height: 100%;">
-				</div>
-				<div class="test" style="background-color: blue; width: 10%; height: 100%;">
-				</div>
-			</div>
-		</div>
+	  <div id="page" class="page">
+	    <mt-tabbar v-model="tabbar">
+	  		<mt-tab-item id="color"  @click.native="tabbarClick('color')">
+	    		<img slot="icon"  src="images/try/tab_color_false.png">
+	    		<span >Color</span>
+	  		</mt-tab-item >
+	  		<mt-tab-item id="mode" @click.native="tabbarClick('mode')">
+	    		<img slot="icon" src="images/try/tab_mode_false.png">
+	    		<span>Mode</span>
+	  		</mt-tab-item>
+		  	<mt-tab-item id="music" @click.native="tabbarClick('music')">
+		    	<img slot="icon" src="images/try/tab_music_false.png">
+		    	<span>Music</span>
+		  	</mt-tab-item>
+		  	<mt-tab-item id="timer" @click.native="tabbarClick('timer')">
+		    	<img slot="icon" src="images/try/tab_timer_false.png">
+		    	<span>Timer</span>
+		  </mt-tab-item>
+		</mt-tabbar>
 		
-		<script>
-			// 创建根实例
-			new Vue({
-			  	el: '#page',
-			  	data:{
-			  		testp:"pppppp",
-			  		testfor:[
-			  			{name:"testfor1"},
-			  			{name:"testfor2"},
-			  			{name:"testfor3"},
-			  			{name:"testfor4"}
-			  		],
-			  		tmodel: "qwer", 
-			  	}
-			})
-		</script>
+		<mt-tab-container value="color" v-model="tabpage">
+  			<mt-tab-container-item id="color">
+  				<div>
+					<div>
+						<div class="block btn">
+							<img class="btn-switch" src="images/try/btn_true.png" />
+						</div>
+						<div class="block color-main">
+							<p>Color</p>
+							<img class="color" src="images/try/color.png"/>
+						</div>
+						<div class="block save-color">
+							<span>Color</span><br />
+							<p class="color-save"></p>
+							<span class="txt-save">Save</span><br />
+						</div>
+					</div>
+					<div >
+						<div class="item">
+							<mt-range class="range">
+								<div slot="start">Bright</div>
+								<div slot="end">
+									<img class="icon" src="images/try/icon_light.png" />
+								</div>
+							</mt-range>
+							
+						</div>
+						<div class="item">
+							<span class="item-txt">Normal</span>
+							<p class="normal" 
+								v-for="item in normal"  
+								v-bind:style="[{'background-color': item.color},{'color':item.color}]">
+							</p>
+						</div>
+						<div class="item">
+							<span class="item-txt">DIY</span>
+						</div>
+					</div>
+				</div>
+  			</mt-tab-container-item>
+  			<mt-tab-container-item id="mode">
+  				<div class="mode">
+  					<div class="classic">
+  						<div class="btn" style="float: left; z-index: 100;">
+  								<img class="btn-switch" src="images/try/btn_true.png" />
+  						</div>
+  						<div class="tab-title">
+  							<span class="tab-title-left">Classic</span><span class="tab-title-right">Customize</span>
+  						</div>
+  						<div>
+  							<mt-picker :slots="color_picker"></mt-picker>
+  						</div>
+  						<div></div>
+  						<div></div>
+  					</div>
+  					<div  class="custom">
+  						
+  					</div>
+  				</div>
+			</mt-tab-container-item>
+			<mt-tab-container-item id="music">
+				789
+			</mt-tab-container-item>
+			<mt-tab-container-item id="timer">
+				101112
+			</mt-tab-container-item>
+		</mt-tab-container>
+
+	
+		</div>
 	</body>
+  	<!-- 先引入 Vue -->
+  	<script src="js/vue.js"></script>
+  	<!-- 引入组件库 -->
+  	<script src="js/mint-ui-index.js"></script>
+  	<script>
+    	new Vue({
+	      	el: '#page',
+	      	data:{
+	      		tabbar: "mode",
+	      		tabpage:"mode",
+	      		
+	      		normal:[
+	      			{color:"red"},
+	      			{color:"green"},
+	      			{color:"blue"},
+	      			{color:"yellow"},
+	      			{color:"purple"},
+	      			{color:"#ADD8E6"},
+	      			{color:"white"}
+	      		],
+	      		color_picker: [
+			        {
+			          	flex: 1,
+			          	values: [
+			          		"Dinner Mode","Holiday Mode","Meeting Mode","Party Mode",
+			          		"Three color jumping change","Seven color jumping change","Three color breathing lamp",
+			          		"Seven color breathing lamp","Red breathing lamp","Green breathing lamp",
+			          		"Blue breathing lamp","Yellow breathing lamp","Cyan breathing lamp",
+			          		"Purple breathing lamp", "White breathing lamp","Red and green breathing lamp",
+			          		"Red and blue breathing lamp","Blue and green breathing lamp","Seven color flashing",
+			          		"Red flashing","Blue flashing", " Green flashing",
+			          		"Yellow flashing", "Cyan flashing","purple flashing","White flashing"
+			          	],
+			          	className: 'slot',
+			          	textAlign: 'center',
+			          	textSize: '10px',
+			        }, 
+		      	]
+	      	},
+	      	methods:{
+	      		tabbarClick:function(e){
+	      			this.tabpage = e
+	      		}
+	      	}
+    	})
+  	</script>
 </html>

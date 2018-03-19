@@ -1,6 +1,6 @@
 
 .page{
-	padding: 8px;
+	padding:0 8px 0 8px;
 }
 
 .inline{
@@ -12,6 +12,7 @@
 .color-main{
 	width: 76%;
 	text-align: center;
+	margin-left: 12%;
 }
 
 .block{
@@ -20,6 +21,55 @@
 
 .btn-switch{
 	width: 90%;
+}
+.mode{
+	margin-top: 8px;
+}
+
+.tab-title-left-true{
+	background-color: #FEB101;
+	color: white;
+	padding: 8px 5px 8px 20px;
+	border-bottom-left-radius: 20px;
+	border-top-left-radius: 20px;
+	border: 1px solid #FEB101;
+}
+
+.tab-title-right-flase{
+	background-color: white;
+	color: #FEB101;
+	padding: 8px 20px 8px 5px;
+	border-bottom-right-radius: 20px;
+	border-top-right-radius: 20px;
+	border: 1px solid #FEB101;
+}
+
+.tab-title-left-flase{
+	background-color: white;
+	color: #FEB101;
+	padding: 8px 5px 8px 20px;
+	border-bottom-left-radius: 20px;
+	border-top-left-radius: 20px;
+	border: 1px solid #FEB101;
+}
+
+.tab-title-right-true{
+	background-color: #FEB101;
+	color: white;
+	padding: 8px 20px 8px 5px;
+	border-bottom-right-radius: 20px;
+	border-top-right-radius: 20px;
+	border: 1px solid #FEB101;
+}
+
+.color-picker{
+	margin-top: 20px;
+	border-radius: 10px;
+	background-color: #E0E0E0;
+}
+
+.tab-title{
+	text-align: center;
 }
 
 .color-save{
@@ -77,9 +127,11 @@
 
 .range{
 	width: 100%;
+	margin-top: 25px;
 }
 
 .icon{
 	width: 20px;
 	height: 20px;
 }
+

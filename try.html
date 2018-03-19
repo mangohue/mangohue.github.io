@@ -32,10 +32,7 @@
 		<mt-tab-container value="color" v-model="tabpage">
   			<mt-tab-container-item id="color">
   				<div>
-					<div class="inline">
-						<div class="block btn">
-							<img class="btn-switch" src="images/try/btn_true.png" />
-						</div>
+					<div>
 						<div class="block color-main">
 							<p>Color</p>
 							<img class="color" src="images/try/color.png"/>
@@ -61,7 +58,6 @@
 							<p class="normal" 
 								v-for="item in normal"  
 								v-bind:style="[{'background-color': item.color},{'color':item.color}]">
-								
 							</p>
 						</div>
 						<div class="item">
@@ -71,8 +67,34 @@
 				</div>
   			</mt-tab-container-item>
   			<mt-tab-container-item id="mode">
-  				<div>
-  					<div></div>
+  				<div class="mode" id = "mode">
+  					<div class="tab-title">
+  							<span id="tab-title-classic" class="tab-title-left-true" @click="tabTitle('classic')">Classic</span><span id="tab-title-custom" class="tab-title-right-flase" @click="tabTitle('custom')">Customize</span>
+  					</div>
+  					<div class="classic" id="classic">
+  						<div class="color-picker">
+  							<mt-picker :slots="color_picker"></mt-picker>
+  						</div>
+  						<div>
+  							<mt-range class="range">
+								<div slot="start">Bright</div>
+								<div slot="end">
+									<img class="icon" src="images/try/icon_light.png" />
+								</div>
+							</mt-range>
+  						</div>
+  						<div>
+  							<mt-range class="range">
+								<div slot="start">Speed&nbsp;</div>
+								<div slot="end">
+									<img class="icon" src="images/try/icon_speed.png" />
+								</div>
+							</mt-range>
+  						</div>
+  					</div>
+  					<div  class="custom" id="custom">
+  						
+  					</div>
   				</div>
 			</mt-tab-container-item>
 			<mt-tab-container-item id="music">
@@ -94,8 +116,8 @@
     	new Vue({
 	      	el: '#page',
 	      	data:{
-	      		tabbar: "color",
-	      		tabpage:"color",
+	      		tabbar: "mode",
+	      		tabpage:"mode",
 	      		
 	      		normal:[
 	      			{color:"red"},
@@ -105,11 +127,46 @@
 	      			{color:"purple"},
 	      			{color:"#ADD8E6"},
 	      			{color:"white"}
-	      		]
+	      		],
+	      		color_picker: [
+			        {
+			          	flex: 1,
+			          	values: [
+			          		"Dinner Mode","Holiday Mode","Meeting Mode","Party Mode",
+			          		"Three color jumping change","Seven color jumping change","Three color breathing lamp",
+			          		"Seven color breathing lamp","Red breathing lamp","Green breathing lamp",
+			          		"Blue breathing lamp","Yellow breathing lamp","Cyan breathing lamp",
+			          		"Purple breathing lamp", "White breathing lamp","Red and green breathing lamp",
+			          		"Red and blue breathing lamp","Blue and green breathing lamp","Seven color flashing",
+			          		"Red flashing","Blue flashing", " Green flashing",
+			          		"Yellow flashing", "Cyan flashing","purple flashing","White flashing"
+			          	],
+			          	className: 'slot',
+			          	textAlign: 'center',
+			          	textSize: '10px',
+			        }, 
+		      	]
 	      	},
 	      	methods:{
 	      		tabbarClick:function(e){
 	      			this.tabpage = e
+	      		},
+	      		tabTitle:function(e){
+	      			var classic = document.getElementById("classic");
+	      			var custom = document.getElementById("custom");
+	      			var tabTitleClassic = document.getElementById("tab-title-classic");
+	      			var tabTitleCustom = document.getElementById("tab-title-custom");
+	      			if(e == "classic"){
+	      				classic.hidden="";
+	      				custom.hidden="hidden";
+	      				tabTitleClassic.className="tab-title-left-true";
+	      				tabTitleCustom.className="tab-title-right-flase";
+	      			}else if(e == "custom"){
+	      				classic.hidden="hidden";
+	      				custom.hidden="";
+	      				tabTitleClassic.className="tab-title-left-flase";
+	      				tabTitleCustom.className="tab-title-right-true";
+	      			}
 	      		}
 	      	}
     	})
