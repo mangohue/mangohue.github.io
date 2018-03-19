@@ -1,0 +1,35 @@
+
+
+.main{
+	width: 100%;
+	height: 100%;
+}
+
+
+.footer{
+	width: 100%;
+	height: 60px;
+	position: absolute;
+	bottom: 0;
+	border-top: 1px solid #C0C0C0;
+}
+
+
+.f-tab{
+	float: left;
+	width: 25%;
+	text-align: center;
+}
+
+.f-img{
+	padding: 8px 0 5px 0;
+	width: 25px;
+}
+
+.tab-txt-true{
+	color: #FEB101;
+}
+
+.tab-txt-false{
+	color: #000000;
+}
