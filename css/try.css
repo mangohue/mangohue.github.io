@@ -134,4 +134,30 @@
 	width: 20px;
 	height: 20px;
 }
+.item-change-mode{
+	margin-top: 18px;
+}
+.change-mode{
+	border: 1px solid #FEB101;
+	padding: 5px;
+	color: #FEB101;
+}
 
+.change-mode-left{
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.change-mode-right{
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.change-mode-true{
+	background-color: #FEB101;
+	color: white;
+}
+
+.change-mode-false{
+	background-color: white;
+}

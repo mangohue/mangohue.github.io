@@ -92,8 +92,44 @@
 							</mt-range>
   						</div>
   					</div>
-  					<div  class="custom" id="custom">
-  						
+  					<div  class="custom" id="custom" hidden="hidden">
+  						<div>
+  							<div>
+								<div class="block color-main"> 
+									<img class="color" src="images/try/color.png"/>
+								</div>
+								<div class="block save-color">
+									<span>Color</span><br />
+									<p class="color-save"></p>
+									<span class="txt-save">Save</span><br />
+								</div>
+							</div>
+							<div >
+								<div class="item">
+									<div class="item-change-mode">
+										<span>Favorites</span>
+									</div>
+									<div class="item-change-mode">
+										<span>Mode</span>
+										<span class="change-mode change-mode-left change-mode-true" @click="changeMode('jump')">Jumping</span><span @click="changeMode('breath')" class="change-mode change-mode-false">Breathing</span><span @click="changeMode('falsh')" class="change-mode change-mode-right change-mode-false">Flashing</span>
+									</div>
+									<mt-range class="range">
+										<div slot="start">Bright</div>
+										<div slot="end">
+											<img class="icon" src="images/try/icon_light.png" />
+										</div>
+									</mt-range>
+									<mt-range class="range">
+										<div slot="start">Speed&nbsp;</div>
+										<div slot="end">
+											<img class="icon" src="images/try/icon_speed.png" />
+										</div>
+									</mt-range>
+									
+								</div>
+								
+							</div>
+						</div>
   					</div>
   				</div>
 			</mt-tab-container-item>
@@ -166,6 +202,19 @@
 	      				custom.hidden="";
 	      				tabTitleClassic.className="tab-title-left-flase";
 	      				tabTitleCustom.className="tab-title-right-true";
+	      			}
+	      		},
+	      		changeMode:function(e){
+	      			var changeMode = document.getElementsByClassName("change-mode");
+	      			changeMode[0].className="change-mode change-mode-left";
+	      			changeMode[1].className="change-mode"
+	      			changeMode[2].className="change-mode change-mode-right"
+	      			if(e == "jump"){
+	      				changeMode[0].className="change-mode change-mode-left change-mode-true";
+	      			}else if(e == "breath"){
+	      				changeMode[1].className="change-mode change-mode-true";
+	      			}else if(e == "falsh"){
+	      				changeMode[2].className="change-mode change-mode-right change-mode-true";
 	      			}
 	      		}
 	      	}
