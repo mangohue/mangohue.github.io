@@ -70,6 +70,7 @@
 
 .tab-title{
 	text-align: center;
+	margin-top: 16px;
 }
 
 .color-save{
@@ -110,10 +111,6 @@
 	position: relative;
 }
 
-.item-txt{
-	
-}
-
 .normal{
 	width: 15px;
 	height: 15px;
@@ -127,7 +124,7 @@
 
 .range{
 	width: 100%;
-	margin-top: 25px;
+	margin-top: 10px;
 }
 
 .icon{
