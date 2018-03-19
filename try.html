@@ -23,7 +23,7 @@
 				<!--color页面-->
 				<div class="body-tab" id="color">
 					<div class="block color-main">
-						<p>Color</p>
+						<p class="title">Color</p>
 						<img class="color" src="images/try/color.png"/>
 					</div>
 					<div class="current-color">
@@ -51,6 +51,44 @@
 						<div class="item">
 							<span class="item-txt">DIY</span>
 						</div>
+						<table width="100%">
+							<tr>
+								<td width="10%">Bright</td>
+								<td width="80%">
+									<mt-range class="range">
+									</mt-range>
+								</td>
+								<td width="10%">
+									<img class="icon" src="images/try/icon_light.png" />
+								</td>
+							</tr>
+							
+							<tr>
+								<td width="10%">Normal</td>
+								<td width="80%">
+									<p class="normal" 
+										v-for="item in normal"  
+										v-bind:style="[{'background-color': item.color},{'color':item.color}]">
+									</p>
+								</td>
+								<td width="10%">
+									
+								</td>
+							</tr>
+							
+							<tr>
+								<td width="10%">DIY</td>
+								<td width="80%">
+									<p class="normal" 
+										v-for="item in normal"  
+										v-bind:style="[{'background-color': item.color},{'color':item.color}]">
+									</p>
+								</td>
+								<td width="10%">
+									
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<!--mode页面-->
@@ -94,7 +132,7 @@
 										<span>Favorites</span>
 									</div>
 									<div class="item-change-mode">
-										<span>Mode</span>
+										<span>Mode&nbsp;&nbsp;</span>
 										<span class="change-mode change-mode-left change-mode-true" @click="changeMode('jump')">Jumping</span><span @click="changeMode('breath')" class="change-mode change-mode-false">Breathing</span><span @click="changeMode('falsh')" class="change-mode change-mode-right change-mode-false">Flashing</span>
 									</div>
 									<mt-range class="range">
@@ -144,22 +182,17 @@
 				</div>
 				<!--timer页面-->
 				<div class="body-tab" id="timer"  hidden="hidden">
-					<table>
-						<tr>
-							My timer
+					<table class="table" width="100%">
+						<tr class="line">
+							<td>My Timer</td>
 						</tr>
 						<tr>
-							<td>
-								14:45
-							</td>
-							<td>
-								Light off/Single/Yellow
-							</td>
-							<td>
-								<mt-switch></mt-switch>
-							</td>
+							<td class="time" width="20%">14:45</td>
+							<td class="tips" width="60%">Light off/Single/Yellow</td>
+							<td class="set-timer-switch" width="20%"><mt-switch></mt-switch></td>
 						</tr>
 					</table>
+					<div class="line"></div>
 				</div>
 			</div>
 			<div class="footer">
