@@ -17,6 +17,7 @@
 .f-tab{
 	float: left;
 	width: 25%;
+	height: 100%;
 }
 
 .f-tab:active{
@@ -25,6 +26,7 @@
 
 .f-img{
 	width: 25px;
+	height: 25px;
 	padding-top: 8px;
 }
 .tab-txt-true{
