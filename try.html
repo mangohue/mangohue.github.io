@@ -54,8 +54,11 @@
 						<table width="100%">
 							<tr>
 								<td width="10%">Bright</td>
-								<td width="80%">
-									<mt-range class="range">
+								<td width="70%">
+									<mt-range class="range"
+										value = "10"
+										:disable=true
+										>
 									</mt-range>
 								</td>
 								<td width="10%">
@@ -65,21 +68,18 @@
 							
 							<tr>
 								<td width="10%">Normal</td>
-								<td width="80%">
-									<p class="normal" 
+								<td width="90%">
+									<p class="normal-test" 
 										v-for="item in normal"  
 										v-bind:style="[{'background-color': item.color},{'color':item.color}]">
 									</p>
-								</td>
-								<td width="10%">
-									
 								</td>
 							</tr>
 							
 							<tr>
 								<td width="10%">DIY</td>
 								<td width="80%">
-									<p class="normal" 
+									<p class="normal-test" 
 										v-for="item in normal"  
 										v-bind:style="[{'background-color': item.color},{'color':item.color}]">
 									</p>
@@ -198,20 +198,24 @@
 			<div class="footer">
 				<div class="f-tab" data-tab="color" @click="tabClick('color')">
 					<img class="f-img" src="images/try/tab_color_true.png" />
+					<!--<img class="f-img" src="images/try/tab_color_false.png" style="display: none;"/>-->
 					<br />
 					<span class="tab-txt-true">Color</span>
 				</div>
 				<div class="f-tab" data-tab="mode" @click="tabClick('mode')">
+					<!--<img class="f-img" src="images/try/tab_mode_true.png" style="display: none;"/>-->
 					<img class="f-img" src="images/try/tab_mode_false.png" />
 					<br />
 					<span class="tab-txt-false">Mode</span>
 				</div>
 				<div class="f-tab" data-tab="music" @click="tabClick('music')">
+					<!--<img class="f-img" src="images/try/tab_music_true.png" style="display: none;"/>-->
 					<img class="f-img" src="images/try/tab_music_false.png" />
 					<br />
 					<span class="tab-txt-false">Music</span>
 				</div>
 				<div class="f-tab" data-tab="timer" @click="tabClick('timer')">
+					<!--<img class="f-img" src="images/try/tab_timer_true.png" style="display: none;"/>-->
 					<img class="f-img" src="images/try/tab_timer_false.png" />
 					<br />
 					<span class="tab-txt-false">Timer</span>
@@ -232,6 +236,18 @@
 				var body= document.getElementById("body");
 //				body.className="pc-body";
 			}
+			
+		function setNormalHeight(){
+			var normal = document.getElementsByClassName("normal-test");
+			var height = window.getComputedStyle(normal[0]).width;
+			for(var i = 0; i<normal.length; i++){
+				normal[i].style.height = height;
+				normal[i].style.width = height;
+			}
+		}
+		
+		setNormalHeight();
+		
     	new Vue({
 	      	el: '#page',
 	      	data:{
@@ -292,6 +308,12 @@
 	   				var tab = document.getElementsByClassName("f-tab");
 	   				var tabImg = document.getElementsByClassName("f-img");
 					var body_tab = document.getElementsByClassName("body-tab");
+					
+					tabImg[0].src="images/try/tab_color_false.png";
+					tabImg[1].src="images/try/tab_mode_false.png";
+					tabImg[2].src="images/try/tab_music_false.png";
+					tabImg[3].src="images/try/tab_timer_false.png";
+					
 					for (var i= 0;i<tab.length;i++) { 
 						if(tab[i].dataset.tab == tabName){ 
 							tab[i].lastElementChild.className = "tab-txt-true"
@@ -307,6 +329,18 @@
 					}else{
 						btn.hidden="";
 					}
+					
+					if(tabName == "color"){
+						tabImg[0].src="images/try/tab_color_true.png";
+					}else if(tabName == "mode"){
+						tabImg[1].src="images/try/tab_mode_true.png";
+					}else if(tabName == "music"){
+						tabImg[2].src="images/try/tab_music_true.png";
+					}else if(tabName == "timer"){
+						tabImg[3].src="images/try/tab_timer_true.png";
+					}
+					
+					
 	   			},
 	   			tabTitle:function(e){
 	      			var classic = document.getElementById("classic");

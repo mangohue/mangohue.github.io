@@ -4,6 +4,7 @@
 	margin-top: 8px;
 	font-family: "微软雅黑";
 }
+
 .footer{
 	width: 100%;
 	height: 50px;
@@ -17,6 +18,11 @@
 	float: left;
 	width: 25%;
 }
+
+.f-tab:active{
+	background-color:#DEDEDE;
+}
+
 .f-img{
 	width: 25px;
 	padding-top: 8px;
@@ -100,7 +106,7 @@
 
 .color-picker{
 	border-radius: 10px;
-	background-color: #E0E0E0;
+	background-color: #EFEFF4;
 }
 
 .color-save{
@@ -195,15 +201,12 @@
 	padding: 20px;
 }
 
-.timer-tip{
-}
-
 .current-color{
 	float: right;
 	position: absolute;
 	right: 0;
 	text-align: center;
-	padding: 10px 10px 0 0 ;
+	padding: 0 10px 0 0 ;
 }
 
 .current-color-bg{
@@ -230,7 +233,7 @@
 
 .page-title{
 	font-size: 15px;
-	font-weight: 300;
+	font-weight: 500;
 }
 
 .pc-body{
@@ -239,5 +242,13 @@
 	margin: auto;
 	padding: 10px;
 	border: 1px solid #CCCCCC;
+}
+
+.normal-test{
+	width: 7%;
+	margin: 3%;
+	border: 1px solid #222222;
+	border-radius: 4px;
+	display: inline-block;
 }
 
