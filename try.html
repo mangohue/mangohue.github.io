@@ -32,7 +32,7 @@
 						<p class="current-color-txt">save</p>
 					</div>
 					<div >
-						<div class="item">
+						<div class="item" hidden="hidden">
 							<mt-range class="range">
 								<div slot="start">Bright</div>
 								<div slot="end">
@@ -41,14 +41,14 @@
 							</mt-range>
 							
 						</div>
-						<div class="item">
+						<div class="item" hidden="hidden">
 							<span class="item-txt">Normal</span>
 							<p class="normal" 
 								v-for="item in normal"  
 								v-bind:style="[{'background-color': item.color},{'color':item.color}]">
 							</p>
 						</div>
-						<div class="item">
+						<div class="item" hidden="hidden">
 							<span class="item-txt">DIY</span>
 						</div>
 						<table width="100%">
@@ -99,56 +99,96 @@
 						<p class="current-color-txt">save</p>
 					</div>
   					<div class="tab-title page-title">
-  							<span id="tab-title-classic" class="tab-title-left-true" @click="tabTitle('classic')">Classic</span><span id="tab-title-custom" class="tab-title-right-flase" @click="tabTitle('custom')">Customize</span>
+  							<span id="tab-title-classic" class="tab-title-left-true" @click="tabTitle('classic')">&nbsp;&nbsp;&nbsp;Classic</span><span id="tab-title-custom" class="tab-title-right-flase" @click="tabTitle('custom')">Customize</span>
   					</div>
   					<div class="classic" id="classic">
   						<div class="color-picker">
   							<mt-picker :slots="color_picker"></mt-picker>
   						</div>
-  						<div>
-  							<mt-range class="range">
-								<div slot="start">Bright</div>
-								<div slot="end">
+  						<table width="100%">
+							<tr>
+								<td width="10%">Bright</td>
+								<td width="80%">
+									<mt-range class="range"
+										value = "10"
+										:disable=true
+										>
+									</mt-range>
+								</td>
+								<td width="10%">
 									<img class="icon" src="images/try/icon_light.png" />
-								</div>
-							</mt-range>
-  						</div>
-  						<div>
-  							<mt-range class="range">
-								<div slot="start">Speed&nbsp;</div>
-								<div slot="end">
+								</td>
+							</tr>
+							<tr>
+								<td width="10%">Speed</td>
+								<td width="80%">
+									<mt-range class="range"
+										value = "10"
+										:disable=true
+										>
+									</mt-range>
+								</td>
+								<td width="10%">
 									<img class="icon" src="images/try/icon_speed.png" />
-								</div>
-							</mt-range>
-  						</div>
+								</td>
+							</tr>
+							
+						</table>
   					</div>
   					<div  class="custom" id="custom" hidden="hidden">
 							<div class="block color-main"> 
 								<img class="color" src="images/try/color.png"/>
 							</div>
 							<div >
-								<div class="item">
-									<div class="item-change-mode">
-										<span>Favorites</span>
-									</div>
-									<div class="item-change-mode">
-										<span>Mode&nbsp;&nbsp;</span>
-										<span class="change-mode change-mode-left change-mode-true" @click="changeMode('jump')">Jumping</span><span @click="changeMode('breath')" class="change-mode change-mode-false">Breathing</span><span @click="changeMode('falsh')" class="change-mode change-mode-right change-mode-false">Flashing</span>
-									</div>
-									<mt-range class="range">
-										<div slot="start">Bright</div>
-										<div slot="end">
-											<img class="icon" src="images/try/icon_light.png" />
-										</div>
-									</mt-range>
-									<mt-range class="range">
-										<div slot="start">Speed&nbsp;</div>
-										<div slot="end">
-											<img class="icon" src="images/try/icon_speed.png" />
-										</div>
-									</mt-range>
+								<table width="100%">
+									<tr>
+										<td width="10%">Favorites</td>
+										<td width="90%">
+											<p class="normal-test" 
+												v-for="item in normal"  
+												v-bind:style="[{'background-color': item.color},{'color':item.color}]">
+											</p>
+										</td>
+									</tr>
 									
-								</div>
+									<tr>
+										<td width="10%">Mode</td>
+										<td width="80%">
+											<span class="change-mode change-mode-left change-mode-true" @click="changeMode('jump')">Jumping</span><span @click="changeMode('breath')" class="change-mode change-mode-false">Breathing</span><span @click="changeMode('falsh')" class="change-mode change-mode-right change-mode-false">Flashing</span>
+										</td>
+										<td width="10%">
+											
+										</td>
+									</tr>
+									
+									<tr>
+										<td width="10%">Bright</td>
+										<td width="70%">
+											<mt-range class="range"
+												value = "10"
+												:disable=true
+												>
+											</mt-range>
+										</td>
+										<td width="10%">
+											<img class="icon" src="images/try/icon_light.png" />
+										</td>
+									</tr>
+									
+									<tr>
+										<td width="10%">Bright</td>
+										<td width="70%">
+											<mt-range class="range"
+												value = "10"
+												:disable=true
+												>
+											</mt-range>
+										</td>
+										<td width="10%">
+											<img class="icon" src="images/try/icon_light.png" />
+										</td>
+									</tr>
+								</table>
 								
 							</div>
   					</div>
@@ -156,7 +196,7 @@
 				<!--Music页面-->
 				<div class="body-tab" id="music"hidden="hidden">
 					<div class="tab-title">
-  							<span id="tab-title-music" class="tab-title-left-true" @click="tabTitle('music')">Music</span><span id="tab-title-mic" class="tab-title-right-flase" @click="tabTitle('mic')">&nbsp;&nbsp;Mic</span>
+  							<span id="tab-title-music" class="tab-title-left-true" @click="tabTitle('music')">Music</span><span id="tab-title-mic" class="tab-title-right-flase" @click="tabTitle('mic')">Mic&nbsp;&nbsp;&nbsp;&nbsp;</span>
   					</div>
   					<div class="music-main" id="music-main">
   						<div class="disk">
