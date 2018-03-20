@@ -1,4 +1,8 @@
 
+tr{
+	margin-top: 60px;
+}
+
 .body-tab{
 	padding: 5px 10px 0 10px;
 	margin-top: 8px;
@@ -121,6 +125,7 @@
 .txt-save{
 	border: 1px solid #333333;
 	border-radius: 30px;
+	padding: 3px 0 3px 0;
 }
 
 .color{
@@ -141,12 +146,11 @@
 }
 
 .normal{
-	width: 15px;
-	height: 15px;
+	width: 7%;
+	margin: 3%;
 	border: 1px solid #222222;
 	border-radius: 4px;
 	display: inline-block;
-	margin: 4px 8px 4px 8px;
 	
 }
 
@@ -246,11 +250,4 @@
 	border: 1px solid #CCCCCC;
 }
 
-.normal-test{
-	width: 7%;
-	margin: 3%;
-	border: 1px solid #222222;
-	border-radius: 4px;
-	display: inline-block;
-}
 

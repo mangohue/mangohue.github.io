@@ -46,7 +46,7 @@
 							<tr>
 								<td width="10%">Normal</td>
 								<td width="90%">
-									<p class="normal-test" 
+									<p class="normal" 
 										v-for="item in normal"  
 										v-bind:style="[{'background-color': item.color},{'color':item.color}]">
 									</p>
@@ -56,7 +56,7 @@
 							<tr>
 								<td width="10%">DIY</td>
 								<td width="90%">
-									<p class="normal-test" 
+									<p class="normal" 
 										v-for="item in normal"  
 										v-bind:style="[{'background-color': item.color},{'color':item.color}]">
 									</p>
@@ -114,7 +114,7 @@
 									<tr>
 										<td width="10%">Favorites</td>
 										<td width="90%">
-											<p class="normal-test" 
+											<p class="normal" 
 												v-for="item in normal"  
 												v-bind:style="[{'background-color': item.color},{'color':item.color}]">
 											</p>
@@ -241,7 +241,7 @@
 			}
 			
 		function setNormalHeight(){
-			var normal = document.getElementsByClassName("normal-test");
+			var normal = document.getElementsByClassName("normal");
 			var height = window.getComputedStyle(normal[0]).width;
 			for(var i = 0; i<normal.length; i++){
 				normal[i].style.height = height;
@@ -257,13 +257,13 @@
 	      		rangeBright:100,
 	      		rangeSpeed:50,
 	      		normal:[ 
-	      			{color:"red"},
-	      			{color:"green"},
-	      			{color:"blue"},
-	      			{color:"yellow"},
-	      			{color:"purple"},
-	      			{color:"#ADD8E6"},
-	      			{color:"white"}
+	      			{color:"#FF0000"},
+	      			{color:"#00FF00"},
+	      			{color:"#0000FF"},
+	      			{color:"#FFFF00"},
+	      			{color:"#FF00FF"},
+	      			{color:"#00FFFF"},
+	      			{color:"#FFFFFF"}
 	      		],
 	      		color_picker: [
 			        {
