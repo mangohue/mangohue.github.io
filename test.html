@@ -4,58 +4,258 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title>MangoHome Try</title>
-		<link rel="stylesheet" type="text/css" href="init.css"/>
+		<link rel="stylesheet"  href="init.css"/>
   		<link rel="stylesheet" href="css/style.css">
-  		<link rel="stylesheet" href="test.css" />
+  		<link rel="stylesheet" href="css/try.css" />
 	</head>
-	<style>
-		.table{
-			widows: 100%;
-			background-color: red;
-		}
-	</style>
-	<body>
+	<body id="body">
+	  	<div id="page" class="page">
+	  		<!--头部-->
+			<div class="header" id="header">
+			</div>
+			<!--开关-->
+			<div class="btn-switch" id="btn-switch">
+				<img class="btn-img" src="images/try/btn_true.png" />
+			</div>
+			<!--主页面-->
+			<div class="main">
+				<!--color页面-->
+				<div class="body-tab color" id="color">
+				
+					<div class="block color-main">
+						<p class="title page-title">Color{{test}}</p>
+						<img class="color" src="images/try/color.png"/>
+					</div>
+					<div class="current-color">
+						<p>Current</p>
+						<p class="current-color-bg"></p>
+						<p class="current-color-txt">save</p>
+					</div>
+					<div >
+						<div class="item" hidden="hidden">
+							<mt-range class="range">
+								<div slot="start">Bright</div>
+								<div slot="end">
+									<img class="icon" src="images/try/icon_light.png" />
+								</div>
+							</mt-range>
+							
+						</div>
+						<div class="item" hidden="hidden">
+							<span class="item-txt">Normal</span>
+							<p class="normal" 
+								v-for="item in normal"  
+								v-bind:style="[{'background-color': item.color},{'color':item.color}]">
+							</p>
+						</div>
+						<div class="item" hidden="hidden">
+							<span class="item-txt">DIY</span>
+						</div>
+						<table width="100%">
+							<tr>
+								<td width="10%">Bright</td>
+								<td width="70%">
+									<mt-range class="range"
+										value = "10"
+										:disable=true
+										>
+									</mt-range>
+								</td>
+								<td width="10%">
+									<img class="icon" src="images/try/icon_light.png" />
+								</td>
+							</tr>
+							
+							<tr>
+								<td width="10%">Normal</td>
+								<td width="90%">
+									<p class="normal-test" 
+										v-for="item in normal"  
+										v-bind:style="[{'background-color': item.color},{'color':item.color}]">
+									</p>
+								</td>
+							</tr>
+							
+							<tr>
+								<td width="10%">DIY</td>
+								<td width="80%">
+									<p class="normal-test" 
+										v-for="item in normal"  
+										v-bind:style="[{'background-color': item.color},{'color':item.color}]">
+									</p>
+								</td>
+								<td width="10%">
+									
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<!--mode页面-->
+				<div class="body-tab" id="mode" hidden="hidden">
+					<div id="custom-current-color" class="current-color" hidden="hidden">
+						<p>Current</p>
+						<p class="current-color-bg"></p>
+						<p class="current-color-txt">save</p>
+					</div>
+  					<div class="tab-title page-title">
+  							<span id="tab-title-classic" class="tab-title-left-true" @click="tabTitle('classic')">&nbsp;&nbsp;&nbsp;Classic</span><span id="tab-title-custom" class="tab-title-right-flase" @click="tabTitle('custom')">Customize</span>
+  					</div>
+  					<div class="classic" id="classic">
+  						<div class="color-picker">
+  							<mt-picker :slots="color_picker"></mt-picker>
+  						</div>
+  						<table width="100%">
+							<tr>
+								<td width="10%">Bright</td>
+								<td width="80%">
+									<mt-range class="range"
+										value = "10"
+										:disable=true
+										>
+									</mt-range>
+								</td>
+								<td width="10%">
+									<img class="icon" src="images/try/icon_light.png" />
+								</td>
+							</tr>
+							<tr>
+								<td width="10%">Speed</td>
+								<td width="80%">
+									<mt-range class="range"
+										value = "10"
+										:disable=true
+										>
+									</mt-range>
+								</td>
+								<td width="10%">
+									<img class="icon" src="images/try/icon_speed.png" />
+								</td>
+							</tr>
+							
+						</table>
+  					</div>
+  					<div  class="custom" id="custom" hidden="hidden">
+							<div class="block color-main"> 
+								<img class="color" src="images/try/color.png"/>
+							</div>
+							<div >
+								<table width="100%">
+									<tr>
+										<td width="10%">Favorites</td>
+										<td width="90%">
+											<p class="normal-test" 
+												v-for="item in normal"  
+												v-bind:style="[{'background-color': item.color},{'color':item.color}]">
+											</p>
+										</td>
+									</tr>
+									
+									<tr>
+										<td width="10%">Mode</td>
+										<td width="80%">
+											<span class="change-mode change-mode-left change-mode-true" @click="changeMode('jump')">Jumping</span><span @click="changeMode('breath')" class="change-mode change-mode-false">Breathing</span><span @click="changeMode('falsh')" class="change-mode change-mode-right change-mode-false">Flashing</span>
+										</td>
+										<td width="10%">
+											
+										</td>
+									</tr>
+									
+									<tr>
+										<td width="10%">Bright</td>
+										<td width="70%">
+											<mt-range class="range"
+												value = "10"
+												:disable=true
+												>
+											</mt-range>
+										</td>
+										<td width="10%">
+											<img class="icon" src="images/try/icon_light.png" />
+										</td>
+									</tr>
+									
+									<tr>
+										<td width="10%">Bright</td>
+										<td width="70%">
+											<mt-range class="range"
+												value = "10"
+												:disable=true
+												>
+											</mt-range>
+										</td>
+										<td width="10%">
+											<img class="icon" src="images/try/icon_light.png" />
+										</td>
+									</tr>
+								</table>
+								
+							</div>
+  					</div>
+				</div>
+				<!--Music页面-->
+				<div class="body-tab" id="music"hidden="hidden">
+					<div class="tab-title">
+  							<span id="tab-title-music" class="tab-title-left-true" @click="tabTitle('music')">Music</span><span id="tab-title-mic" class="tab-title-right-flase" @click="tabTitle('mic')">Mic&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  					</div>
+  					<div class="music-main" id="music-main">
+  						<div class="disk">
+  							<img  class="img-disk" src="images/try/disk.png"/>
+  						</div>
+  						<div class="music-control">
+  							<img class="music-control-item" src="images/try/play_pre.png" />
+  							<img class="music-control-item" src="images/try/play_start.png" />
+  							<img class="music-control-item" src="images/try/play_next.png" />
+  						</div>
+  					</div>
+  					<div class="mic-main" id="mic-main" hidden="hidden">
+  						<div class="disk">
+  							<img  class="img-disk" id="wave" src="images/try/wave.png"/>
+  						</div>
+  						<div class="music-control">
+  							<img class="music-control-item" src="images/try/play_start.png" />
+  						</div>
+  					</div>
+  					<div class="music-picker">
+  						<mt-picker :slots="music_picker"></mt-picker>
+  					</div>
+				</div>
+				<!--timer页面-->
+				<div class="body-tab" id="timer"  hidden="hidden">
 					<table class="table" width="100%">
-						<tr class="test123">
-							<td class="test1" width="10%">1</td>
-							<td class="test2" width="80%">2</td>
-							<td class="test3" width="10%">3</td>
+						<tr class="line">
+							<td>My Timer</td>
+						</tr>
+						<tr>
+							<td class="time" width="20%">14:45</td>
+							<td class="tips" width="60%">Light off/Single/Yellow</td>
+							<td class="set-timer-switch" width="20%"><mt-switch></mt-switch></td>
 						</tr>
 					</table>
-	  	<div id="page" class="page">
-			<div class="header">
-			</div>
-			<div class="main">
-				<div class="body-tab" id="color">
-					{{test}}
-				</div>
-				<div class="body-tab" id="mode" hidden="hidden">
-					2222
-				</div>
-				<div class="body-tab" id="music"hidden="hidden">
-					3333
-				</div>
-				<div class="body-tab" id="timer"hidden="hidden">
-					444
+					<div class="line"></div>
 				</div>
 			</div>
 			<div class="footer">
-				<div class="f-tab" @click="tabClick('color')">
-					<img class="f-img" data-tab="color" src="images/try/tab_color_false.png" />
+				<div class="f-tab" data-tab="color" @click="tabClick('color')">
+					<img class="f-img" src="images/try/tab_color_true.png" />
+					<!--<img class="f-img" src="images/try/tab_color_false.png" style="display: none;"/>-->
 					<br />
 					<span class="tab-txt-true">Color</span>
 				</div>
 				<div class="f-tab" data-tab="mode" @click="tabClick('mode')">
+					<!--<img class="f-img" src="images/try/tab_mode_true.png" style="display: none;"/>-->
 					<img class="f-img" src="images/try/tab_mode_false.png" />
 					<br />
 					<span class="tab-txt-false">Mode</span>
 				</div>
-				<div class="f-tab" @click="tabClick('music')">
+				<div class="f-tab" data-tab="music" @click="tabClick('music')">
+					<!--<img class="f-img" src="images/try/tab_music_true.png" style="display: none;"/>-->
 					<img class="f-img" src="images/try/tab_music_false.png" />
 					<br />
 					<span class="tab-txt-false">Music</span>
 				</div>
-				<div class="f-tab" @click="tabClick('timer')">
+				<div class="f-tab" data-tab="timer" @click="tabClick('timer')">
+					<!--<img class="f-img" src="images/try/tab_timer_true.png" style="display: none;"/>-->
 					<img class="f-img" src="images/try/tab_timer_false.png" />
 					<br />
 					<span class="tab-txt-false">Timer</span>
@@ -68,22 +268,193 @@
   	<!-- 引入组件库 -->
   	<script src="js/mint-ui-index.js"></script>
   	<script>
+  		//设备检测  
+			if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+// 				alert('手机端');
+			}else{
+// 				alert('PC端');
+				var body= document.getElementById("body");
+//				body.className="pc-body";
+			}
+			
+		function setNormalHeight(){
+			var normal = document.getElementsByClassName("normal-test");
+			var height = window.getComputedStyle(normal[0]).width;
+			for(var i = 0; i<normal.length; i++){
+				normal[i].style.height = height;
+				normal[i].style.width = height;
+			}
+		}
+		
+		setNormalHeight();
+		
     	new Vue({
-	      	el: '#page',
+	      	el: "#page",
 	      	data:{
-	   			test:'test',
+	      		normal:[ 
+	      			{color:"red"},
+	      			{color:"green"},
+	      			{color:"blue"},
+	      			{color:"yellow"},
+	      			{color:"purple"},
+	      			{color:"#ADD8E6"},
+	      			{color:"white"}
+	      		],
+	      		color_picker: [
+			        {
+			          	flex: 1,
+			          	values: [
+			          		"Dinner Mode","Holiday Mode","Meeting Mode","Party Mode",
+			          		"Three color jumping change","Seven color jumping change","Three color breathing lamp",
+			          		"Seven color breathing lamp","Red breathing lamp","Green breathing lamp",
+			          		"Blue breathing lamp","Yellow breathing lamp","Cyan breathing lamp",
+			          		"Purple breathing lamp", "White breathing lamp","Red and green breathing lamp",
+			          		"Red and blue breathing lamp","Blue and green breathing lamp","Seven color flashing",
+			          		"Red flashing","Blue flashing", " Green flashing",
+			          		"Yellow flashing", "Cyan flashing","purple flashing","White flashing"
+			          	],
+			          	className: 'slot',
+			          	textAlign: 'center',
+			          	textSize: '10px',
+			        }, 
+		      	],
+		      	changeMode:function(e){
+	      			var changeMode = document.getElementsByClassName("change-mode");
+	      			changeMode[0].className="change-mode change-mode-left";
+	      			changeMode[1].className="change-mode"
+	      			changeMode[2].className="change-mode change-mode-right"
+	      			if(e == "jump"){
+	      				changeMode[0].className="change-mode change-mode-left change-mode-true";
+	      			}else if(e == "breath"){
+	      				changeMode[1].className="change-mode change-mode-true";
+	      			}else if(e == "falsh"){
+	      				changeMode[2].className="change-mode change-mode-right change-mode-true";
+	      			}
+	      		},
+	      		music_picker: [
+			        {
+			          	flex: 1,
+			          	values: [
+			          		"Jump Blues","Fplk-Rock","Free Jazz","Trance","Pop-Rap","File Music"
+			          	],
+			          	className: 'slot',
+			          	textAlign: 'center',
+			          	textSize: '10px',
+			        }, 
+		      	]
 	   		},
 	   		methods:{
 	   			tabClick:function(tabName){
 	   				var tab = document.getElementsByClassName("f-tab");
+	   				var tabImg = document.getElementsByClassName("f-img");
 					var body_tab = document.getElementsByClassName("body-tab");
-					console.log(tab);
+					
+					tabImg[0].src="images/try/tab_color_false.png";
+					tabImg[1].src="images/try/tab_mode_false.png";
+					tabImg[2].src="images/try/tab_music_false.png";
+					tabImg[3].src="images/try/tab_timer_false.png";
+					
 					for (var i= 0;i<tab.length;i++) { 
-						
+						if(tab[i].dataset.tab == tabName){ 
+							tab[i].lastElementChild.className = "tab-txt-true"
+							body_tab[i].hidden="";
+						}else {
+							tab[i].lastElementChild.className = "tab-txt-false"
+							body_tab[i].hidden="hidden";
+						}
 					}
-	   			}
+					var btn = document.getElementById("btn-switch");
+					if(tabName == "timer"){
+						btn.hidden="hidden";
+					}else{
+						btn.hidden="";
+					}
+					
+					if(tabName == "color"){
+						tabImg[0].src="images/try/tab_color_true.png";
+					}else if(tabName == "mode"){
+						tabImg[1].src="images/try/tab_mode_true.png";
+					}else if(tabName == "music"){
+						tabImg[2].src="images/try/tab_music_true.png";
+					}else if(tabName == "timer"){
+						tabImg[3].src="images/try/tab_timer_true.png";
+					}
+					
+					
+	   			},
+	   			tabTitle:function(e){
+	      			var classic = document.getElementById("classic");
+	      			var custom = document.getElementById("custom");
+	      			var tabTitleClassic = document.getElementById("tab-title-classic");
+	      			var tabTitleCustom = document.getElementById("tab-title-custom");
+	      			var modeCurrent = document.getElementById("custom-current-color");
+	      			if(e == "classic"){
+	      				classic.hidden="";
+	      				custom.hidden="hidden";
+	      				tabTitleClassic.className="tab-title-left-true";
+	      				tabTitleCustom.className="tab-title-right-flase";
+	      				modeCurrent.hidden="hidden";
+	      			}else if(e == "custom"){
+	      				classic.hidden="hidden";
+	      				custom.hidden="";
+	      				tabTitleClassic.className="tab-title-left-flase";
+	      				tabTitleCustom.className="tab-title-right-true";
+	      				modeCurrent.hidden="";
+	      			}
+	      			var tabtitleMusic = document.getElementById("tab-title-music");
+	      			var tabtitleMic = document.getElementById("tab-title-mic");
+	      			var musicMain = document.getElementById("music-main");
+	      			var micMain = document.getElementById("mic-main");
+	      			if(e == "music"){
+	      				musicMain.hidden="";
+	      				micMain.hidden="hidden";
+	      				tabtitleMusic.className="tab-title-left-true";
+	      				tabtitleMic.className="tab-title-right-flase";
+	      			}else if(e == "mic"){
+	      				musicMain.hidden="hidden";
+	      				micMain.hidden="";
+	      				tabtitleMusic.className="tab-title-left-flase";
+	      				tabtitleMic.className="tab-title-right-true";
+	      			}
+	      			
+	      		},
 	   		}
 	   		
     	})
+    	
+    	var header = new Vue({
+    		el:"#header",
+    	})
+    	
+    	var color = new Vue({
+    		el:"#color",
+    		data:{
+    			test:"1111"
+    		}
+    	})
+    	
+    	var mode = new Vue({
+    		el:"#mode",
+    		data:{
+    			
+    		}
+    	})
+    	
+    	var music = new Vue({
+    		el:"#music",
+    		data:{
+    			
+    		}
+    	})
+    	
+    	var timer = new Vue({
+    		el:"#timer",
+    		data:{
+    			
+    		}
+    	})
+    	
+
+    	
   	</script>
 </html>

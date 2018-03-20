@@ -10,9 +10,8 @@
 	</head>
 	<body id="body">
 	  	<div id="page" class="page">
-	  			
 	  		<!--头部-->
-			<div class="header">
+			<div class="header" id="header">
 			</div>
 			<!--开关-->
 			<div class="btn-switch" id="btn-switch">
@@ -32,33 +31,11 @@
 						<p class="current-color-txt">save</p>
 					</div>
 					<div >
-						<div class="item" hidden="hidden">
-							<mt-range class="range">
-								<div slot="start">Bright</div>
-								<div slot="end">
-									<img class="icon" src="images/try/icon_light.png" />
-								</div>
-							</mt-range>
-							
-						</div>
-						<div class="item" hidden="hidden">
-							<span class="item-txt">Normal</span>
-							<p class="normal" 
-								v-for="item in normal"  
-								v-bind:style="[{'background-color': item.color},{'color':item.color}]">
-							</p>
-						</div>
-						<div class="item" hidden="hidden">
-							<span class="item-txt">DIY</span>
-						</div>
 						<table width="100%">
 							<tr>
 								<td width="10%">Bright</td>
 								<td width="70%">
-									<mt-range class="range"
-										value = "10"
-										:disable=true
-										>
+									<mt-range class="range" v-model="rangeBright">
 									</mt-range>
 								</td>
 								<td width="10%">
@@ -105,27 +82,23 @@
   						<div class="color-picker">
   							<mt-picker :slots="color_picker"></mt-picker>
   						</div>
-  						<table width="100%">
+  						<div >
+						<table width="100%">
 							<tr>
 								<td width="10%">Bright</td>
-								<td width="80%">
-									<mt-range class="range"
-										value = "10"
-										:disable=true
-										>
+								<td width="70%">
+									<mt-range class="range" v-model="rangeBright">
 									</mt-range>
 								</td>
 								<td width="10%">
 									<img class="icon" src="images/try/icon_light.png" />
 								</td>
 							</tr>
+							
 							<tr>
 								<td width="10%">Speed</td>
-								<td width="80%">
-									<mt-range class="range"
-										value = "10"
-										:disable=true
-										>
+								<td width="70%">
+									<mt-range class="range" v-model="rangeSpeed">
 									</mt-range>
 								</td>
 								<td width="10%">
@@ -134,16 +107,16 @@
 							</tr>
 							
 						</table>
+					</div>
   					</div>
   					<div  class="custom" id="custom" hidden="hidden">
-							<div class="block color-main"> 
+						<div class="block color-main"> 
 								<img class="color" src="images/try/color.png"/>
-							</div>
-							<div >
+						</div>
 								<table width="100%">
 									<tr>
 										<td width="10%">Favorites</td>
-										<td width="90%">
+										<td width="80%">
 											<p class="normal-test" 
 												v-for="item in normal"  
 												v-bind:style="[{'background-color': item.color},{'color':item.color}]">
@@ -153,7 +126,7 @@
 									
 									<tr>
 										<td width="10%">Mode</td>
-										<td width="80%">
+										<td width="70%">
 											<span class="change-mode change-mode-left change-mode-true" @click="changeMode('jump')">Jumping</span><span @click="changeMode('breath')" class="change-mode change-mode-false">Breathing</span><span @click="changeMode('falsh')" class="change-mode change-mode-right change-mode-false">Flashing</span>
 										</td>
 										<td width="10%">
@@ -164,10 +137,7 @@
 									<tr>
 										<td width="10%">Bright</td>
 										<td width="70%">
-											<mt-range class="range"
-												value = "10"
-												:disable=true
-												>
+											<mt-range class="range" v-model="rangeBright">
 											</mt-range>
 										</td>
 										<td width="10%">
@@ -176,27 +146,23 @@
 									</tr>
 									
 									<tr>
-										<td width="10%">Bright</td>
+										<td width="10%">Speed</td>
 										<td width="70%">
-											<mt-range class="range"
-												value = "10"
-												:disable=true
-												>
+											<mt-range class="range"  v-model="rangeSpeed">
 											</mt-range>
 										</td>
 										<td width="10%">
-											<img class="icon" src="images/try/icon_light.png" />
+											<img class="icon" src="images/try/icon_speed.png" />
 										</td>
 									</tr>
 								</table>
 								
-							</div>
   					</div>
 				</div>
 				<!--Music页面-->
 				<div class="body-tab" id="music"hidden="hidden">
-					<div class="tab-title">
-  							<span id="tab-title-music" class="tab-title-left-true" @click="tabTitle('music')">Music</span><span id="tab-title-mic" class="tab-title-right-flase" @click="tabTitle('mic')">Mic&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<div class="tab-title page-title">
+  							<span id="tab-title-music" class="tab-title-left-true " @click="tabTitle('music')">Music</span><span id="tab-title-mic" class="tab-title-right-flase" @click="tabTitle('mic')">Mic&nbsp;&nbsp;&nbsp;&nbsp;</span>
   					</div>
   					<div class="music-main" id="music-main">
   						<div class="disk">
@@ -291,6 +257,8 @@
     	new Vue({
 	      	el: '#page',
 	      	data:{
+	      		rangeBright:100,
+	      		rangeSpeed:50,
 	      		normal:[ 
 	      			{color:"red"},
 	      			{color:"green"},
