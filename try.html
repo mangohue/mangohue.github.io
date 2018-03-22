@@ -15,7 +15,8 @@
 			</div>
 			<!--开关-->
 			<div class="btn-switch" id="btn-switch">
-				<img class="btn-img" src="images/try/btn_true.png" />
+				<img class="btn-img" src="images/try/btn_true.png" v-show="btn_switch" @click="btnSwitch(true)"/>
+				<img class="btn-img" src="images/try/btn_false.png" v-show="!btn_switch" @click="btnSwitch(false)"/>
 			</div>
 			<!--主页面-->
 			<div class="main">
@@ -26,8 +27,8 @@
 						<img class="color" src="images/try/color.png"/>
 					</div>
 					<div class="current-color">
-						<p>Current</p>
-						<p class="current-color-bg"></p>
+						<p>Current Color</p>
+						<p class="current-color-bg" v-bind:style="{ 'background-color': currentColor}"></p><br />
 						<p class="current-color-txt">save</p>
 					</div>
 					<div >
@@ -48,7 +49,9 @@
 								<td width="90%">
 									<p class="normal" 
 										v-for="item in normal"  
-										v-bind:style="[{'background-color': item.color},{'color':item.color}]">
+										v-bind:style="[{'background-color': item.color},{'color':item.color}]"
+										@click="normalColor(item.color)"
+										>
 									</p>
 								</td>
 							</tr>
@@ -167,7 +170,8 @@
   						</div>
   						<div class="music-control">
   							<img class="music-control-item" src="images/try/play_pre.png" />
-  							<img class="music-control-item" src="images/try/play_start.png" />
+  							<img class="music-control-item" src="images/try/play_start.png" v-show="isPlay" @click="musicChange(true)"/>
+  							<img class="music-control-item" src="images/try/play_stop.png" v-show="!isPlay" @click="musicChange(false)"/>
   							<img class="music-control-item" src="images/try/play_next.png" />
   						</div>
   					</div>
@@ -254,8 +258,11 @@
     	new Vue({
 	      	el: '#page',
 	      	data:{
+	      		isPlay:true,
+	      		btn_switch:true,
 	      		rangeBright:100,
 	      		rangeSpeed:50,
+	      		currentColor:"#FFFFFF",
 	      		normal:[ 
 	      			{color:"#FF0000"},
 	      			{color:"#00FF00"},
@@ -383,6 +390,22 @@
 	      			}
 	      			
 	      		},
+	      		//音乐暂停开始
+	      		musicChange:function(e){
+	      			this._data.isPlay = !this._data.isPlay;
+	      		},
+	      		
+	      		//灯带开关切换
+	      		btnSwitch:function(e){
+	      			this._data.btn_switch = !this._data.btn_switch;
+	      		},
+	      		
+	      		//点击color页面normal颜色
+	      		normalColor: function (e){
+	      			this._data.currentColor = e;
+	      		}
+	      		
+	      		
 	   		}
 	   		
     	})

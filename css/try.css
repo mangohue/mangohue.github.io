@@ -1,7 +1,5 @@
 
-tr{
-	margin-top: 60px;
-}
+
 
 .body-tab{
 	padding: 5px 10px 0 10px;
@@ -219,12 +217,14 @@ tr{
 	height: 25px;
 	border: 1px solid #999999;
 	border-radius: 25px;
-	margin: 8px 0 8px 0;
+	display: inline-block;
 }
 
 .current-color-txt{
 	border: 1px solid #999999;
 	border-radius: 25px;
+	padding: 3px 5px 3px 5px;
+	display: inline-block;
 }
 
 #wave{
