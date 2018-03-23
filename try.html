@@ -197,8 +197,8 @@
 							</tr>
 							<tr>
 								<td class="time" width="20%">{{timer.time}}</td>
-								<td class="set-timer" width="60%" @click="setTimer(true,false,true)">
-									<span>{{"Light On"?"Light Off":timer.action}}</span> /
+								<td class="set-timer" width="60%" @click="setTimer('go')">
+									<span>{{timer.action ? "Light On" : "Light Off"}}</span> /
 									<span>{{timer.day}}</span> /
 									<span>{{timer.mode[0]}}</span>
 								</td>
@@ -243,13 +243,13 @@
 					<table width="100%">
 						<tr>
 							<td width="10%">
-								<img class="timer-back"  src="images/try/back.png" @click="setTimer(false,false)" />
+								<img class="timer-back"  src="images/try/back.png" @click="setTimer('back')" />
 							</td>
 							<td width="80%" style="text-align: center;">
 								<span class="timer-title">Modify the timer</span>
 							</td>
 							<td width="8%">
-								<span class="timer-ok" @click="setTimer(false,true)">OK</span>
+								<span class="timer-ok" @click="setTimer('ok')">OK</span>
 							</td>
 						</tr>
 					</table>

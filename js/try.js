@@ -17,6 +17,7 @@ new Vue({
 		musicIsPlay:false,
 		micIsPlay:false,
 		timer_btn_show:true,
+		tempTimer:{},
 		btn_switch:true,
 		rangeBright:100,
 		rangeSpeed:50,
@@ -231,14 +232,10 @@ new Vue({
 		},
 		
 		//切换setTimer页面
-		setTimer:function(e,open,newTime){
-			this._data.isSetTimer = e;
-			if(open == true){
-				this._data.timer.open = true;
-				console.log(this._data.timer);
-			}
-			
-			if(newTime == true){
+		setTimer:function(e){
+			if(e == "go"){
+				this._data.isSetTimer = !this._data.isSetTimer;
+				this._data.tempTimer = this._data.timer;
 				var currentTime = new Date();
 				var year = currentTime.getFullYear();
 				var month = currentTime.getMonth()+1;
@@ -247,6 +244,10 @@ new Vue({
 				var min = currentTime.getMinutes();
 				this._data.timer.currentTime = year + "-" + (month < 9 ? "0" : "") + month + "-" + ( day < 9 ? "0" : "") + day + " " + hour + ":" + min;
 				this._data.timer.time = hour + ":" + min;
+			}else if(e == "back"){
+				this._data.timer = this._data.tempTimer;
+			}else if(e == "ok"){
+				this._data.timer.open = true;
 			}
 		},
 		
@@ -296,9 +297,7 @@ new Vue({
 			this._data.timer.mode = value;
 		},
 		
-		selectTime:function(){
-			
-		}
+		selectTime:function(){}
 	}
 })
 
