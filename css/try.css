@@ -257,7 +257,6 @@
 .timer-back{
 	width: 30%;
 	padding: 8px;
-	background-color: red;
 }
 
 .page-title{
@@ -267,7 +266,6 @@
 .timer-ok{
 	font-weight: 500;
 	padding: 8px;
-	background-color: red;
 }
 
 .timer-body{
@@ -276,18 +274,27 @@
 
 .tab-tr{
 	height: 30px;
+	border: 1px solid #000000;
 }
 
-.weekly-btn-false{
+.weekly_btn_false{
 	background-color: #FFFFFF;
 	color: #FEB101;
 	border: 1px solid #FEB101;
 	border-radius: 3px;
-	padding: 2px 3px 2px 3px;
+	padding: 3px 4px 3px 4px;
+	margin: 2px;
+}
+.weekly_btn_true{
+	background-color: #FEB101;
+	color: #FFFFFF;
+	border: 1px solid #FEB101;
+	border-radius: 3px;
+	padding: 3px 4px 3px 4px;
 	margin: 2px;
 }
 
-.repeat-btn-false{
+.repeat_btn_false{
 	background-color: #FFFFFF;
 	color: #FEB101;
 	border: 1px solid #FEB101;
@@ -295,5 +302,22 @@
 	padding: 4px 6px 4px 6px;
 	margin-right: 6px;
 }
+
+.repeat_btn_true{
+	background-color: #FEB101;
+	color: #FFFFFF;
+	border: 1px solid #FEB101;
+	border-radius: 3px;
+	padding: 4px 6px 4px 6px;
+	margin-right: 6px;
+}
+
+.timer-btn-switch{
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+}
+
+
 
 

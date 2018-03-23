@@ -196,8 +196,12 @@
 								<td>My Timer</td>
 							</tr>
 							<tr>
-								<td class="time" width="20%">14:45</td>
-								<td class="tips" width="60%">Light off/Single/Yellow</td>
+								<td class="time" width="20%">{{timer.time}}</td>
+								<td class="set-timer" width="60%" @click="setTimer(true,false)">
+									<span>{{"Light On"?"Light Off":timer.action}}</span> /
+									<span>{{timer.day}}</span> /
+									<span>{{timer.mode[0]}}</span>
+								</td>
 								<td class="set-timer-switch" width="20%"><mt-switch></mt-switch></td>
 							</tr>
 						</table>
@@ -237,13 +241,13 @@
 					<table width="100%">
 						<tr>
 							<td width="10%">
-								<img class="timer-back"  src="images/try/back.png" />
+								<img class="timer-back"  src="images/try/back.png" @click="setTimer(false,false)" />
 							</td>
 							<td width="80%" style="text-align: center;">
 								<span class="timer-title">Modify the timer</span>
 							</td>
 							<td width="8%">
-								<span class="timer-ok">OK</span>
+								<span class="timer-ok" @click="setTimer(false,true)">OK</span>
 							</td>
 						</tr>
 					</table>
@@ -274,8 +278,8 @@
 								<span>Repeat</span>
 							</td>
 							<td width="75%">
-								<span class="repeat-btn-false">Singe</span>
-								<span class="repeat-btn-false">Daily</span>
+								<span class="repeat_btn_false" v-bind:class="{repeat_btn_true:timerMode.single}" @click="timerModeChange('Single')">Single</span>
+								<span class="repeat_btn_false" v-bind:class="{repeat_btn_true:timerMode.daily}" @click="timerModeChange('Daily')">Daily</span>
 							</td>
 						</tr>
 						<!--Weekly-->
@@ -284,13 +288,13 @@
 								<span>Weekly</span>
 							</td>
 							<td width="75%">
-								<span class="weekly-btn-false">Mon</span>
-								<span class="weekly-btn-false">Tue</span>
-								<span class="weekly-btn-false">Wed</span>
-								<span class="weekly-btn-false">Thu</span>
-								<span class="weekly-btn-false">Fri</span>
-								<span class="weekly-btn-false">Sat</span>
-								<span class="weekly-btn-false">Sun</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.mon}" @click="timerModeChange('Mon')">Mon</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.tue}" @click="timerModeChange('Tue')">Tue</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.wed}" @click="timerModeChange('Wed')">Wed</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.thu}" @click="timerModeChange('Thu')">Thu</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.fri}" @click="timerModeChange('Fri')">Fri</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.sat}" @click="timerModeChange('Sat')">Sat</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.sun}" @click="timerModeChange('Sun')">Sun</span>
 							</td>
 						</tr>
 						<!--action-->
@@ -299,8 +303,9 @@
 								<span>action</span>
 							</td>
 							<td width="75%">
-								<img src="images/try/btn_true.png" />
-								<span>Power on/ff</span>
+								<img class="timer-btn-switch" src="images/try/btn_false.png" v-show="timer_btn_show" @click="timerBtnChange(true)"/>
+								<img class="timer-btn-switch" src="images/try/btn_true.png" v-show="!timer_btn_show" @click="timerBtnChange(false)"/>
+								<span>Power on/off</span>
 							</td>
 						</tr>
 						<!--Mode-->
@@ -309,7 +314,7 @@
 								<span>Mode</span>
 							</td>
 							<td width="75%">
-								<mt-picker :slots="color_picker" @change="pickerModeChange"></mt-picker>
+								<mt-picker :slots="color_picker" @change="timerPickerModeChange"></mt-picker>
 							</td>
 						</tr>
 					</table>

@@ -13,13 +13,31 @@ setNormalHeight();
 new Vue({
  	el: '#page',
   data:{
-  		isSetTimer:true,
+  		isSetTimer:false,
 		musicIsPlay:false,
 		micIsPlay:false,
+		timer_btn_show:true,
 		btn_switch:true,
 		rangeBright:100,
 		rangeSpeed:50,
 		currentColor:"#FFFFFF",
+		timerMode:{
+			single:false,
+			daily:false,
+			mon:false,
+			tue:false,
+			wed:false,
+			thu:false,
+			fri:false,
+			sat:false,
+			sun:false
+		},
+		timer:{
+			time:"",
+			day:"Single",
+			action:false,
+			mode:"Dinner Mode"
+		},
 		normal:[ 
 			{color:"#FF0000"},
 			{color:"#00FF00"},
@@ -208,7 +226,61 @@ new Vue({
 		//设置速度
 		speedChange:function(value){
 			console.log("speed set to " + value);
-		}
+		},
+		
+		//切换setTimer页面
+		setTimer:function(e,isSet){
+			this._data.isSetTimer = e;
+			console.log(isSet);
+			if(isSet){
+				console.log(this._data.timer);
+			}
+		},
+		
+		//set timer 页面btnChange
+		timerBtnChange:function(e){
+			this._data.timer_btn_show = !this._data.timer_btn_show;
+			if(e == true){
+				console.log("set timer open!");
+				this._data.timer.action = true;
+			}else{
+				console.log("set timer close!");
+				this._data.timer.action = false;
+			}
+		},
+		
+		timerModeChange:function(e){
+			console.log("set timer mode to "+e);
+			for (var mode in this._data.timerMode) {
+				this._data.timerMode[mode] = false;
+			}
+			if(e == "Single"){
+				this._data.timerMode.single = true;
+			}else if(e == "Daily"){
+				this._data.timerMode.daily = true;
+			}else if(e == "Mon"){
+				this._data.timerMode.mon = true;
+			}else if(e == "Tue"){
+				this._data.timerMode.tue = true;
+			}else if(e == "Wed"){
+				this._data.timerMode.wed = true;
+			}else if(e == "Thu"){
+				this._data.timerMode.thu = true;
+			}else if(e == "Fri"){
+				this._data.timerMode.fri = true;
+			}else if(e == "Sat"){
+				this._data.timerMode.sat = true;
+			}else if(e == "Sun"){
+				this._data.timerMode.sun = true;
+			}
+			this._data.timer.day = e;
+		},
+		
+		//set timer day
+		timerPickerModeChange(picker,value){
+			console.log("timer set day to " + value);
+			this._data.timer.mode = value;
+		},
 	}
 })
 
