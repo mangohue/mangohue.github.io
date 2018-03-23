@@ -233,8 +233,8 @@ new Vue({
 		
 		//切换setTimer页面
 		setTimer:function(e){
+			this._data.isSetTimer = !this._data.isSetTimer;
 			if(e == "go"){
-				this._data.isSetTimer = !this._data.isSetTimer;
 				this._data.tempTimer = this._data.timer;
 				var currentTime = new Date();
 				var year = currentTime.getFullYear();
