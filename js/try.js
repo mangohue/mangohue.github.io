@@ -242,7 +242,7 @@ new Vue({
 				var day = currentTime.getDate();
 				var hour = currentTime.getHours();
 				var min = currentTime.getMinutes();
-				this._data.timer.currentTime = year + "-" + (month < 9 ? "0" : "") + month + "-" + ( day < 9 ? "0" : "") + day + " " + hour + ":" + min;
+				this._data.timer.currentTime = year + "-" + (month < 9 ? "0" : "") + month + "-" + ( day < 9 ? "0" : "") + day + " " + ( hour < 9 ? "0" : "") + hour + ":" + ( min < 9 ? "0" : "") + min;
 				this._data.timer.time = hour + ":" + min;
 			}else if(e == "back"){
 				this._data.timer = this._data.tempTimer;
