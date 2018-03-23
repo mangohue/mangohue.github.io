@@ -238,14 +238,16 @@ new Vue({
 				console.log(this._data.timer);
 			}
 			
-//				var currentTime = new Date();
-//				var year = currentTime.getFullYear();
-//				var month = currentTime.getMonth()+1;
-//				var day = currentTime.getDate();
-//				var hour = currentTime.getHours();
-//				var min = currentTime.getMinutes();
-//				this._data.timer.currentTime = year + "-" + (month < 9 ? "0" : "") + month + "-" + ( day < 9 ? "0" : "") + day + " " + hour + ":" + min;
-//				this._data.timer.time = hour + ":" + min;
+			if(newTime == true){
+				var currentTime = new Date();
+				var year = currentTime.getFullYear();
+				var month = currentTime.getMonth()+1;
+				var day = currentTime.getDate();
+				var hour = currentTime.getHours();
+				var min = currentTime.getMinutes();
+				this._data.timer.currentTime = year + "-" + (month < 9 ? "0" : "") + month + "-" + ( day < 9 ? "0" : "") + day + " " + hour + ":" + min;
+				this._data.timer.time = hour + ":" + min;
+			}
 		},
 		
 		//set timer 页面btnChange
@@ -294,7 +296,6 @@ new Vue({
 			this._data.timer.mode = value;
 		},
 		
-		//选择时间定时
 		selectTime:function(){
 			
 		}

@@ -197,7 +197,7 @@
 							</tr>
 							<tr>
 								<td class="time" width="20%">{{timer.time}}</td>
-								<td class="set-timer" width="60%" @click="setTimer(true,false)">
+								<td class="set-timer" width="60%" @click="setTimer(true,false,true)">
 									<span>{{"Light On"?"Light Off":timer.action}}</span> /
 									<span>{{timer.day}}</span> /
 									<span>{{timer.mode[0]}}</span>
@@ -215,7 +215,7 @@
 						<img class="f-img" src="images/try/tab_color_true.png" />
 						<!--<img class="f-img" src="images/try/tab_color_false.png" style="display: none;"/>-->
 						<br />
-						<span class="tab-txt-true">test</span>
+						<span class="tab-txt-true">Color</span>
 					</div>
 					<div class="f-tab" data-tab="mode" @click="tabClick('mode')">
 						<!--<img class="f-img" src="images/try/tab_mode_true.png" style="display: none;"/>-->
