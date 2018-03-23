@@ -1,6 +1,4 @@
 
-
-
 .body-tab{
 	padding: 5px 10px 0 10px;
 	margin-top: 8px;
@@ -249,6 +247,53 @@
 	margin: auto;
 	padding: 10px 10px 300px 10px;
 	border: 1px solid #CCCCCC;
+}
+
+.timer-header{
+	border-bottom: 1px solid #AAAAAA;
+	padding: 0 8px 0 8px;
+}
+
+.timer-back{
+	width: 30%;
+	padding: 8px;
+	background-color: red;
+}
+
+.page-title{
+	font-weight: 500;
+}
+
+.timer-ok{
+	font-weight: 500;
+	padding: 8px;
+	background-color: red;
+}
+
+.timer-body{
+	margin: 8px;
+}
+
+.tab-tr{
+	height: 30px;
+}
+
+.weekly-btn-false{
+	background-color: #FFFFFF;
+	color: #FEB101;
+	border: 1px solid #FEB101;
+	border-radius: 3px;
+	padding: 2px 3px 2px 3px;
+	margin: 2px;
+}
+
+.repeat-btn-false{
+	background-color: #FFFFFF;
+	color: #FEB101;
+	border: 1px solid #FEB101;
+	border-radius: 3px;
+	padding: 4px 6px 4px 6px;
+	margin-right: 6px;
 }
 
 
