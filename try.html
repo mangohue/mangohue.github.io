@@ -197,12 +197,14 @@
 							</tr>
 							<tr>
 								<td class="time" width="20%">{{timer.time}}</td>
-								<td class="set-timer" width="60%" @click="setTimer(true,false)">
+								<td class="set-timer" width="60%" @click="setTimer(true,false,true)">
 									<span>{{"Light On"?"Light Off":timer.action}}</span> /
 									<span>{{timer.day}}</span> /
 									<span>{{timer.mode[0]}}</span>
 								</td>
-								<td class="set-timer-switch" width="20%"><mt-switch></mt-switch></td>
+								<td class="set-timer-switch" width="20%">
+									<mt-switch  v-model="timer.open"></mt-switch>
+								</td>
 							</tr>
 						</table>
 						<div class="line"></div>
@@ -260,7 +262,7 @@
 								<span>Current time</span>
 							</td>
 							<td width="75%">
-								<span>2018-03-23 12:25</span>
+								<span>{{timer.currentTime}}</span>
 							</td>
 						</tr>
 						<!--Timing time-->
@@ -269,7 +271,7 @@
 								<span>Timing time</span>
 							</td>
 							<td width="75%">
-								<span>13:45</span>
+								<span @click="selectTime">{{timer.time}}</span>
 							</td>
 						</tr>
 						<!--Repeat-->

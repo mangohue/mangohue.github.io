@@ -33,10 +33,12 @@ new Vue({
 			sun:false
 		},
 		timer:{
+			currentTime:1,
 			time:"",
 			day:"Single",
 			action:false,
-			mode:"Dinner Mode"
+			mode:"Dinner Mode",
+			open:false,
 		},
 		normal:[ 
 			{color:"#FF0000"},
@@ -229,11 +231,22 @@ new Vue({
 		},
 		
 		//切换setTimer页面
-		setTimer:function(e,isSet){
+		setTimer:function(e,open,newTime){
 			this._data.isSetTimer = e;
-			console.log(isSet);
-			if(isSet){
+			if(open == true){
+				this._data.timer.open = true;
 				console.log(this._data.timer);
+			}
+			
+			if(newTime == true){
+				var currentTime = new Date();
+				var year = currentTime.getFullYear();
+				var month = currentTime.getMonth()+1;
+				var day = currentTime.getDate();
+				var hour = currentTime.getHours();
+				var min = currentTime.getMinutes();
+				this._data.timer.currentTime = year + "-" + (month < 9 ? "0" : "") + month + "-" + ( day < 9 ? "0" : "") + day + " " + hour + ":" + min;
+				this._data.timer.time = hour + ":" + min;
 			}
 		},
 		
@@ -249,6 +262,7 @@ new Vue({
 			}
 		},
 		
+		//timer 页面的mode
 		timerModeChange:function(e){
 			console.log("set timer mode to "+e);
 			for (var mode in this._data.timerMode) {
@@ -281,6 +295,11 @@ new Vue({
 			console.log("timer set day to " + value);
 			this._data.timer.mode = value;
 		},
+		
+		//选择时间定时
+		selectTime:function(){
+			
+		}
 	}
 })
 
