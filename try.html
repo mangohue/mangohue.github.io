@@ -273,10 +273,10 @@
 							</td>
 							<td width="75%">
 								<span @click="selectTime(false)" v-show = "isSingleTime">{{timer.time}}</span>
-								<mt-datetime-picker ref="picker" type="time" v-model="timer.startDate" @confirm="ensure"></mt-datetime-picker>
+								<mt-datetime-picker ref="picker" cancel-text="cancel" confirm-text = "confirm" type="time" v-model="timer.startDate" @confirm="ensure"></mt-datetime-picker>
 								
 								<span @click="selectTime(true)" v-show = "!isSingleTime">{{timer.singleTime}}</span>
-								<mt-datetime-picker ref="pickerSingle" type="datetime" v-model="timer.singleStartDate"  @confirm="ensureSingle"></mt-datetime-picker>
+								<mt-datetime-picker ref="pickerSingle" cancel-text="cancel" confirm-text = "confirm" type="datetime" v-model="timer.singleStartDate"  @confirm="ensureSingle"></mt-datetime-picker>
 
 							</td>
 						</tr>

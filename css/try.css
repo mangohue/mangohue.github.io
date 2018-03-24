@@ -1,8 +1,12 @@
 
+*{
+	font-family:"Arial","微软雅黑","Verdana","SimSun","PingFang SC","Hiragino Sans GB" ;
+}
+
 .body-tab{
 	padding: 5px 10px 0 10px;
 	margin-top: 8px;
-	font-family: "微软雅黑";
+	
 }
 
 .footer{
