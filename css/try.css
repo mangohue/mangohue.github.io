@@ -254,8 +254,8 @@
 }
 
 .timer-header{
-	border-bottom: 1px solid #AAAAAA;
 	padding: 0 8px 0 8px;
+	border-bottom: 5px solid #EFEFF4;
 }
 
 .timer-back{
@@ -278,7 +278,6 @@
 
 .tab-tr{
 	height: 30px;
-	border: 1px solid #000000;
 }
 
 .weekly_btn_false{
@@ -320,6 +319,11 @@
 	width: 30px;
 	height: 30px;
 	margin-right: 10px;
+}
+
+.timer-title{
+	font-weight: 500;
+	font-size: 15px;
 }
 
 
