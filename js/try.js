@@ -302,7 +302,7 @@ new Vue({
 			// 	this._data.timerMode.sun = true;
 			// }
 			this._data.timer.day = e;
-			if(e == "Single"){
+			if(e == "single"){
 				this._data.isSingleTime = false;
 			}else{
 				this._data.isSingleTime = true;
@@ -326,6 +326,7 @@ new Vue({
 
 		ensure:function(value){
 			this._data.timer.time = value;
+			this._data.timer.singleTime = (this._data.timer.singleTime).substr(0,11) + value;
 		},
 
 		ensureSingle:function(value){
