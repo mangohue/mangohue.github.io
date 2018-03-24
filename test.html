@@ -5,41 +5,45 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>MangoHome Try</title>
     <link rel="stylesheet"  href="init.css"/>
-      <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/try.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <style type="text/css">
+      .bg{
+        margin: 10px;
+        display:block;
+        width: 30px;
+        height: 30px;
+        border: 1px solid #AAAAAA;
+        border-radius: 15px;
+
+      }
+    </style>
+
   </head>
+  
   <body id="body">
-    <div id="page" class="page">
-      <div @click="openPicker">
-       datePicker
+      <div id="page" class="page">
+        <div id="bg" class="bg" data-r=200 data-g=120 data-b=150 data-color="#FEB101" @click="testClick" onclick="testClick(this)"></div>
       </div>
-      <mt-datetime-picker ref="picker" type="time" v-model="pickerValue" @confirm="dateConfirm">
-      </mt-datetime-picker>
-
-
-      <template>
-        <mt-datetime-picker
-          ref="picker"
-          type="time"
-          v-model="pickerValue">
-        </mt-datetime-picker>
-      </template>
-    </div>
   </body>
     <!-- 先引入 Vue -->
     <script src="js/vue.js"></script>
     <!-- 引入组件库 -->
     <script src="js/mint-ui-index.js"></script>
     <script>
+      function testClick(e){
+        var bg = document.getElementById('bg');
+        // bg.style.backgroundColor = new RGB(e.dataset.r,e.dataset.g,e.dataset.b);
+        console.log(e.dataset.r);
+      }
+
       new Vue({
         el:"#page",
         data:{
-            pickerValue:"",
 
         },
         methods:{
-          openPicker:function(){
-            this.$refs.picker.open();
+          testClick:function(e){
+            console.log(e);
           }
         },
       })

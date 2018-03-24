@@ -275,27 +275,32 @@ new Vue({
 		timerModeChange:function(e){
 			console.log("set timer mode to "+e);
 			for (var mode in this._data.timerMode) {
-				this._data.timerMode[mode] = false;
+				if( mode == e){
+					this._data.timerMode[mode] = true;
+				}else{
+					this._data.timerMode[mode] = false;
+				}
+				
 			}
-			if(e == "Single"){
-				this._data.timerMode.single = true;
-			}else if(e == "Daily"){
-				this._data.timerMode.daily = true;
-			}else if(e == "Mon"){
-				this._data.timerMode.mon = true;
-			}else if(e == "Tue"){
-				this._data.timerMode.tue = true;
-			}else if(e == "Wed"){
-				this._data.timerMode.wed = true;
-			}else if(e == "Thu"){
-				this._data.timerMode.thu = true;
-			}else if(e == "Fri"){
-				this._data.timerMode.fri = true;
-			}else if(e == "Sat"){
-				this._data.timerMode.sat = true;
-			}else if(e == "Sun"){
-				this._data.timerMode.sun = true;
-			}
+			// if(e == "Single"){
+			// 	this._data.timerMode.single = true;
+			// }else if(e == "Daily"){
+			// 	this._data.timerMode.daily = true;
+			// }else if(e == "Mon"){
+			// 	this._data.timerMode.mon = true;
+			// }else if(e == "Tue"){
+			// 	this._data.timerMode.tue = true;
+			// }else if(e == "Wed"){
+			// 	this._data.timerMode.wed = true;
+			// }else if(e == "Thu"){
+			// 	this._data.timerMode.thu = true;
+			// }else if(e == "Fri"){
+			// 	this._data.timerMode.fri = true;
+			// }else if(e == "Sat"){
+			// 	this._data.timerMode.sat = true;
+			// }else if(e == "Sun"){
+			// 	this._data.timerMode.sun = true;
+			// }
 			this._data.timer.day = e;
 			if(e == "Single"){
 				this._data.isSingleTime = false;
@@ -320,14 +325,7 @@ new Vue({
 		},
 
 		ensure:function(value){
-			// var year = value.getFullYear();
-			// var month = value.getMonth()+1;
-			// var day = value.getDate();
-			// var hour = value.getHours();
-			// var min = value.getMinutes();
-			// this._data.timer.singleTime = year + "-" + (month < 10 ? "0" : "") + month + "-" + ( day < 10 ? "0" : "") + day + " " + ( hour < 10 ? "0" : "") + hour + ":" + ( min < 10 ? "0" : "") + min;
 			this._data.timer.time = value;
-
 		},
 
 		ensureSingle:function(value){

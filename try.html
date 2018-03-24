@@ -273,10 +273,10 @@
 							</td>
 							<td width="75%">
 								<span @click="selectTime(false)" v-show = "isSingleTime">{{timer.time}}</span>
-								<mt-datetime-picker ref="picker" cancel-text="cancel" confirm-text = "confirm" type="time" v-model="timer.startDate" @confirm="ensure"></mt-datetime-picker>
+								<mt-datetime-picker ref="picker" cancel-text="Cancel" confirm-text = "Confirm" type="time" v-model="timer.startDate" @confirm="ensure"></mt-datetime-picker>
 								
 								<span @click="selectTime(true)" v-show = "!isSingleTime">{{timer.singleTime}}</span>
-								<mt-datetime-picker ref="pickerSingle" cancel-text="cancel" confirm-text = "confirm" type="datetime" v-model="timer.singleStartDate"  @confirm="ensureSingle"></mt-datetime-picker>
+								<mt-datetime-picker ref="pickerSingle" cancel-text="Cancel" confirm-text = "Confirm" type="datetime" v-model="timer.singleStartDate"  @confirm="ensureSingle"></mt-datetime-picker>
 
 							</td>
 						</tr>
@@ -286,8 +286,8 @@
 								<span>Repeat</span>
 							</td>
 							<td width="75%">
-								<span class="repeat_btn_false" v-bind:class="{repeat_btn_true:timerMode.single}" @click="timerModeChange('Single')">Single</span>
-								<span class="repeat_btn_false" v-bind:class="{repeat_btn_true:timerMode.daily}" @click="timerModeChange('Daily')">Daily</span>
+								<span class="repeat_btn_false" v-bind:class="{repeat_btn_true:timerMode.single}" @click="timerModeChange('single')">Single</span>
+								<span class="repeat_btn_false" v-bind:class="{repeat_btn_true:timerMode.daily}" @click="timerModeChange('daily')">Daily</span>
 							</td>
 						</tr>
 						<!--Weekly-->
@@ -296,13 +296,13 @@
 								<span>Weekly</span>
 							</td>
 							<td width="75%">
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.mon}" @click="timerModeChange('Mon')">Mon</span>
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.tue}" @click="timerModeChange('Tue')">Tue</span>
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.wed}" @click="timerModeChange('Wed')">Wed</span>
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.thu}" @click="timerModeChange('Thu')">Thu</span>
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.fri}" @click="timerModeChange('Fri')">Fri</span>
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.sat}" @click="timerModeChange('Sat')">Sat</span>
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.sun}" @click="timerModeChange('Sun')">Sun</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.mon}" @click="timerModeChange('mon')">Mon</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.tue}" @click="timerModeChange('tue')">Tue</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.wed}" @click="timerModeChange('wed')">Wed</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.thu}" @click="timerModeChange('thu')">Thu</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.fri}" @click="timerModeChange('fri')">Fri</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.sat}" @click="timerModeChange('sat')">Sat</span>
+								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.sun}" @click="timerModeChange('sun')">Sun</span>
 							</td>
 						</tr>
 						<!--action-->
