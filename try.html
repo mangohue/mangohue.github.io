@@ -196,7 +196,8 @@
 								<td>My Timer</td>
 							</tr>
 							<tr>
-								<td class="time" width="20%">{{timer.time}}</td>
+								<td class="time" width="20%" v-show = "isSingleTime">{{timer.time}}</td>
+								<td class="time" width="20%" v-show = "!isSingleTime">{{timer.singleTime}}</td>
 								<td class="set-timer" width="60%" @click="setTimer('go')">
 									<span>{{timer.action ? "Light On" : "Light Off"}}</span> /
 									<span>{{timer.day}}</span> /
@@ -271,7 +272,12 @@
 								<span>Timing time</span>
 							</td>
 							<td width="75%">
-								<span @click="selectTime">{{timer.time}}</span>
+								<span @click="selectTime(false)" v-show = "isSingleTime">{{timer.time}}</span>
+								<mt-datetime-picker ref="picker" type="time" v-model="timer.startDate" @confirm="ensure"></mt-datetime-picker>
+								
+								<span @click="selectTime(true)" v-show = "!isSingleTime">{{timer.singleTime}}</span>
+								<mt-datetime-picker ref="pickerSingle" type="datetime" v-model="timer.singleStartDate"  @confirm="ensureSingle"></mt-datetime-picker>
+
 							</td>
 						</tr>
 						<!--Repeat-->

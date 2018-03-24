@@ -1,53 +1,47 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>MangoHome Try</title>
-		<link rel="stylesheet"  href="init.css"/>
-  		<link rel="stylesheet" href="css/style.css">
-  		<link rel="stylesheet" href="css/try.css" />
-	</head>
-	<body id="body">
-	  	<div id="page" class="page">
-	  		<span @click="click"> asd</span>
-	  		<div class="color-picker">
-	  			<!--<mt-picker :slots="color_picker" @change="modeChange(this)"></mt-picker>-->
-  				<mt-picker :slots="color_picker" :defaultIndex="1" @change="onValuesChange" ></mt-picker> 
-  			</div>
-		</div>
-	</body>
-  	<!-- 先引入 Vue -->
-  	<script src="js/vue.js"></script>
-  	<!-- 引入组件库 -->
-  	<script src="js/mint-ui-index.js"></script>
-  	<script>
-  		new Vue({
-  			el: '#page',
-  			data: {
-  				color_picker: [
-      			{
-		        	flex: 1,
-		        	values: [
-		        		"aaa","bbb","ccc","ddd","eee","fff","ggg","hhh"
-		        	],
-		        	className: 'slot',
-		        	textAlign: 'center',
-		        	textSize: '10px',
-		      }, ],
-		      
-		  	},
-  			
-  			methods:{
-  				click:function(){
-  					console.log(123);
-  				},
-  				onValuesChange(p,e,i){
-  					console.log(p);
-  					console.log(e);
-  				}
-  			}
-  		})
-  		
-  	</script>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>MangoHome Try</title>
+    <link rel="stylesheet"  href="init.css"/>
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/try.css" />
+  </head>
+  <body id="body">
+    <div id="page" class="page">
+      <div @click="openPicker">
+       datePicker
+      </div>
+      <mt-datetime-picker ref="picker" type="time" v-model="pickerValue" @confirm="dateConfirm">
+      </mt-datetime-picker>
+
+
+      <template>
+        <mt-datetime-picker
+          ref="picker"
+          type="time"
+          v-model="pickerValue">
+        </mt-datetime-picker>
+      </template>
+    </div>
+  </body>
+    <!-- 先引入 Vue -->
+    <script src="js/vue.js"></script>
+    <!-- 引入组件库 -->
+    <script src="js/mint-ui-index.js"></script>
+    <script>
+      new Vue({
+        el:"#page",
+        data:{
+            pickerValue:"",
+
+        },
+        methods:{
+          openPicker:function(){
+            this.$refs.picker.open();
+          }
+        },
+      })
+    </script>
 </html>

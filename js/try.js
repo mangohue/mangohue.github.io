@@ -22,8 +22,9 @@ new Vue({
 		rangeBright:100,
 		rangeSpeed:50,
 		currentColor:"#FFFFFF",
+		isSingleTime:false,
 		timerMode:{
-			single:false,
+			single:true,
 			daily:false,
 			mon:false,
 			tue:false,
@@ -36,10 +37,13 @@ new Vue({
 		timer:{
 			currentTime:1,
 			time:"",
+			singleTime:"",
 			day:"Single",
 			action:false,
 			mode:"Dinner Mode",
 			open:false,
+			startDate:"",
+			singleStartDate:"",
 		},
 		normal:[ 
 			{color:"#FF0000"},
@@ -93,7 +97,7 @@ new Vue({
 	    	className: 'slot',
       	textAlign: 'center',
       	textSize: '10px',
-    	}, 
+    	},  
 		]
 	},
 	methods:{
@@ -242,8 +246,12 @@ new Vue({
 				var day = currentTime.getDate();
 				var hour = currentTime.getHours();
 				var min = currentTime.getMinutes();
-				this._data.timer.currentTime = year + "-" + (month < 9 ? "0" : "") + month + "-" + ( day < 9 ? "0" : "") + day + " " + ( hour < 9 ? "0" : "") + hour + ":" + ( min < 9 ? "0" : "") + min;
-				this._data.timer.time = hour + ":" + min;
+				this._data.timer.currentTime = year + "-" + (month < 10 ? "0" : "") + month + "-" + ( day < 10 ? "0" : "") + day + " " + ( hour < 10 ? "0" : "") + hour + ":" + ( min < 10 ? "0" : "") + min;
+				this._data.timer.time = (hour < 10 ? "0" : "") + hour + ":" + (min < 10 ? "0" : "") + min;
+				this._data.timer.singleTime = this._data.timer.currentTime;
+				this._data.timer.singleStartDate = currentTime;
+				this._data.timer.startDate = this._data.timer.time;
+
 			}else if(e == "back"){
 				this._data.timer = this._data.tempTimer;
 			}else if(e == "ok"){
@@ -289,6 +297,11 @@ new Vue({
 				this._data.timerMode.sun = true;
 			}
 			this._data.timer.day = e;
+			if(e == "Single"){
+				this._data.isSingleTime = false;
+			}else{
+				this._data.isSingleTime = true;
+			}
 		},
 		
 		//set timer day
@@ -297,7 +310,36 @@ new Vue({
 			this._data.timer.mode = value;
 		},
 		
-		selectTime:function(){}
+		selectTime:function(e){
+			if(e == true){
+				this.$refs.pickerSingle.open();
+			}else if(e == false){
+				this.$refs.picker.open();
+			}
+			
+		},
+
+		ensure:function(value){
+			// var year = value.getFullYear();
+			// var month = value.getMonth()+1;
+			// var day = value.getDate();
+			// var hour = value.getHours();
+			// var min = value.getMinutes();
+			// this._data.timer.singleTime = year + "-" + (month < 10 ? "0" : "") + month + "-" + ( day < 10 ? "0" : "") + day + " " + ( hour < 10 ? "0" : "") + hour + ":" + ( min < 10 ? "0" : "") + min;
+			this._data.timer.time = value;
+
+		},
+
+		ensureSingle:function(value){
+			var year = value.getFullYear();
+			var month = value.getMonth()+1;
+			var day = value.getDate();
+			var hour = value.getHours();
+			var min = value.getMinutes();
+			this._data.timer.singleTime = year + "-" + (month < 10 ? "0" : "") + month + "-" + ( day < 10 ? "0" : "") + day + " " + ( hour < 10 ? "0" : "") + hour + ":" + ( min < 10 ? "0" : "") + min;
+			this._data.timer.time = (hour < 10 ? "0" : "") + hour + ":" + (min < 10 ? "0" : "") + min;
+			
+		},
 	}
 })
 
