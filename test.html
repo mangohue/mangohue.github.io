@@ -5,78 +5,354 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>MangoHome Try</title>
     <link rel="stylesheet"  href="init.css"/>
-    <link rel="stylesheet" href="css/style.css">
-    <style type="text/css">
-      .bg{
-        margin: 10px;
-        display:block;
-        width: 30px;
-        height: 30px;
-        border: 1px solid #AAAAAA;
-        border-radius: 15px;
-
-      }
-      .color{
-        width: 10%;
-        height: 10%;
-      }
-    </style>
-
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/test.css" />
   </head>
-  
   <body id="body">
-      <div id="page" class="page" style="margin-top:8px; text-align: center;">
-        <!-- <img class="color" src="images/try/color.png"> -->
-        <canvas id="myCanvas" width="420px" height="420px" onclick="getColor(event)"></canvas>
-        
-        <span id="bg" >as</span>
-        
+      <div id="page" class="page">
+        <div v-show="!isSetTimer">
+          <!--头部-->
+        <div class="header" id="header">
+        </div>
+        <!--开关-->
+        <div class="btn-switch" id="btn-switch">
+          <img class="btn-img" src="images/try/btn_true.png" v-show="btn_switch" @click="btnSwitch(true)"/>
+          <img class="btn-img" src="images/try/btn_false.png" v-show="!btn_switch" @click="btnSwitch(false)"/>
+        </div>
+        <!--主页面-->
+        <div class="main">
+          <!--color页面-->
+          <div class="body-tab" id="color">
+            <div class="block color-main">
+              <p class="title page-title">Color</p>
+              <!-- <img class="color" style="border:1px solid #FEB101;" src="images/try/color.png"/> -->
+              <canvas id="colorCanvas" class="canvas" @click="getColor" width="420px" height="420px"></canvas>
+              
+            </div>
+            <div class="current-color">
+              <p>Current Color</p> 
+              <p class="current-color-bg" v-bind:style="{ 'background-color': currentColor.color}"></p><br />
+              <p class="current-color-txt" @click="saveColor">save</p>
+            </div>
+            <div >
+              <table width="100%">
+                <tr>
+                  <td width="10%">Bright</td>
+                  <td width="70%">
+                    <mt-range class="range" v-model="rangeBright" @change="brightChange">
+                    </mt-range>
+                  </td>
+                  <td width="10%">
+                    <img class="icon" src="images/try/icon_light.png" />
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td width="10%">Normal</td>
+                  <td width="90%">
+                    <p class="normal" 
+                      v-for="(item,index) in normal"  
+                      v-bind:style="[{'background-color': item.color},{'color':item.color}]"
+                      @click="normalColor(index)"
+                      >
+                    </p>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td width="10%">DIY</td>
+                  <td width="90%">
+                    <p class="normal" 
+                      v-for="(item,index) in color_diy"  
+                      v-bind:style="[{'background-color': item.color},{'color':item.color}]"
+                      @click="colorDiyClick(index)"
+                      >
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!--mode页面-->
+          <div class="body-tab" id="mode" hidden="hidden">
+            <div id="custom-current-color" class="current-color" hidden="hidden">
+              <p>Current Color</p>
+              <p class="current-color-bg"></p><br />
+              <p class="current-color-txt">save</p>
+            </div>
+              <div class="tab-title page-title">
+                  <span id="tab-title-classic" class="tab-title-left-true" @click="tabTitle('classic')">&nbsp;&nbsp;&nbsp;Classic</span><span id="tab-title-custom" class="tab-title-right-flase" @click="tabTitle('custom')">Customize</span>
+              </div>
+              <div class="classic" id="classic">
+                <div class="color-picker">
+                  <mt-picker :slots="color_picker" @change="pickerModeChange"></mt-picker>
+                </div>
+                <div >
+              <table width="100%">
+                <tr>
+                  <td width="10%">Bright</td>
+                  <td width="70%">
+                    <mt-range class="range" v-model="rangeBright" @change="brightChange">
+                    </mt-range>
+                  </td>
+                  <td width="10%">
+                    <img class="icon" src="images/try/icon_light.png" />
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td width="10%">Speed</td>
+                  <td width="70%">
+                    <mt-range class="range" v-model="rangeSpeed" @change="speedChange">
+                    </mt-range>
+                  </td>
+                  <td width="10%">
+                    <img class="icon" src="images/try/icon_speed.png" />
+                  </td>
+                </tr>
+                
+              </table>
+            </div>
+              </div>
+              <div  class="custom" id="custom" hidden="hidden">
+              <div class="block color-main"> 
+                  <img class="color" src="images/try/color.png"/>
+              </div>
+                  <table width="100%">
+                    <tr>
+                      <td width="10%">Favorites</td>
+                      <td width="90%">
+                        <p class="normal" 
+                          v-for="item in normal"  
+                          v-bind:style="[{'background-color': item.color},{'color':item.color}]">
+                        </p>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td width="10%">Mode</td>
+                      <td width="70%">
+                        <span class="change-mode change-mode-left change-mode-true" @click="changeMode('jump')">Jumping</span><span @click="changeMode('breath')" class="change-mode change-mode-false">Breathing</span><span @click="changeMode('falsh')" class="change-mode change-mode-right change-mode-false">Flashing</span>
+                      </td>
+                      <td width="10%">
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td width="10%">Bright</td>
+                      <td width="70%">
+                        <mt-range class="range" v-model="rangeBright" @change="brightChange">
+                        </mt-range>
+                      </td>
+                      <td width="10%">
+                        <img class="icon" src="images/try/icon_light.png" />
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td width="10%">Speed</td>
+                      <td width="70%">
+                        <mt-range class="range"  v-model="rangeSpeed" @change="speedChange">
+                        </mt-range>
+                      </td>
+                      <td width="10%">
+                        <img class="icon" src="images/try/icon_speed.png" />
+                      </td>
+                    </tr>
+                  </table>
+                  
+              </div>
+          </div>
+          <!--Music页面-->
+          <div class="body-tab" id="music"hidden="hidden">
+            <div class="tab-title page-title">
+                  <span id="tab-title-music" class="tab-title-left-true " @click="tabTitle('music')">Music</span><span id="tab-title-mic" class="tab-title-right-flase" @click="tabTitle('mic')">Mic&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              </div>
+              <div class="music-main" id="music-main">
+                <div class="disk">
+                  <img  class="img-disk" src="images/try/disk.png"/>
+                </div>
+                <div class="music-control">
+                  <img class="music-control-item" src="images/try/play_pre.png"   @click="musicChange('pre')"/>
+                  <img class="music-control-item" src="images/try/play_start.png" @click="musicChange('stop')" v-show="musicIsPlay" />
+                  <img class="music-control-item" src="images/try/play_stop.png"  @click="musicChange('start')" v-show="!musicIsPlay" />
+                  <img class="music-control-item" src="images/try/play_next.png"  @click="musicChange('next')"/>
+                </div>
+              </div>
+              <div class="mic-main" id="mic-main" hidden="hidden">
+                <div class="disk">
+                  <img  class="img-disk" id="wave" src="images/try/wave.png"/>
+                </div>
+                <div class="music-control">
+                  <img class="music-control-item" src="images/try/play_start.png" @click="micChange(true)" v-show="micIsPlay" />
+                  <img class="music-control-item" src="images/try/play_stop.png"  @click="micChange(false)" v-show="!micIsPlay" />
+                </div>
+              </div>
+              <div class="music-picker">
+                <mt-picker :slots="music_picker" @change="musicModeChange"></mt-picker>
+              </div>
+          </div>
+          <!--timer页面-->
+          <div class="body-tab" id="timer"  hidden="hidden">
+            <table class="table" width="100%">
+              <tr class="line">
+                <td>My Timer</td>
+              </tr>
+              <tr>
+                <td class="time" width="20%" v-show = "isSingleTime">{{timer.time}}</td>
+                <td class="time" width="20%" v-show = "!isSingleTime">{{timer.singleTime}}</td>
+                <td class="set-timer" width="60%" @click="setTimer('go')">
+                  <span>{{timer.action ? "Light On" : "Light Off"}}</span> /
+                  <span>{{timer.day}}</span> /
+                  <span>{{timer.mode[0]}}</span>
+                </td>
+                <td class="set-timer-switch" width="20%">
+                  <mt-switch  v-model="timer.open"></mt-switch>
+                </td>
+              </tr>
+            </table>
+            <div class="line"></div>
+          </div>
+        </div>
+        <div class="footer">
+          <div class="f-tab" data-tab="color" @click="tabClick('color')">
+            <img class="f-img" src="images/try/tab_color_true.png" />
+            <!--<img class="f-img" src="images/try/tab_color_false.png" style="display: none;"/>-->
+            <br />
+            <span class="tab-txt-true">Color</span>
+          </div>
+          <div class="f-tab" data-tab="mode" @click="tabClick('mode')">
+            <!--<img class="f-img" src="images/try/tab_mode_true.png" style="display: none;"/>-->
+            <img class="f-img" src="images/try/tab_mode_false.png" />
+            <br />
+            <span class="tab-txt-false">Mode</span>
+          </div>
+          <div class="f-tab" data-tab="music" @click="tabClick('music')">
+            <!--<img class="f-img" src="images/try/tab_music_true.png" style="display: none;"/>-->
+            <img class="f-img" src="images/try/tab_music_false.png" />
+            <br />
+            <span class="tab-txt-false">Music</span>
+          </div>
+          <div class="f-tab" data-tab="timer" @click="tabClick('timer')">
+            <!--<img class="f-img" src="images/try/tab_timer_true.png" style="display: none;"/>-->
+            <img class="f-img" src="images/try/tab_timer_false.png" />
+            <br />
+            <span class="tab-txt-false">Timer</span>
+          </div>
+        </div>
       </div>
-  </body>
-    <!-- 先引入 Vue -->
+      
+      <div v-show="isSetTimer">
+        <div class="timer-header">
+          <table width="100%">
+            <tr>
+              <td width="10%">
+                <img class="timer-back"  src="images/try/back.png" @click="setTimer('back')" />
+              </td>
+              <td width="80%" style="text-align: center;">
+                <span class="timer-title">Modify the timer</span>
+              </td>
+              <td width="8%">
+                <span class="timer-ok" @click="setTimer('ok')">OK</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="timer-body">
+          <table width="100%">
+            <!--Current time-->
+            <tr class="tab-tr">
+              <td width="25">
+                <span>Current time</span>
+              </td>
+              <td width="75%">
+                <span>{{timer.currentTime}}</span>
+              </td>
+            </tr>
+            <!--Timing time-->
+            <tr class="tab-tr">
+              <td width="25%" >
+                <span>Timing time</span>
+              </td>
+              <td width="75%">
+                <span @click="selectTime(false)" v-show = "isSingleTime">{{timer.time}}</span>
+                <mt-datetime-picker ref="picker" cancel-text="Cancel" confirm-text = "Confirm" type="time" v-model="timer.startDate" @confirm="ensure"></mt-datetime-picker>
+                
+                <span @click="selectTime(true)" v-show = "!isSingleTime">{{timer.singleTime}}</span>
+                <mt-datetime-picker ref="pickerSingle" cancel-text="Cancel" confirm-text = "Confirm" type="datetime" v-model="timer.singleStartDate"  @confirm="ensureSingle"></mt-datetime-picker>
+
+              </td>
+            </tr>
+            <!--Repeat-->
+            <tr class="tab-tr">
+              <td width="25%">
+                <span>Repeat</span>
+              </td>
+              <td width="75%">
+                <span class="repeat_btn_false" v-bind:class="{repeat_btn_true:timerMode.single}" @click="timerModeChange('single')">Single</span>
+                <span class="repeat_btn_false" v-bind:class="{repeat_btn_true:timerMode.daily}" @click="timerModeChange('daily')">Daily</span>
+              </td>
+            </tr>
+            <!--Weekly-->
+            <tr class="tab-tr">
+              <td width="25%">
+                <span>Weekly</span>
+              </td>
+              <td width="75%">
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.mon}" @click="timerModeChange('mon')">Mon</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.tue}" @click="timerModeChange('tue')">Tue</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.wed}" @click="timerModeChange('wed')">Wed</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.thu}" @click="timerModeChange('thu')">Thu</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.fri}" @click="timerModeChange('fri')">Fri</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.sat}" @click="timerModeChange('sat')">Sat</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.sun}" @click="timerModeChange('sun')">Sun</span>
+              </td>
+            </tr>
+            <!--action-->
+            <tr >
+              <td width="25%">
+                <span>action</span>
+              </td>
+              <td width="75%">
+                <img class="timer-btn-switch" src="images/try/btn_false.png" v-show="timer_btn_show" @click="timerBtnChange(true)"/>
+                <img class="timer-btn-switch" src="images/try/btn_true.png" v-show="!timer_btn_show" @click="timerBtnChange(false)"/>
+                <span>Power on/off</span>
+              </td>
+            </tr>
+            <!--Mode-->
+            <tr >
+              <td width="25%">
+                <span>Mode</span>
+              </td>
+              <td width="75%">
+                <mt-picker :slots="color_picker" @change="timerPickerModeChange"></mt-picker>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div> 
+    
+    <script src="js/getcanvaspixelcolor.js"></script>
     <script src="js/vue.js"></script>
-    <!-- 引入组件库 -->
-    <script src="js/mint-ui-index.js"></script>
-    <script type="text/javascript" src="js/getcanvaspixelcolor.js"></script>
-    <script>
+      <script src="js/mint-ui-index.js"></script>
+      <script src="js/try.js"></script>
 
-      var c=document.getElementById("myCanvas");
-      var cxt=c.getContext("2d");
-      var img=new Image();
-      img.src="images/try/color.png";
-      cxt.drawImage(img,0,0);
-      // canvas = $("#canvas");
-      console.log(c);
-
-      function getColor(e){
-        // console.log( "e.pageX=" + e.pageX + "-->" + "e.pageY=" + e.pageY);
-        // console.log( "canvasOffsetX=" + c.offsetLeft + "-->" + "canvasOffsetY=" + c.offsetTop);
-
-        var canvasX = Math.floor(e.pageX - c.offsetLeft);
-        var canvasY = Math.floor(e.pageY - c.offsetTop);
-        // console.log( "canvasX=" + canvasX + "-->" + "canvasY=" + canvasY);
-
-        var colorData = document.getElementById("myCanvas").getPixelColor(canvasX, canvasY);
-        console.log(colorData);
-
-        var bg = document.getElementById("bg");
-        bg.style.backgroundColor = colorData.hex;
-        console.log(bg);
-      }
-
-      // new Vue({
-      //   el:'#page',
-      //   data:{
-
-      //   },
-      //   mothods:{
-      //     console.log(1);
-      //   }
-      // })
-
-
+      <script>
+        function drawCanvas(id,path){
+        var c = document.getElementById(id);
+            var cxt = c.getContext("2d");
+            var img = new Image();
+            img.src = path;
+            cxt.drawImage(img,0,0);
+          console.log(c);
+        }
+        drawCanvas("colorCanvas","images/try/color.png")
       
     </script>
 
+  </body>
+  
     
 </html>
