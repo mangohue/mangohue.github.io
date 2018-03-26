@@ -356,7 +356,6 @@ new Vue({
 		getColor:function(e){
 			// console.log( "e.pageX=" + e.pageX + "-->" + "e.pageY=" + e.pageY);
 			var canvasWidth = document.getElementById("colorCanvas").clientHeight;
-			console.log(canvasWidth);
 
 			var c = document.getElementById("colorCanvas");
 			var canvasX = Math.floor((e.pageX - c.offsetLeft) * (420/canvasWidth) );
