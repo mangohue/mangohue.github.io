@@ -355,10 +355,12 @@ new Vue({
 		//获取颜色
 		getColor:function(e){
 			// console.log( "e.pageX=" + e.pageX + "-->" + "e.pageY=" + e.pageY);
+			var canvasWidth = document.getElementById("colorCanvas").clientHeight;
+			console.log(canvasWidth);
 
 			var c = document.getElementById("colorCanvas");
-			var canvasX = Math.floor(e.pageX - c.offsetLeft);
-			var canvasY = Math.floor(e.pageY - c.offsetTop);
+			var canvasX = Math.floor((e.pageX - c.offsetLeft) * (420/canvasWidth) );
+			var canvasY = Math.floor((e.pageY - c.offsetTop) * (420/canvasWidth) );
 			// console.log( "canvasOffsetX=" + c.offsetLeft + "-->" + "canvasOffsetY=" + c.offsetTop);
 			// console.log("canvasX：" + canvasX + "-->" + "canvasY:" + canvasY );
 			var colorData = document.getElementById("colorCanvas").getPixelColor(canvasX, canvasY);
