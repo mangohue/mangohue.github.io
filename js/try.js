@@ -357,7 +357,7 @@ new Vue({
 			var c = document.getElementById("colorCanvas");
 			var canvasX = Math.floor(e.pageX - c.offsetLeft);
 			var canvasY = Math.floor(e.pageY - c.offsetTop);
-			var colorData = c.getPixelColor(canvasX, canvasY);
+			var colorData = document.getElementById("colorCanvas").getPixelColor(canvasX, canvasY);
 			console.log("canvasX：" + canvasX + "------" + "canvasY:" + canvasY );
 			console.log(colorData);
 
