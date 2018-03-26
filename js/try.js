@@ -22,7 +22,13 @@ new Vue({
 		btn_switch:true,
 		rangeBright:100,
 		rangeSpeed:50,
-		currentColor:"#FFFFFF",
+		currentColor:{
+			r:255,
+			g:255,
+			b:255,
+			a:1,
+			color:"#FFFFFF"
+		},
 		isSingleTime:false,
 		timerMode:{
 			single:true,
@@ -47,14 +53,15 @@ new Vue({
 			singleStartDate:"",
 		},
 		normal:[ 
-			{color:"#FF0000"},
-			{color:"#00FF00"},
-			{color:"#0000FF"},
-			{color:"#FFFF00"},
-			{color:"#FF00FF"},
-			{color:"#00FFFF"},
-			{color:"#FFFFFF"}
+			{r:255, g:0 ,b:0, a:1, color:"#FF0000"},
+			{r:0, g:255 ,b:0, a:1, color:"#00FF00"},
+			{r:0, g:0 ,b:255, a:1, color:"#0000FF"},
+			{r:255, g:255 ,b:0, a:1, color:"#FFFF00"},
+			{r:255, g:0 ,b:255, a:1, color:"#FF00FF"},
+			{r:0, g:255 ,b:255, a:1, color:"#00FFFF"},
+			{r:255, g:255 ,b:255, a:1, color:"#FFFFFF"}
 		],
+		color_diy:[],
 		color_picker: [
       		{
         		flex: 1,
@@ -212,8 +219,12 @@ new Vue({
 		
 		//点击color页面normal颜色
 		normalColor: function (e){
-			this._data.currentColor = e;
-			console.log("set color to "+ e);
+			this._data.currentColor.r = this._data.normal[e].r;
+			this._data.currentColor.g = this._data.normal[e].g;
+			this._data.currentColor.b = this._data.normal[e].b;
+			this._data.currentColor.a = this._data.normal[e].a;
+			this._data.currentColor.color = this._data.normal[e].color;
+			console.log("set color to "+ this._data.normal[e].color);
 		},
 		
 		//mode页面picker change
@@ -340,6 +351,25 @@ new Vue({
 			this._data.timer.time = (hour < 10 ? "0" : "") + hour + ":" + (min < 10 ? "0" : "") + min;
 			
 		},
+
+		//获取颜色
+		getColor:function(e){
+			var c = document.getElementById("colorCanvas");
+			var canvasX = Math.floor(e.pageX - c.offsetLeft);
+			var canvasY = Math.floor(e.pageY - c.offsetTop);
+			var colorData = c.getPixelColor(canvasX, canvasY);
+			console.log("canvasX：" + canvasX + "------" + "canvasY:" + canvasY );
+			console.log(colorData);
+
+			this._data.currentColor.r = colorData.r;
+			this._data.currentColor.g = colorData.g;
+			this._data.currentColor.b = colorData.b;
+			this._data.currentColor.a = colorData.a;
+			this._data.currentColor.color = colorData.hex;
+
+			console.log(this._data.currentColor);
+
+		}
 	}
 })
 

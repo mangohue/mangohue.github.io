@@ -27,10 +27,7 @@
   <body id="body">
       <div id="page" class="page" style="margin-top:8px; text-align: center;">
         <!-- <img class="color" src="images/try/color.png"> -->
-        <!-- <canvas id="myCanvas" width="450px" height="450px" onclick="getColor(event)"></canvas> -->
-        <div>
-          <canvas id="myCanvas" width="420px" height="420px"></canvas>
-        </div>
+        <canvas id="myCanvas" width="450px" height="450px" onclick="getColor(event)"></canvas>
         
         <span id="bg" ></span>
         
@@ -51,21 +48,21 @@
       // canvas = $("#canvas");
       console.log(c);
 
-      // function getColor(e){
-      //   // console.log( "e.pageX=" + e.pageX + "-->" + "e.pageY=" + e.pageY);
-      //   // console.log( "canvasOffsetX=" + c.offsetLeft + "-->" + "canvasOffsetY=" + c.offsetTop);
+      function getColor(e){
+        // console.log( "e.pageX=" + e.pageX + "-->" + "e.pageY=" + e.pageY);
+        // console.log( "canvasOffsetX=" + c.offsetLeft + "-->" + "canvasOffsetY=" + c.offsetTop);
 
-      //   var canvasX = Math.floor(e.pageX - c.offsetLeft);
-      //   var canvasY = Math.floor(e.pageY - c.offsetTop);
-      //   // console.log( "canvasX=" + canvasX + "-->" + "canvasY=" + canvasY);
+        var canvasX = Math.floor(e.pageX - c.offsetLeft);
+        var canvasY = Math.floor(e.pageY - c.offsetTop);
+        // console.log( "canvasX=" + canvasX + "-->" + "canvasY=" + canvasY);
 
-      //   var colorData = document.getElementById("myCanvas").getPixelColor(canvasX, canvasY);
-      //   console.log(colorData);
+        var colorData = document.getElementById("myCanvas").getPixelColor(canvasX, canvasY);
+        console.log(colorData);
 
-      //   var bg = document.getElementById("bg");
-      //   bg.style.backgroundColor = colorData.hex;
-      //   console.log(bg);
-      // }
+        var bg = document.getElementById("bg");
+        bg.style.backgroundColor = colorData.hex;
+        console.log(bg);
+      }
 
       // new Vue({
       //   el:'#page',
