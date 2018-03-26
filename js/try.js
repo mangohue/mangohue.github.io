@@ -218,13 +218,13 @@ new Vue({
 		},
 		
 		//点击color页面normal颜色
-		normalColor: function (e){
-			this._data.currentColor.r = this._data.normal[e].r;
-			this._data.currentColor.g = this._data.normal[e].g;
-			this._data.currentColor.b = this._data.normal[e].b;
-			this._data.currentColor.a = this._data.normal[e].a;
-			this._data.currentColor.color = this._data.normal[e].color;
-			console.log("set color to "+ this._data.normal[e].color);
+		normalColor: function (index){
+			this._data.currentColor.r = this._data.normal[index].r;
+			this._data.currentColor.g = this._data.normal[index].g;
+			this._data.currentColor.b = this._data.normal[index].b;
+			this._data.currentColor.a = this._data.normal[index].a;
+			this._data.currentColor.color = this._data.normal[index].color;
+			console.log("set color to "+ this._data.normal[index].color);
 		},
 		
 		//mode页面picker change
@@ -393,6 +393,16 @@ new Vue({
 				this._data.color_diy.splice(length-1, 1 , tempColor);
 			}
 			
+		},
+
+		//点击color页面diy颜色
+		colorDiyClick:function(index){
+			this._data.currentColor.r = this._data.color_diy[index].r;
+			this._data.currentColor.g = this._data.color_diy[index].g;
+			this._data.currentColor.b = this._data.color_diy[index].b;
+			this._data.currentColor.a = this._data.color_diy[index].a;
+			this._data.currentColor.color = this._data.color_diy[index].color;
+			console.log("set color to "+ this._data.color_diy[index].color);
 		},
 	}
 })

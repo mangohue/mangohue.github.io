@@ -26,7 +26,10 @@
 						<div class="block color-main">
 							<p class="title page-title">Color</p>
 							<!-- <img class="color" style="border:1px solid #FEB101;" src="images/try/color.png"/> -->
-							<canvas id="colorCanvas" @click="getColor" width="420px" height="420px"></canvas>
+							<div class="color">
+								<canvas id="colorCanvas" @click="getColor" width="420px" height="420px"></canvas>
+							</div>
+							
 						</div>
 						<div class="current-color">
 							<p>Current Color</p> 
@@ -62,8 +65,10 @@
 									<td width="10%">DIY</td>
 									<td width="90%">
 										<p class="normal" 
-											v-for="item in color_diy"  
-											v-bind:style="[{'background-color': item.color},{'color':item.color}]">
+											v-for="(item,index) in color_diy"  
+											v-bind:style="[{'background-color': item.color},{'color':item.color}]"
+											@click="colorDiyClick(index)"
+											>
 										</p>
 									</td>
 								</tr>
