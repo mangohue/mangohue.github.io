@@ -1,4 +1,5 @@
-	
+
+
 function setNormalHeight(){
 	var normal = document.getElementsByClassName("normal");
 	var height = window.getComputedStyle(normal[0]).width;
@@ -7,8 +8,8 @@ function setNormalHeight(){
 		normal[i].style.width = height;
 	}
 }
-
 setNormalHeight();
+
 
 new Vue({
  	el: '#page',

@@ -16,36 +16,70 @@
         border-radius: 15px;
 
       }
+      .color{
+        width: 10%;
+        height: 10%;
+      }
     </style>
 
   </head>
   
   <body id="body">
-      <div id="page" class="page">
-        <div id="bg" class="bg" data-r=200 data-g=120 data-b=150 data-color="#FEB101" @click="testClick" onclick="testClick(this)"></div>
+      <div id="page" class="page" style="margin-top:8px; text-align: center;">
+        <!-- <img class="color" src="images/try/color.png"> -->
+        <!-- <canvas id="myCanvas" width="450px" height="450px" onclick="getColor(event)"></canvas> -->
+        <div>
+          <canvas id="myCanvas" width="420px" height="420px"></canvas>
+        </div>
+        
+        <span id="bg" ></span>
+        
       </div>
-  </body>
+  
     <!-- 先引入 Vue -->
     <script src="js/vue.js"></script>
     <!-- 引入组件库 -->
     <script src="js/mint-ui-index.js"></script>
+    <script type="text/javascript" src="js/getcanvaspixelcolor.js"></script>
     <script>
-      function testClick(e){
-        var bg = document.getElementById('bg');
-        // bg.style.backgroundColor = new RGB(e.dataset.r,e.dataset.g,e.dataset.b);
-        console.log(e.dataset.r);
-      }
 
-      new Vue({
-        el:"#page",
-        data:{
+      var c=document.getElementById("myCanvas");
+      var cxt=c.getContext("2d");
+      var img=new Image();
+      img.src="images/try/color.png";
+      cxt.drawImage(img,0,0);
+      // canvas = $("#canvas");
+      console.log(c);
 
-        },
-        methods:{
-          testClick:function(e){
-            console.log(e);
-          }
-        },
-      })
+      // function getColor(e){
+      //   // console.log( "e.pageX=" + e.pageX + "-->" + "e.pageY=" + e.pageY);
+      //   // console.log( "canvasOffsetX=" + c.offsetLeft + "-->" + "canvasOffsetY=" + c.offsetTop);
+
+      //   var canvasX = Math.floor(e.pageX - c.offsetLeft);
+      //   var canvasY = Math.floor(e.pageY - c.offsetTop);
+      //   // console.log( "canvasX=" + canvasX + "-->" + "canvasY=" + canvasY);
+
+      //   var colorData = document.getElementById("myCanvas").getPixelColor(canvasX, canvasY);
+      //   console.log(colorData);
+
+      //   var bg = document.getElementById("bg");
+      //   bg.style.backgroundColor = colorData.hex;
+      //   console.log(bg);
+      // }
+
+      // new Vue({
+      //   el:'#page',
+      //   data:{
+
+      //   },
+      //   mothods:{
+      //     console.log(1);
+      //   }
+      // })
+
+
+      
     </script>
+
+    </body>
 </html>
