@@ -26,12 +26,12 @@
 						<div class="block color-main">
 							<p class="title page-title">Color</p>
 							<!-- <img class="color" style="border:1px solid #FEB101;" src="images/try/color.png"/> -->
-							<canvas id="colorCanvas" @click="getColor" class="color" width="420px" height="420px" style="border:1px solid #FEB101;"></canvas>
+							<canvas id="colorCanvas" @click="getColor" width="420px" height="420px"></canvas>
 						</div>
 						<div class="current-color">
 							<p>Current Color</p> 
 							<p class="current-color-bg" v-bind:style="{ 'background-color': currentColor.color}"></p><br />
-							<p class="current-color-txt">save</p>
+							<p class="current-color-txt" @click="saveColor">save</p>
 						</div>
 						<div >
 							<table width="100%">

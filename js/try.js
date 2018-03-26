@@ -354,22 +354,46 @@ new Vue({
 
 		//获取颜色
 		getColor:function(e){
+			// console.log( "e.pageX=" + e.pageX + "-->" + "e.pageY=" + e.pageY);
+
 			var c = document.getElementById("colorCanvas");
 			var canvasX = Math.floor(e.pageX - c.offsetLeft);
 			var canvasY = Math.floor(e.pageY - c.offsetTop);
+			// console.log( "canvasOffsetX=" + c.offsetLeft + "-->" + "canvasOffsetY=" + c.offsetTop);
+			// console.log("canvasX：" + canvasX + "-->" + "canvasY:" + canvasY );
 			var colorData = document.getElementById("colorCanvas").getPixelColor(canvasX, canvasY);
-			console.log("canvasX：" + canvasX + "------" + "canvasY:" + canvasY );
-			console.log(colorData);
+			
+			// console.log(colorData);
 
-			this._data.currentColor.r = colorData.r;
-			this._data.currentColor.g = colorData.g;
-			this._data.currentColor.b = colorData.b;
-			this._data.currentColor.a = colorData.a;
-			this._data.currentColor.color = colorData.hex;
+			if(colorData.hex != "#000000"){
+				this._data.currentColor.r = colorData.r;
+				this._data.currentColor.g = colorData.g;
+				this._data.currentColor.b = colorData.b;
+				this._data.currentColor.a = colorData.a;
+				this._data.currentColor.color = colorData.hex;
+				// console.log(this._data.currentColor);
+			}
 
-			console.log(this._data.currentColor);
+			
 
-		}
+		},
+
+		//保存颜色
+		saveColor:function(){
+			var tempColor = new Array();
+			tempColor.r = this._data.currentColor.r;
+			tempColor.g = this._data.currentColor.g;
+			tempColor.b = this._data.currentColor.b;
+			tempColor.a = this._data.currentColor.a;
+			tempColor.color = this._data.currentColor.color;
+
+			if(this._data.color_diy.length < 7){
+				this._data.color_diy.push(tempColor);
+			}else if(this._data.color_diy.length = 7){
+				this._data.color_diy.splice(length-1, 1 , tempColor);
+			}
+			
+		},
 	}
 })
 
