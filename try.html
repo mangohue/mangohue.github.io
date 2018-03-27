@@ -116,7 +116,6 @@
 	  					</div>
 	  					<div  class="custom" id="custom" hidden="hidden">
 							<div class="block color-main"> 
-									<!-- <img class="color" src="images/try/color.png"/> -->
 									<canvas id="customCanvas" class="canvas" @click="getColor" width="420px" height="420px"></canvas>
 							</div>
 									<table width="100%">
@@ -124,7 +123,7 @@
 											<td width="10%">Favorites</td>
 											<td width="90%">
 												<p class="normal" 
-													v-for="item in color_custom"  
+													v-for="item in color_diy"  
 													v-bind:style="[{'background-color': item.color},{'color':item.color}]">
 												</p>
 											</td>
