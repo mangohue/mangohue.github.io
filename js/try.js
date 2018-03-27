@@ -377,10 +377,10 @@ new Vue({
 					this._data.color_diy.splice(length-1, 1 , tempColor);
 				}
 			}else if(e == "custom"){
-				if(this._data.custom.length < 7){
-					this._data.custom.push(tempColor);
-				}else if(this._data.custom.length = 7){
-					this._data.custom.splice(length-1, 1 , tempColor);
+				if(this._data.color_custom.length < 7){
+					this._data.color_custom.push(tempColor);
+				}else if(this._data.color_custom.length = 7){
+					this._data.color_custom.splice(length-1, 1 , tempColor);
 				}
 			}
 			
