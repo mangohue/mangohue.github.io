@@ -346,8 +346,9 @@
 		      	var cxt = c.getContext("2d");
 		      	var img = new Image();
 		      	img.src = path;
-		      	cxt.drawImage(img,0,0);
-		     	console.log(c);
+		      	img.onload = function(){
+		      		cxt.drawImage(img,0,0);
+		      	}
   			}
   			drawCanvas("colorCanvas","images/try/color.png");
   			drawCanvas("customCanvas","images/try/color.png");
