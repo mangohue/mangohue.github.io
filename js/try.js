@@ -62,8 +62,8 @@ new Vue({
 			{r:0, g:255 ,b:255, a:1, color:"#00FFFF"},
 			{r:255, g:255 ,b:255, a:1, color:"#FFFFFF"}
 		],
-		color_diy:[],
-		colorCustom:[],
+		color_diy:[{r:255, g:255 ,b:255, a:1, color:"#FFFFFF"}],
+		colorCustom:[{r:255, g:255 ,b:255, a:1, color:"#FFFFFF"}],
 		color_picker: [
       		{
         		flex: 1,
