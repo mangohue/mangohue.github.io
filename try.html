@@ -25,9 +25,7 @@
 					<div class="body-tab" id="color">
 						<div class="block color-main">
 							<p class="title page-title">Color</p>
-							<!-- <img class="color" style="border:1px solid #FEB101;" src="images/try/color.png"/> -->
 							<canvas id="colorCanvas" class="canvas" @click="getColor" width="420px" height="420px"></canvas>
-							
 						</div>
 						<div class="current-color">
 							<p>Current Color</p> 
@@ -116,7 +114,7 @@
 	  					</div>
 	  					<div  class="custom" id="custom" hidden="hidden">
 							<div class="block color-main"> 
-									<img class="color" src="images/try/color.png"/>
+									<!-- <canvas id="customCanvas" class="canvas" @click="getColor" width="420px" height="420px"></canvas> -->
 							</div>
 									<table width="100%">
 										<tr>
@@ -346,9 +344,9 @@
 		      	var img = new Image();
 		      	img.src = path;
 		      	cxt.drawImage(img,0,0);
-		     	console.log(c);
   			}
-  			drawCanvas("colorCanvas","images/try/color.png")
+  			drawCanvas("colorCanvas","images/try/color.png");
+  			// drawCanvas("customCanvas","images/try/color.png");
 			
 		</script>
 
