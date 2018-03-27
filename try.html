@@ -116,7 +116,8 @@
 	  					</div>
 	  					<div  class="custom" id="custom" hidden="hidden">
 							<div class="block color-main"> 
-									<img class="color" src="images/try/color.png"/>
+									<!-- <img class="color" src="images/try/color.png"/> -->
+									<canvas id="customCanvas" class="canvas" @click="getColor" width="420px" height="420px"></canvas>
 							</div>
 									<table width="100%">
 										<tr>
@@ -348,7 +349,8 @@
 		      	cxt.drawImage(img,0,0);
 		     	console.log(c);
   			}
-  			drawCanvas("colorCanvas","images/try/color.png")
+  			drawCanvas("colorCanvas","images/try/color.png");
+  			drawCanvas("customCanvas","images/try/color.png");
 			
 		</script>
 
