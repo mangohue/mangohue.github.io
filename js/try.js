@@ -394,6 +394,21 @@ new Vue({
 			this._data.currentColor.a = this._data.color_diy[index].a;
 			this._data.currentColor.color = this._data.color_diy[index].color;
 		},
+
+		//在色环上滑动
+		getColorMove:function(e){
+			var that = this;
+			that.getColor(e);
+			console.log(1);
+			document.getElementById("colorCanvas").addEventListener(
+				"touchmove", function(){
+			    	that.getColor(e);
+			    	console.log(2);
+				}
+			);
+		},
+
+		
 	}
 })
 

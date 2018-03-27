@@ -13,7 +13,8 @@ setNormalHeight();
 
 new Vue({
  	el: '#page',
-  	data:{
+  data:{
+  		pageId:"colorCanvas",
   		isSetTimer:false,
 		musicIsPlay:false,
 		micIsPlay:false,
@@ -61,7 +62,16 @@ new Vue({
 			{r:0, g:255 ,b:255, a:1, color:"#00FFFF"},
 			{r:255, g:255 ,b:255, a:1, color:"#FFFFFF"}
 		],
-		color_diy:[],
+		color_diy:[
+			{r:255, g:0 ,b:0, a:1, color:"#FF0000"},
+			{r:0, g:255 ,b:0, a:1, color:"#00FF00"},
+			{r:0, g:0 ,b:255, a:1, color:"#0000FF"},
+			{r:255, g:255 ,b:0, a:1, color:"#FFFF00"},
+			{r:255, g:0 ,b:255, a:1, color:"#FF00FF"},
+			{r:0, g:255 ,b:255, a:1, color:"#00FFFF"},
+			{r:255, g:255 ,b:255, a:1, color:"#FFFFFF"}
+		],
+		color_custom:[],
 		color_picker: [
       		{
         		flex: 1,
@@ -108,12 +118,6 @@ new Vue({
     	},  
 		]
 	},
-
-	mounted:function(){
-		this.colorDiyClick(1);
-
-	},
-		
 	methods:{
 		tabClick:function(tabName){
 			var tab = document.getElementsByClassName("f-tab");
@@ -143,8 +147,10 @@ new Vue({
 					
 			if(tabName == "color"){
 				tabImg[0].src="images/try/tab_color_true.png";
+				this._data.pageId = "colorCanvas";
 			}else if(tabName == "mode"){
 				tabImg[1].src="images/try/tab_mode_true.png";
+				this._data.pageId = "customCanvas";
 			}else if(tabName == "music"){
 				tabImg[2].src="images/try/tab_music_true.png";
 			}else if(tabName == "timer"){
@@ -202,6 +208,7 @@ new Vue({
 				this._data.musicIsPlay = true;
 			}
 		},
+		
 		//mic暂停开始
 		micChange:function(e){
 			 this._data.micIsPlay = !this._data.micIsPlay;
@@ -211,6 +218,7 @@ new Vue({
 			 	console.log("mic start");
 			 }
 		},
+		
 		//灯带开关切换
 		btnSwitch:function(e){
 			this._data.btn_switch = !this._data.btn_switch;
@@ -220,6 +228,7 @@ new Vue({
 				console.log("close LED");
 			}
 		},
+		
 		//点击color页面normal颜色
 		normalColor: function (index){
 			this._data.currentColor.r = this._data.normal[index].r;
@@ -229,6 +238,7 @@ new Vue({
 			this._data.currentColor.color = this._data.normal[index].color;
 			console.log("set color to "+ this._data.normal[index].color);
 		},
+		
 		//mode页面picker change
 		pickerModeChange(picker, values){
 			console.log("click "+values[0]);
@@ -296,25 +306,6 @@ new Vue({
 				}
 				
 			}
-			// if(e == "Single"){
-			// 	this._data.timerMode.single = true;
-			// }else if(e == "Daily"){
-			// 	this._data.timerMode.daily = true;
-			// }else if(e == "Mon"){
-			// 	this._data.timerMode.mon = true;
-			// }else if(e == "Tue"){
-			// 	this._data.timerMode.tue = true;
-			// }else if(e == "Wed"){
-			// 	this._data.timerMode.wed = true;
-			// }else if(e == "Thu"){
-			// 	this._data.timerMode.thu = true;
-			// }else if(e == "Fri"){
-			// 	this._data.timerMode.fri = true;
-			// }else if(e == "Sat"){
-			// 	this._data.timerMode.sat = true;
-			// }else if(e == "Sun"){
-			// 	this._data.timerMode.sun = true;
-			// }
 			this._data.timer.day = e;
 			if(e == "single"){
 				this._data.isSingleTime = false;
@@ -357,14 +348,14 @@ new Vue({
 		//获取颜色
 		getColor:function(e){
 			// console.log( "e.pageX=" + e.pageX + "-->" + "e.pageY=" + e.pageY);
-			var canvasWidth = document.getElementById("colorCanvas").clientHeight;
+			var canvasWidth = document.getElementById(this._data.pageId).clientHeight;
 
-			var c = document.getElementById("colorCanvas");
+			var c = document.getElementById(this._data.pageId);
 			var canvasX = Math.floor((e.pageX - c.offsetLeft) * (420/canvasWidth) );
 			var canvasY = Math.floor((e.pageY - c.offsetTop) * (420/canvasWidth) );
 			// console.log( "canvasOffsetX=" + c.offsetLeft + "-->" + "canvasOffsetY=" + c.offsetTop);
 			// console.log("canvasX：" + canvasX + "-->" + "canvasY:" + canvasY );
-			var colorData = document.getElementById("colorCanvas").getPixelColor(canvasX, canvasY);
+			var colorData = document.getElementById(this._data.pageId).getPixelColor(canvasX, canvasY);
 			
 			// console.log(colorData);
 
@@ -379,7 +370,7 @@ new Vue({
 		},
 
 		//保存颜色
-		saveColor:function(){
+		saveColor:function(e){
 			var tempColor = new Array();
 			tempColor.r = this._data.currentColor.r;
 			tempColor.g = this._data.currentColor.g;
@@ -387,44 +378,29 @@ new Vue({
 			tempColor.a = this._data.currentColor.a;
 			tempColor.color = this._data.currentColor.color;
 
-			if(this._data.color_diy.length < 7){
-				this._data.color_diy.push(tempColor);
-			}else if(this._data.color_diy.length = 7){
-				this._data.color_diy.splice(length-1, 1 , tempColor);
+			if(e == "color"){
+				if(this._data.color_diy.length < 7){
+					this._data.color_diy.push(tempColor);
+				}else if(this._data.color_diy.length = 7){
+					this._data.color_diy.splice(length-1, 1 , tempColor);
+				}
+			}else if(e == "custom"){
+				if(this._data.color_custom.length < 7){
+					this._data.color_custom.push(tempColor);
+				}else if(this._data.color_custom.length = 7){
+					this._data.color_custom.splice(length-1, 1 , tempColor);
+				}
 			}
+			
 		},
 
 		//点击color页面diy颜色
 		colorDiyClick:function(index){
-			
-			var _time = null;
-			var _timeStart = null;
-			var _timeEnd = null;
-			var normal = document.getElementsByClassName("normal");
-			// for (var i = normal.length - 1; i >= 0; i--) {
-				normal[index].addEventListener(
-					"touchstart",function(){
-						_timeStart = new Date().getTime();
-						_time = setTimeout(function(){
-							console.log("long clikc1"+index);
-						},1000);
-					}
-				);
-				normal[index].addEventListener(
-					"touchend",function(){
-						clearTimeout(_time);
-						_timeEnd = new Date().getTime();
-						if(_timeEnd - _timeStart < 1000){
-							console.log("click !"+index);
-						}				
-					}
-				);
-			// }
-
-		},
-
-		test:function(index){
-			colorDiyClick(index);
+			this._data.currentColor.r = this._data.color_diy[index].r;
+			this._data.currentColor.g = this._data.color_diy[index].g;
+			this._data.currentColor.b = this._data.color_diy[index].b;
+			this._data.currentColor.a = this._data.color_diy[index].a;
+			this._data.currentColor.color = this._data.color_diy[index].color;
 		},
 	}
 })
