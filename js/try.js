@@ -63,7 +63,7 @@ new Vue({
 			{r:255, g:255 ,b:255, a:1, color:"#FFFFFF"}
 		],
 		color_diy:[],
-		color_custom:[],
+		colorCustom:[],
 		color_picker: [
       		{
         		flex: 1,
@@ -396,10 +396,10 @@ new Vue({
 					this._data.color_diy.splice(length-1, 1 , tempColor);
 				}
 			}else{
-				if(this._data.color_custom.length < 7){
-					this._data.color_custom.push(tempColor);
-				}else if(this._data.color_custom.length = 7){
-					this._data.color_custom.splice(length-1, 1 , tempColor);
+				if(this._data.colorCustom.length < 7){
+					this._data.colorCustom.push(tempColor);
+				}else if(this._data.colorCustom.length = 7){
+					this._data.colorCustom.splice(length-1, 1 , tempColor);
 				}
 			}
 
