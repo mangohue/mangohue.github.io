@@ -32,7 +32,7 @@
 						<div class="current-color">
 							<p>Current Color</p> 
 							<p class="current-color-bg" v-bind:style="{ 'background-color': currentColor.color}"></p><br />
-							<p class="current-color-txt" @click="saveColor">save</p>
+							<p class="current-color-txt" @click="saveColor('color')">save</p>
 						</div>
 						<div >
 							<table width="100%">
@@ -77,8 +77,8 @@
 					<div class="body-tab" id="mode" hidden="hidden">
 						<div id="custom-current-color" class="current-color" hidden="hidden">
 							<p>Current Color</p>
-							<p class="current-color-bg"></p><br />
-							<p class="current-color-txt">save</p>
+							<p class="current-color-bg" v-bind:style="{ 'background-color': currentColor.color}"></p><br />
+							<p class="current-color-txt" @click="saveColor('custom')">save</p>
 						</div>
 	  					<div class="tab-title page-title">
 	  							<span id="tab-title-classic" class="tab-title-left-true" @click="tabTitle('classic')">&nbsp;&nbsp;&nbsp;Classic</span><span id="tab-title-custom" class="tab-title-right-flase" @click="tabTitle('custom')">Customize</span>
@@ -116,14 +116,14 @@
 	  					</div>
 	  					<div  class="custom" id="custom" hidden="hidden">
 							<div class="block color-main"> 
-									<img class="color" src="images/try/color.png"/>
+									<canvas id="customCanvas" class="canvas" @click="getColor" width="420px" height="420px"></canvas>
 							</div>
 									<table width="100%">
 										<tr>
 											<td width="10%">Favorites</td>
 											<td width="90%">
 												<p class="normal" 
-													v-for="item in normal"  
+													v-for="item in color_custom"  
 													v-bind:style="[{'background-color': item.color},{'color':item.color}]">
 												</p>
 											</td>
@@ -346,9 +346,9 @@
 		      	var img = new Image();
 		      	img.src = path;
 		      	cxt.drawImage(img,0,0);
-		     	console.log(c);
   			}
-  			drawCanvas("colorCanvas","images/try/color.png")
+  			drawCanvas("colorCanvas","images/try/color.png");
+  			drawCanvas("customCanvas","images/try/color.png");
 			
 		</script>
 

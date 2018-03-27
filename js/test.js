@@ -13,7 +13,7 @@ setNormalHeight();
 
 new Vue({
  	el: '#page',
-  data:{
+  	data:{
   		isSetTimer:false,
 		musicIsPlay:false,
 		micIsPlay:false,
@@ -108,6 +108,12 @@ new Vue({
     	},  
 		]
 	},
+
+	mounted:function(){
+		this.colorDiyClick(1);
+
+	},
+		
 	methods:{
 		tabClick:function(tabName){
 			var tab = document.getElementsByClassName("f-tab");
@@ -196,7 +202,6 @@ new Vue({
 				this._data.musicIsPlay = true;
 			}
 		},
-		
 		//mic暂停开始
 		micChange:function(e){
 			 this._data.micIsPlay = !this._data.micIsPlay;
@@ -206,7 +211,6 @@ new Vue({
 			 	console.log("mic start");
 			 }
 		},
-		
 		//灯带开关切换
 		btnSwitch:function(e){
 			this._data.btn_switch = !this._data.btn_switch;
@@ -216,7 +220,6 @@ new Vue({
 				console.log("close LED");
 			}
 		},
-		
 		//点击color页面normal颜色
 		normalColor: function (index){
 			this._data.currentColor.r = this._data.normal[index].r;
@@ -226,7 +229,6 @@ new Vue({
 			this._data.currentColor.color = this._data.normal[index].color;
 			console.log("set color to "+ this._data.normal[index].color);
 		},
-		
 		//mode页面picker change
 		pickerModeChange(picker, values){
 			console.log("click "+values[0]);
@@ -355,12 +357,11 @@ new Vue({
 		//获取颜色
 		getColor:function(e){
 			// console.log( "e.pageX=" + e.pageX + "-->" + "e.pageY=" + e.pageY);
-			var canvasWidth = document.getElementById("colorCanvas");
-			console.log(canvasWidth);
+			var canvasWidth = document.getElementById("colorCanvas").clientHeight;
 
 			var c = document.getElementById("colorCanvas");
-			var canvasX = Math.floor(e.pageX - c.offsetLeft);
-			var canvasY = Math.floor(e.pageY - c.offsetTop);
+			var canvasX = Math.floor((e.pageX - c.offsetLeft) * (420/canvasWidth) );
+			var canvasY = Math.floor((e.pageY - c.offsetTop) * (420/canvasWidth) );
 			// console.log( "canvasOffsetX=" + c.offsetLeft + "-->" + "canvasOffsetY=" + c.offsetTop);
 			// console.log("canvasX：" + canvasX + "-->" + "canvasY:" + canvasY );
 			var colorData = document.getElementById("colorCanvas").getPixelColor(canvasX, canvasY);
@@ -375,9 +376,6 @@ new Vue({
 				this._data.currentColor.color = colorData.hex;
 				// console.log(this._data.currentColor);
 			}
-
-			
-
 		},
 
 		//保存颜色
@@ -394,17 +392,39 @@ new Vue({
 			}else if(this._data.color_diy.length = 7){
 				this._data.color_diy.splice(length-1, 1 , tempColor);
 			}
-			
 		},
 
 		//点击color页面diy颜色
 		colorDiyClick:function(index){
-			this._data.currentColor.r = this._data.color_diy[index].r;
-			this._data.currentColor.g = this._data.color_diy[index].g;
-			this._data.currentColor.b = this._data.color_diy[index].b;
-			this._data.currentColor.a = this._data.color_diy[index].a;
-			this._data.currentColor.color = this._data.color_diy[index].color;
-			console.log("set color to "+ this._data.color_diy[index].color);
+			
+			var _time = null;
+			var _timeStart = null;
+			var _timeEnd = null;
+			var normal = document.getElementsByClassName("normal");
+			// for (var i = normal.length - 1; i >= 0; i--) {
+				normal[index].addEventListener(
+					"touchstart",function(){
+						_timeStart = new Date().getTime();
+						_time = setTimeout(function(){
+							console.log("long clikc1"+index);
+						},1000);
+					}
+				);
+				normal[index].addEventListener(
+					"touchend",function(){
+						clearTimeout(_time);
+						_timeEnd = new Date().getTime();
+						if(_timeEnd - _timeStart < 1000){
+							console.log("click !"+index);
+						}				
+					}
+				);
+			// }
+
+		},
+
+		test:function(index){
+			colorDiyClick(index);
 		},
 	}
 })
