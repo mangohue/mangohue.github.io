@@ -22,6 +22,7 @@
 	float: left;
 	width: 25%;
 	height: 100%;
+	text-align: center;
 }
 
 .f-tab:active{
@@ -32,6 +33,7 @@
 	width: 25px;
 	height: 25px;
 	padding-top: 8px;
+	padding-bottom: 3px;
 }
 .tab-txt-true{
 	color: #FEB101;

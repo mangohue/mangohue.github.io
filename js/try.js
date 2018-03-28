@@ -1,12 +1,17 @@
 
+
+
 //设备检测  
 if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
 	// alert('手机端');
 }else{
 	// alert('PC端');
-	// var page= document.getElementById("body");
-	// page.className="pc-page";
+	// var pc= document.getElementById("pc");
+	// pc.className="pc-page";
+	// var tab =  document.getElementById("footer");
+	// tab.style.width = "500px";
 }
+
 
 function setNormalHeight(){
 	var normal = document.getElementsByClassName("normal");
