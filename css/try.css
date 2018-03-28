@@ -333,6 +333,16 @@
 	height: 100%;
 }
 
+.pc-page{
+	width:500px;
+	height: 800px;
+	border:1px solid #FEB101;
+}
+
+tr{
+	height: 40px;
+}
+
 
 
 

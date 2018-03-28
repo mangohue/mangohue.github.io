@@ -1,4 +1,12 @@
 
+//设备检测  
+if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+	// alert('手机端');
+}else{
+	// alert('PC端');
+	// var page= document.getElementById("body");
+	// page.className="pc-page";
+}
 
 function setNormalHeight(){
 	var normal = document.getElementsByClassName("normal");
@@ -404,55 +412,44 @@ new Vue({
 		//在色环上滑动
 		getColorMove:function(e){
 			var that =this;
-
 			document.getElementById("colorCanvas").addEventListener(
 				"touchstart",function(e){
                     that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
-                    
                 }
 			);
 			document.getElementById("colorCanvas").addEventListener(
 				"touchmove",function(e){
                     that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
-                    
                 }
 			);
-
 			document.getElementById("customCanvas").addEventListener(
 				"touchstart",function(e){
                     that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
-                    
                 }
 			);
 			document.getElementById("customCanvas").addEventListener(
 				"touchmove",function(e){
                     that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
-                    
                 }
 			);
 			document.getElementById("colorCanvas").addEventListener(
 				"mousedown",function(e){
                     that.getColor(e.pageX,e.pageY);
-                    
                 }
 			);
 			document.getElementById("colorCanvas").addEventListener(
 				"mousemove",function(e){
                     that.getColor(e.pageX,e.pageY);
-                    
                 }
 			);
-
 			document.getElementById("customCanvas").addEventListener(
 				"mousedown",function(e){
                     that.getColor(e.pageX,e.pageY);
-                    
                 }
 			);
 			document.getElementById("customCanvas").addEventListener(
 				"mousemove",function(e){
                     that.getColor(e.pageX,e.pageY);
-                    
                 }
 			);
 
