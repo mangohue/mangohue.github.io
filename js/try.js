@@ -430,6 +430,31 @@ new Vue({
                     
                 }
 			);
+			document.getElementById("colorCanvas").addEventListener(
+				"mousedown",function(e){
+                    that.getColor(e.pageX,e.pageY);
+                    
+                }
+			);
+			document.getElementById("colorCanvas").addEventListener(
+				"mousemove",function(e){
+                    that.getColor(e.pageX,e.pageY);
+                    
+                }
+			);
+
+			document.getElementById("customCanvas").addEventListener(
+				"mousedown",function(e){
+                    that.getColor(e.pageX,e.pageY);
+                    
+                }
+			);
+			document.getElementById("customCanvas").addEventListener(
+				"mousemove",function(e){
+                    that.getColor(e.pageX,e.pageY);
+                    
+                }
+			);
 
 		},
 
