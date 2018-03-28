@@ -110,6 +110,11 @@ new Vue({
     	},  
 		]
 	},
+
+	mounted:function(){
+		this.getColorMove();
+	},
+
 	methods:{
 		tabClick:function(tabName){
 			var tab = document.getElementsByClassName("f-tab");
@@ -338,18 +343,19 @@ new Vue({
 		},
 
 		//获取颜色
-		getColor:function(e){
+		getColor:function(pageX,pageY){
+			// console.log("getColor");
 			// console.log( "e.pageX=" + e.pageX + "-->" + "e.pageY=" + e.pageY);
 			var canvasWidth = document.getElementById(this._data.pageId).clientHeight;
 
 			var c = document.getElementById(this._data.pageId);
-			var canvasX = Math.floor((e.pageX - c.offsetLeft) * (420/canvasWidth) );
-			var canvasY = Math.floor((e.pageY - c.offsetTop) * (420/canvasWidth) );
+			var canvasX = Math.floor((pageX - c.offsetLeft) * (420/canvasWidth) );
+			var canvasY = Math.floor((pageY - c.offsetTop) * (420/canvasWidth) );
 			// console.log( "canvasOffsetX=" + c.offsetLeft + "-->" + "canvasOffsetY=" + c.offsetTop);
 			// console.log("canvasX：" + canvasX + "-->" + "canvasY:" + canvasY );
 			var colorData = document.getElementById(this._data.pageId).getPixelColor(canvasX, canvasY);
 			
-			// console.log(colorData);
+			console.log("set color to " + colorData.hex);
 
 			if(colorData.hex != "#000000"){
 				this._data.currentColor.r = colorData.r;
@@ -397,16 +403,37 @@ new Vue({
 
 		//在色环上滑动
 		getColorMove:function(e){
-			var that = this;
-			that.getColor(e);
-			console.log(1);
+			var that =this;
+
 			document.getElementById("colorCanvas").addEventListener(
-				"touchmove", function(){
-			    	that.getColor(e);
-			    	console.log(2);
-				}
+				"touchstart",function(e){
+                    that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
+                    
+                }
 			);
+			document.getElementById("colorCanvas").addEventListener(
+				"touchmove",function(e){
+                    that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
+                    
+                }
+			);
+
+			document.getElementById("customCanvas").addEventListener(
+				"touchstart",function(e){
+                    that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
+                    
+                }
+			);
+			document.getElementById("customCanvas").addEventListener(
+				"touchmove",function(e){
+                    that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
+                    
+                }
+			);
+
 		},
+
+		
 
 		
 	}
