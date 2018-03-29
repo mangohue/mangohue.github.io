@@ -23,7 +23,7 @@
 	        color: #333333;
 	        text-decoration: none;
         }
-        a:hover
+        a:hover,help
         {
 	        color: #003F8C;
 	        font-weight: bold;
@@ -163,13 +163,37 @@
                             </td>
                             <td style="width: 25px;">
                                 <img src="images/download/go.png" alt="&gt;" style="width: 20px; height: 20px">
-
                             </td>
                         </tr>
                     </tbody></table>
                 </div>
-                </a>
-            <div class="line"></div>
+            </a>
+            <div class="help">
+                <div class="line"></div>
+                    <div style="background-color:#FFFFFF" onclick="help()">
+                        <table style="width: 100%; padding-left:10px; padding-right:5px; ">
+                            <tbody><tr>
+                                <td style="width:10px;"> 
+                                </td>
+                                <td style="font-size: 20px; font-weight: bold;">
+                                    <table>
+                                        <tbody><tr>
+                                            <td>
+                                                <img src="images/download/guide.png" alt="User guide" style="width: 70px; height: 70px;margin:10px;"></td>
+                                            <td>
+                                              User guide
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </td>
+                                <td style="width: 25px;">
+                                    <img src="images/download/go.png" alt="&gt;" style="width: 20px; height: 20px">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+            </div>
+            <div class="line"></div>     
         </div>
     </form>
 
@@ -196,7 +220,14 @@
         if (browser.sys.ios) {
             document.location = "https://itunes.apple.com/cn/app/mangohome/id1357458491?l=en&mt=8";
         }
-        
+
+        function help(){
+            if(browser.language == "zh-cn"){
+                location.href = "http://www.mangohue.com/cn/help.html";
+            }else{
+                location.href = "http://www.mangohue.com/help.html";
+            }
+        }
 
 </script>
 
