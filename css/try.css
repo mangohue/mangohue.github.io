@@ -52,7 +52,7 @@
 	width: 76%; 
 	text-align: center;
 	margin-left: 12%;
-	margin-right: 12%;
+	float: left;
 }
 
 .block{
@@ -211,10 +211,9 @@
 
 .current-color{
 	float: right;
-	position: absolute;
+	/*position: absolute;*/
 	right: 0;
 	text-align: center;
-	padding: 0 10px 0 0 ;
 	top: 18px;
 }
 
@@ -336,7 +335,7 @@
 }
 
 .pc-page{
-	width:500px;
+	width:450px;
 	height: 800px;
 	border:1px solid #FEB101;
 }

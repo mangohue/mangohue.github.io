@@ -1,5 +1,18 @@
 
 
+
+//设备检测  
+if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+	// alert('手机端');
+}else{
+	// alert('PC端');
+	// var pc= document.getElementById("pc");
+	// pc.className="pc-page";
+	// var tab =  document.getElementById("footer");
+	// tab.style.width = "500px";
+}
+
+
 function setNormalHeight(){
 	var normal = document.getElementsByClassName("normal");
 	var height = window.getComputedStyle(normal[0]).width;
@@ -62,15 +75,7 @@ new Vue({
 			{r:0, g:255 ,b:255, a:1, color:"#00FFFF"},
 			{r:255, g:255 ,b:255, a:1, color:"#FFFFFF"}
 		],
-		color_diy:[
-			{r:255, g:0 ,b:0, a:1, color:"#FF0000"},
-			{r:0, g:255 ,b:0, a:1, color:"#00FF00"},
-			{r:0, g:0 ,b:255, a:1, color:"#0000FF"},
-			{r:255, g:255 ,b:0, a:1, color:"#FFFF00"},
-			{r:255, g:0 ,b:255, a:1, color:"#FF00FF"},
-			{r:0, g:255 ,b:255, a:1, color:"#00FFFF"},
-			{r:255, g:255 ,b:255, a:1, color:"#FFFFFF"}
-		],
+		color_diy:[],
 		color_custom:[],
 		color_picker: [
       		{
@@ -118,6 +123,11 @@ new Vue({
     	},  
 		]
 	},
+
+	mounted:function(){
+		this.getColorMove();
+	},
+
 	methods:{
 		tabClick:function(tabName){
 			var tab = document.getElementsByClassName("f-tab");
@@ -346,18 +356,19 @@ new Vue({
 		},
 
 		//获取颜色
-		getColor:function(e){
+		getColor:function(pageX,pageY){
+			// console.log("getColor");
 			// console.log( "e.pageX=" + e.pageX + "-->" + "e.pageY=" + e.pageY);
 			var canvasWidth = document.getElementById(this._data.pageId).clientHeight;
 
 			var c = document.getElementById(this._data.pageId);
-			var canvasX = Math.floor((e.pageX - c.offsetLeft) * (420/canvasWidth) );
-			var canvasY = Math.floor((e.pageY - c.offsetTop) * (420/canvasWidth) );
+			var canvasX = Math.floor((pageX - c.offsetLeft) * (420/canvasWidth) );
+			var canvasY = Math.floor((pageY - c.offsetTop) * (420/canvasWidth) );
 			// console.log( "canvasOffsetX=" + c.offsetLeft + "-->" + "canvasOffsetY=" + c.offsetTop);
 			// console.log("canvasX：" + canvasX + "-->" + "canvasY:" + canvasY );
 			var colorData = document.getElementById(this._data.pageId).getPixelColor(canvasX, canvasY);
 			
-			// console.log(colorData);
+			console.log("set color to " + colorData.hex);
 
 			if(colorData.hex != "#000000"){
 				this._data.currentColor.r = colorData.r;
@@ -402,6 +413,56 @@ new Vue({
 			this._data.currentColor.a = this._data.color_diy[index].a;
 			this._data.currentColor.color = this._data.color_diy[index].color;
 		},
+
+		//在色环上滑动
+		getColorMove:function(e){
+			var that =this;
+			document.getElementById("colorCanvas").addEventListener(
+				"touchstart",function(e){
+                    that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
+                }
+			);
+			document.getElementById("colorCanvas").addEventListener(
+				"touchmove",function(e){
+                    that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
+                }
+			);
+			document.getElementById("customCanvas").addEventListener(
+				"touchstart",function(e){
+                    that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
+                }
+			);
+			document.getElementById("customCanvas").addEventListener(
+				"touchmove",function(e){
+                    that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
+                }
+			);
+			document.getElementById("colorCanvas").addEventListener(
+				"mousedown",function(e){
+                    that.getColor(e.pageX,e.pageY);
+                }
+			);
+			document.getElementById("colorCanvas").addEventListener(
+				"mousemove",function(e){
+                    that.getColor(e.pageX,e.pageY);
+                }
+			);
+			document.getElementById("customCanvas").addEventListener(
+				"mousedown",function(e){
+                    that.getColor(e.pageX,e.pageY);
+                }
+			);
+			document.getElementById("customCanvas").addEventListener(
+				"mousemove",function(e){
+                    that.getColor(e.pageX,e.pageY);
+                }
+			);
+
+		},
+
+		
+
+		
 	}
 })
 

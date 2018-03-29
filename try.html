@@ -8,7 +8,7 @@
   		<link rel="stylesheet" href="css/style.css">
   		<link rel="stylesheet" href="css/try.css" />
 	</head>
-	<body id="body">
+	<body id="body" id="body">
 		<div id="pc">
 	  		<div id="page" class="page">
 	  		<div v-show="!isSetTimer">
@@ -31,7 +31,7 @@
 							
 						</div>
 						<div class="current-color">
-							<p>Current Color</p> 
+							<p>Current</p> 
 							<p class="current-color-bg" v-bind:style="{ 'background-color': currentColor.color}"></p><br />
 							<p class="current-color-txt" @click="saveColor('color')">save</p>
 						</div>
@@ -77,7 +77,7 @@
 					<!--mode页面-->
 					<div class="body-tab" id="mode" hidden="hidden">
 						<div id="custom-current-color" class="current-color" hidden="hidden">
-							<p>Current Color</p>
+							<p>Current</p>
 							<p class="current-color-bg" v-bind:style="{ 'background-color': currentColor.color}"></p><br />
 							<p class="current-color-txt" @click="saveColor('custom')">save</p>
 						</div>
@@ -216,7 +216,7 @@
 						<div class="line"></div>
 					</div>
 				</div>
-				<div class="footer">
+				<div id="footer" class="footer">
 					<div class="f-tab" data-tab="color" @click="tabClick('color')">
 						<img class="f-img" src="images/try/tab_color_true.png" />
 						<!--<img class="f-img" src="images/try/tab_color_false.png" style="display: none;"/>-->

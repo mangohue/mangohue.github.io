@@ -1,16 +1,24 @@
 
 
+function isPc(){
+	//设备检测  
+	if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+		// alert('手机端');
+	}else{
+		// alert('PC端');
+		var pc= document.getElementById("pc");
+		pc.className="pc-page";
+		var tab =  document.getElementById("footer");
+		tab.style.width = "450px";
 
-//设备检测  
-if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
-	// alert('手机端');
-}else{
-	// alert('PC端');
-	// var pc= document.getElementById("pc");
-	// pc.className="pc-page";
-	// var tab =  document.getElementById("footer");
-	// tab.style.width = "500px";
+		pc.style.marginLeft = (document.body.clientWidth-450)/2 + "px";
+
+
+	}
 }
+
+isPc();
+
 
 
 function setNormalHeight(){
