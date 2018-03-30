@@ -46,11 +46,34 @@ new Vue({
 		},
 		timer:{
 			isSingle:true,
-			currentDate:"",
-			currentHour:"",
-			timer_btn_switch:false,
-			open:false
+			currentTime:"",
+			timeingDate:"",
+			timeingHour:"",
+			repeat:"Single",
+			action:true,
+			mode:"",
 		},
+		tempTimer:{
+			isSingle:true,
+			currentTime:"",
+			timeingDate:"",
+			timeingHour:"",
+			repeat:"Single",
+			action:true,
+			mode:"",
+		},
+		repeat:[
+			{class:true, show:"Single"},
+			{class:false, show:"Daily"},
+			{class:false, show:"Mon"},
+			{class:false, show:"Tue"},
+			{class:false, show:"Wed"},
+			{class:false, show:"Thu"},
+			{class:false, show:"Fri"},
+			{class:false, show:"Sat"},
+			{class:false, show:"Sun"},
+		],
+
 		normal:[ 
 			{r:255, g:0 ,b:0, a:1, color:"#FF0000"},
 			{r:0, g:255 ,b:0, a:1, color:"#00FF00"},
@@ -244,27 +267,62 @@ new Vue({
 			 	console.log("mic start");
 			 }
 		},
+
 		ensure:function(value){
 			console.log(value);
+			this._data.tempTimer.timeingHour = value;
 		},
 
 		ensureSingle:function(value){
 			console.log(value);
+			var year = value.getFullYear();
+			var month = value.getMonth()+1;
+			var day = value.getDate();
+			var hour = value.getHours();
+			var min = value.getMinutes();
+			this._data.tempTimer.timeingDate = (year < 10 ? "0" : "") + year + "-" + (month < 10 ? "0" : "") + month  + "-" +(day < 10 ? "0" : "") + day;
+			this._data.tempTimer.timeingHour = (hour < 10 ? "0" : "") + hour + ":"  + (min < 10 ? "0" : "") + min;
 		},
 
 		setTimer:function(e){
-			this._data.isSetTimer = e;
-			if(e){
+			this._data.isSetTimer = !this._data.isSetTimer;
+			if(e == "go"){
 				var currentTime = new Date();
 				var year = currentTime.getFullYear();
 				var month = currentTime.getMonth()+1;
 				var day = currentTime.getDate();
 				var hour = currentTime.getHours();
 				var min = currentTime.getMinutes();
-				this._data.timer.currentDate = year + "-" + (month < 10 ? "0" : "") + month + "-" + ( day < 10 ? "0" : "") + day;
-				this._data.timer.currentHour = (hour < 10 ? "0" : "") + hour + ":" + (min < 10 ? "0" : "") + min;
 				
+				this._data.tempTimer.isSingle = this._data.timer.isSingle;
+				this._data.tempTimer.currentTime = this._data.timer.currentTime;
+				this._data.tempTimer.timeingDate = this._data.timer.timeingDate;
+				this._data.tempTimer.timeingHour = this._data.timer.timeingHour;
+				this._data.tempTimer.repeat = this._data.timer.repeat;
+				this._data.tempTimer.action = this._data.timer.action;
+				this._data.tempTimer.mode = this._data.timer.mode;
+
+				this._data.tempTimer.timeingDate = year + "-" + (month < 10 ? "0" : "") + month + "-" + ( day < 10 ? "0" : "") + day;
+				this._data.tempTimer.timeingHour = (hour < 10 ? "0" : "") + hour + ":" + (min < 10 ? "0" : "") + min;
+
+
+
+				this._data.timer.currentTime = this._data.tempTimer.currentTime = this._data.tempTimer.timeingDate + " " +this._data.tempTimer.timeingHour;
+
+			}else if(e == "ok"){
+				this._data.timer.isSingle = this._data.tempTimer.isSingle;
+				this._data.timer.currentTime = this._data.tempTimer.currentTime;
+				this._data.timer.timeingDate = this._data.tempTimer.timeingDate;
+				this._data.timer.timeingHour = this._data.tempTimer.timeingHour;
+				this._data.timer.repeat = this._data.tempTimer.repeat;
+				this._data.timer.action = this._data.tempTimer.action;
+				this._data.timer.mode = this._data.tempTimer.mode;
 			}
+		},
+
+		tiemrBtnClick:function(){
+			console.log("timer set action to " + (this._data.timer.action ? "open LED" : "close LED" ));
+			this._data.tempTimer.action = !this._data.tempTimer.action;
 		},
 
 		//获取颜色
@@ -292,6 +350,35 @@ new Vue({
 			}
 		},
 
+		setTimerDate:function(e){
+			for (var temp in this._data.repeat) {
+				if( e == this._data.repeat[temp].show){
+					this._data.repeat[temp].class = true;
+					this._data.tempTimer.repeat = this._data.repeat[temp].show;
+					console.log("set timer data to " + this._data.repeat[temp].show);
+				}else{
+					this._data.repeat[temp].class = false;
+				}
+			}
+			if(e == "Single"){
+				this._data.tempTimer.isSingle = true;
+			}else{
+				this._data.tempTimer.isSingle = false;
+			}
+		},
+
+		selectTimingTime:function(e){
+			if(e==true){
+				this.$refs.pickerSingle.open();
+			}else{
+				this.$refs.picker.open();
+			}
+		},
+
+		timerModeChange(picker,value){
+			console.log("tiemr set mode to "+value[0]);
+			this._data.tempTimer.mode = value[0];
+		},
 
 		//在色环上滑动
 		getColorMove:function(e){

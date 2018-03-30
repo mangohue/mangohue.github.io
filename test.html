@@ -201,15 +201,15 @@
                 <td>My Timer</td>
               </tr>
               <tr>
-                <td class="time" width="20%" v-show="timer.isSingle">{{timer.currentDate}} {{timer.currentHour}}</td>
-                <td class="time" width="20%" v-show="!timer.isSingle">{{timer.currentHour}}</td>
-                <td class="set-timer" width="60%" @click="setTimer(true)">
-                  <span>789</span> /
-                  <span>13</span> /
-                  <span>3445</span>
+                <td class="time" width="20%" v-show="timer.isSingle">{{timer.timeingDate}} {{timer.timeingHour}}</td>
+                <td class="time" width="20%" v-show="!timer.isSingle">{{timer.timeingHour}}</td>
+                <td class="set-timer" width="60%" @click="setTimer('go')">
+                  <span>{{timer.action ? "Light On" : "Light Off"}}</span> /
+                  <span>{{timer.repeat}}</span> /
+                  <span>{{timer.mode}}</span>
                 </td>
                 <td class="set-timer-switch" width="20%">
-                  <mt-switch  ></mt-switch>
+                  <mt-switch></mt-switch>
                 </td>
               </tr>
             </table>
@@ -244,13 +244,13 @@
           <table width="100%">
             <tr>
               <td width="10%">
-                <img class="timer-back"  src="images/try/back.png" @click="setTimer(false)"/>
+                <img class="timer-back"  src="images/try/back.png" @click="setTimer('back')"/>
               </td>
               <td width="80%" style="text-align: center;">
                 <span class="timer-title">Modify the timer</span>
               </td>
               <td width="8%">
-                <span class="timer-ok">OK</span>
+                <span class="timer-ok" @click="setTimer('ok')">OK</span>
               </td>
             </tr>
           </table>
@@ -263,7 +263,7 @@
                 <span>Current time</span>
               </td>
               <td width="75%">
-                <span>123</span>
+                <span>{{timer.currentTime}}</span>
               </td>
             </tr>
             <!--Timing time-->
@@ -272,10 +272,10 @@
                 <span>Timing time</span>
               </td>
               <td width="75%">
-                <span>123</span>
+                <span v-show="!tempTimer.isSingle" @click="selectTimingTime(false)"> {{tempTimer.timeingHour}}</span>
                 <mt-datetime-picker ref="picker" cancel-text="Cancel" confirm-text = "Confirm" type="time" @confirm="ensure"></mt-datetime-picker>
                 
-                <span >234</span>
+                <span v-show="tempTimer.isSingle" @click="selectTimingTime(true)" >{{tempTimer.timeingDate}} {{tempTimer.timeingHour}}</span>
                 <mt-datetime-picker ref="pickerSingle" cancel-text="Cancel" confirm-text = "Confirm" type="datetime"  @confirm="ensureSingle"></mt-datetime-picker>
 
               </td>
@@ -286,8 +286,8 @@
                 <span>Repeat</span>
               </td>
               <td width="75%">
-                <span class="repeat_btn_false" @click="setTimerDate('Single')" >Single</span>
-                <span class="repeat_btn_false" @click="setTimerDate('Daily')" >Daily</span>
+                <span class="repeat_btn_false" v-bind:class="{repeat_btn_true:repeat[0].class}" @click="setTimerDate('Single')">{{repeat[0].show}}</span>
+                <span class="repeat_btn_false" v-bind:class="{repeat_btn_true:repeat[1].class}" @click="setTimerDate('Daily')">{{repeat[1].show}}</span>
               </td>
             </tr>
             <!--Weekly-->
@@ -296,13 +296,13 @@
                 <span>Weekly</span>
               </td>
               <td width="75%">
-                <span class="weekly_btn_false" @click="setTimerDate('Mon')">Mon</span>
-                <span class="weekly_btn_false" @click="setTimerDate('Tue')">Tue</span>
-                <span class="weekly_btn_false" @click="setTimerDate('Wed')">Wed</span>
-                <span class="weekly_btn_false" @click="setTimerDate('Thu')">Thu</span>
-                <span class="weekly_btn_false" @click="setTimerDate('Fri')">Fri</span>
-                <span class="weekly_btn_false" @click="setTimerDate('Sat')">Sat</span>
-                <span class="weekly_btn_false" @click="setTimerDate('Sun')">Sun</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[2].class}" @click="setTimerDate('Mon')">{{repeat[2].show}}</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[3].class}" @click="setTimerDate('Tue')">{{repeat[3].show}}</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[4].class}" @click="setTimerDate('Wed')">{{repeat[4].show}}</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[5].class}" @click="setTimerDate('Thu')">{{repeat[5].show}}</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[6].class}" @click="setTimerDate('Fri')">{{repeat[6].show}}</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[7].class}" @click="setTimerDate('Sat')">{{repeat[7].show}}</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[8].class}" @click="setTimerDate('Sun')">{{repeat[8].show}}</span>
               </td>
             </tr>
             <!--action-->
@@ -311,8 +311,8 @@
                 <span>Action</span>
               </td>
               <td width="75%">
-                <img class="timer-btn-switch" src="images/try/btn_false.png"  />
-                <img class="timer-btn-switch" src="images/try/btn_true.png"  />
+                <img class="timer-btn-switch" @click="tiemrBtnClick" v-show="!tempTimer.action" src="images/try/btn_false.png"  />
+                <img class="timer-btn-switch" @click="tiemrBtnClick" v-show="tempTimer.action" src="images/try/btn_true.png"  />
                 <span>Power on/off</span>
               </td>
             </tr>
@@ -322,7 +322,7 @@
                 <span>Mode</span>
               </td>
               <td width="75%">
-                <mt-picker :slots="color_picker" ></mt-picker>
+                <mt-picker :slots="color_picker" @change="timerModeChange"></mt-picker>
               </td>
             </tr>
           </table>
