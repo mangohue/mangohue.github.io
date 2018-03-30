@@ -22,6 +22,7 @@
 	float: left;
 	width: 25%;
 	height: 100%;
+	text-align: center;
 }
 
 .f-tab:active{
@@ -32,6 +33,7 @@
 	width: 25px;
 	height: 25px;
 	padding-top: 8px;
+	padding-bottom: 3px;
 }
 .tab-txt-true{
 	color: #FEB101;
@@ -50,7 +52,7 @@
 	width: 76%; 
 	text-align: center;
 	margin-left: 12%;
-	margin-right: 12%;
+	float: left;
 }
 
 .block{
@@ -146,7 +148,7 @@
 	position: relative;
 }
 
-.normal,.diy{
+.normal{
 	width: 7%;
 	margin: 3%;
 	border: 1px solid #C0C0C0;
@@ -209,10 +211,9 @@
 
 .current-color{
 	float: right;
-	position: absolute;
+	/*position: absolute;*/
 	right: 0;
 	text-align: center;
-	padding: 0 10px 0 0 ;
 	top: 18px;
 }
 
@@ -331,6 +332,16 @@
 .canvas{
 	width: 100%;
 	height: 100%;
+}
+
+.pc-page{
+	width:450px;
+	height: 800px;
+	border:1px solid #FEB101;
+}
+
+tr{
+	height: 40px;
 }
 
 

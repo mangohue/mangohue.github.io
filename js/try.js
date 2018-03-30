@@ -8,6 +8,7 @@ function isPc(){
 		// alert('PC端');
 		var pc= document.getElementById("pc");
 		pc.className="pc-page";
+		pc.style.height =   "800px";
 		var tab =  document.getElementById("footer");
 		tab.style.width = "450px";
 
@@ -17,7 +18,7 @@ function isPc(){
 	}
 }
 
-isPc();
+// isPc();
 
 
 
@@ -119,17 +120,15 @@ new Vue({
 				console.log("change to falshing");
 			}
 		},
-		music_picker: [
-    	{
+		music_picker: [{
      		flex: 1,
      		values: [
      			"Jump Blues","Fplk-Rock","Free Jazz","Trance","Pop-Rap","File Music"
      		],
 	    	className: 'slot',
-      	textAlign: 'center',
-      	textSize: '10px',
-    	},  
-		]
+      		textAlign: 'center',
+      		textSize: '10px',
+    	}]
 	},
 
 	mounted:function(){
@@ -388,30 +387,7 @@ new Vue({
 			}
 		},
 
-		//保存颜色
-		saveColor:function(e){
-			var tempColor = new Array();
-			tempColor.r = this._data.currentColor.r;
-			tempColor.g = this._data.currentColor.g;
-			tempColor.b = this._data.currentColor.b;
-			tempColor.a = this._data.currentColor.a;
-			tempColor.color = this._data.currentColor.color;
-
-			if(e == "color"){
-				if(this._data.color_diy.length < 7){
-					this._data.color_diy.push(tempColor);
-				}else if(this._data.color_diy.length = 7){
-					this._data.color_diy.splice(length-1, 1 , tempColor);
-				}
-			}else if(e == "custom"){
-				if(this._data.color_custom.length < 7){
-					this._data.color_custom.push(tempColor);
-				}else if(this._data.color_custom.length = 7){
-					this._data.color_custom.splice(length-1, 1 , tempColor);
-				}
-			}
-			
-		},
+	
 
 		//点击color页面diy颜色
 		colorDiyClick:function(index){
