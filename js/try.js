@@ -387,6 +387,28 @@ new Vue({
 			}
 		},
 
+		saveColor:function(e){
+			var tempColor = new Array();
+			tempColor.r = this._data.currentColor.r;
+			tempColor.g = this._data.currentColor.g;
+			tempColor.b = this._data.currentColor.b;
+			tempColor.a = this._data.currentColor.a;
+			tempColor.color = this._data.currentColor.color;
+			if(e == "color"){
+				if(this._data.color_diy.length < 7){
+					this._data.color_diy.push(tempColor);
+				}else{
+					this._data.color_diy.splice(this._data.color_diy.length, 1, tempColor);
+				}
+			}else if(e == "custom"){
+				if(this._data.color_custom.length < 7){
+					this._data.color_custom.push(tempColor);
+				}else{
+					this._data.color_custom.splice(this._data.color_custom.length, 1, tempColor);
+				}
+			}
+		},
+
 	
 
 		//点击color页面diy颜色
