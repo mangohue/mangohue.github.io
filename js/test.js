@@ -37,6 +37,12 @@ new Vue({
   		selected:"color",
   		rangeBright:100,
   		rangeSpeed:50,
+  		tabbar:{
+  			color:true,
+  			mode:false,
+  			music:false,
+  			timer:false,
+  		},
   		currentColor:{
 			r:255,
 			g:255,
@@ -51,7 +57,7 @@ new Vue({
 			timeingHour:"",
 			repeat:"Single",
 			action:true,
-			mode:"",
+			mode:"Dinner Mode",
 		},
 		tempTimer:{
 			isSingle:true,
@@ -61,6 +67,8 @@ new Vue({
 			repeat:"Single",
 			action:true,
 			mode:"",
+			startDate:"",
+			startDateSingle:""
 		},
 		repeat:[
 			{class:true, show:"Single"},
@@ -294,21 +302,23 @@ new Vue({
 				var hour = currentTime.getHours();
 				var min = currentTime.getMinutes();
 				
+				this._data.tempTimer.timeingDate = year + "-" + (month < 10 ? "0" : "") + month + "-" + ( day < 10 ? "0" : "") + day;
+				this._data.tempTimer.timeingHour = (hour < 10 ? "0" : "") + hour + ":" + (min < 10 ? "0" : "") + min;
+
 				this._data.tempTimer.isSingle = this._data.timer.isSingle;
-				this._data.tempTimer.currentTime = this._data.timer.currentTime;
-				this._data.tempTimer.timeingDate = this._data.timer.timeingDate;
-				this._data.tempTimer.timeingHour = this._data.timer.timeingHour;
+				// this._data.tempTimer.currentTime = this._data.timer.currentTime;
+				// this._data.tempTimer.timeingDate = this._data.timer.timeingDate;
+				// this._data.tempTimer.timeingHour = this._data.timer.timeingHour;
 				this._data.tempTimer.repeat = this._data.timer.repeat;
 				this._data.tempTimer.action = this._data.timer.action;
 				this._data.tempTimer.mode = this._data.timer.mode;
 
-				this._data.tempTimer.timeingDate = year + "-" + (month < 10 ? "0" : "") + month + "-" + ( day < 10 ? "0" : "") + day;
-				this._data.tempTimer.timeingHour = (hour < 10 ? "0" : "") + hour + ":" + (min < 10 ? "0" : "") + min;
+				this._data.tempTimer.startDateSingle = currentTime;
+				this._data.tempTimer.startDate = this._data.tempTimer.timeingHour;
 
-
+				this.setTimerDate(this._data.tempTimer.repeat);
 
 				this._data.timer.currentTime = this._data.tempTimer.currentTime = this._data.tempTimer.timeingDate + " " +this._data.tempTimer.timeingHour;
-
 			}else if(e == "ok"){
 				this._data.timer.isSingle = this._data.tempTimer.isSingle;
 				this._data.timer.currentTime = this._data.tempTimer.currentTime;
@@ -383,48 +393,44 @@ new Vue({
 		//在色环上滑动
 		getColorMove:function(e){
 			var that =this;
-			document.getElementById("colorCanvas").addEventListener(
-				"touchstart",function(e){
-                    that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
-                }
-			);
-			document.getElementById("colorCanvas").addEventListener(
-				"touchmove",function(e){
-                    that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
-                }
-			);
-			document.getElementById("customCanvas").addEventListener(
-				"touchstart",function(e){
-                    that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
-                }
-			);
-			document.getElementById("customCanvas").addEventListener(
-				"touchmove",function(e){
-                    that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
-                }
-			);
-			document.getElementById("colorCanvas").addEventListener(
-				"mousedown",function(e){
-                    that.getColor(e.pageX,e.pageY);
-                }
-			);
-			document.getElementById("colorCanvas").addEventListener(
-				"mousemove",function(e){
-                    that.getColor(e.pageX,e.pageY);
-                }
-			);
-			document.getElementById("customCanvas").addEventListener(
-				"mousedown",function(e){
-                    that.getColor(e.pageX,e.pageY);
-                }
-			);
-			document.getElementById("customCanvas").addEventListener(
-				"mousemove",function(e){
-                    that.getColor(e.pageX,e.pageY);
-                }
-			);
+			var id = new Array("colorCanvas","customCanvas");
+			
+			for(var i in id){
+					document.getElementById(id[i]).addEventListener(
+					"touchstart",function(e){
+	                    that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
+	                });
+					document.getElementById(id[i]).addEventListener(
+					"touchmove",function(e){
+		                that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
+		            });
 
+		            document.getElementById(id[i]).addEventListener(
+					"mousedown",function(e){
+	                    that.getColor(e.pageX,e.pageY);
+	                });
+					document.getElementById(id[i]).addEventListener(
+					"mousemove",function(e){
+		                   that.getColor(e.pageX,e.pageY);
+		            });
+	            
+			}
 		},
+
+		tabbarClick:function(e){
+			for (var t in this._data.tabbar) {
+				if(e == t){
+					this._data.tabbar[t] = true;
+				}else{
+					this._data.tabbar[t] = false;
+				}
+			}
+			if(e == "mode"){
+				this._data.pageId = "customCanvas";
+			}else if (e == "color") {
+				this._data.pageId = "colorCanvas";
+			}
+		}
 
 
 	}

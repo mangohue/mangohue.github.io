@@ -1,47 +1,20 @@
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{margin:0;padding:0;border:0;} 
+body{background:#fff;color:#333;font-size:12px; margin-top:0px;font-family:"Arial","微软雅黑","Verdana","SimSun","PingFang SC","Hiragino Sans GB" ;} 
+ 
+ul,ol{list-style-type:none;} 
+select,input,img,select{vertical-align:middle;} 
+ 
+a{text-decoration:none;} 
+a:link{color:#009;} 
+a:visited{color:#800080;} 
+/*a:hover,a:active,a:focus{color:#c00;text-decoration:underline;}*/
 
-*{
-	font-family:"Arial","微软雅黑","Verdana","SimSun","PingFang SC","Hiragino Sans GB" ;
-}
-
-.body-tab{
-	padding: 5px 10px 0 10px;
-	margin-top: 8px;
-	
-}
-
-.footer{
-	width: 100%;
-	height: 50px;
-	border-top: 1px solid #AAAAAA;
-	text-align: center;
-	bottom: 0;
-	position: absolute;
-	background-color: white;
-}
-.f-tab{
-	float: left;
-	width: 25%;
-	height: 100%;
-	text-align: center;
+.page-item{
+	margin-left: 8px;
+	margin-right: 8px;
+	margin-top: 14px;
 }
 
-.f-tab:active{
-	background-color:#DEDEDE;
-}
-
-.f-img{
-	width: 25px;
-	height: 25px;
-	padding-top: 8px;
-	padding-bottom: 3px;
-}
-.tab-txt-true{
-	color: #FEB101;
-}
-
-.tab-txt-false{
-	color: #000000;
-}
 .inline{
 	width: 100%;
 }

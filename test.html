@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>MangoHome Try</title>
-    <link rel="stylesheet"  href="css/init.css"/>
       <link rel="stylesheet" href="css/style.css">
       <link rel="stylesheet" href="css/test.css" />
   </head>
@@ -15,6 +14,7 @@
         <mt-tab-container v-model="selected">
           <!-- color -->
           <mt-tab-container-item id="color">
+          <div class="page-item">
             <!--开关-->
             <div class="btn-switch" id="btn-switch">
               <img class="btn-img" src="images/try/btn_true.png" v-show="btn_switch" @click="btnSwitch(true)"/>
@@ -69,9 +69,11 @@
                 </tr>
               </table>
             </div>
+          </div>
           </mt-tab-container-item>
           <!-- mode -->
           <mt-tab-container-item id="mode">
+            <div class="page-item">
             <!--开关-->
             <div class="btn-switch" id="btn-switch">
               <img class="btn-img" src="images/try/btn_true.png" v-show="btn_switch" @click="btnSwitch(true)"/>
@@ -83,7 +85,7 @@
               <p class="current-color-txt" @click="saveColor('custom')">save</p>
             </div>
             <div class="tab-title page-title">
-                  <span id="tab-title-classic" class="tab-title-left-true" @click="tabTitle('classic')">&nbsp;&nbsp;&nbsp;Classic</span><span id="tab-title-custom" class="tab-title-right-flase" @click="tabTitle('custom')">Customize</span>
+                  <span id="tab-title-classic" class="tab-title-left-true" @click="tabTitle('classic')">&nbsp;Classic</span><span id="tab-title-custom" class="tab-title-right-flase" @click="tabTitle('custom')">Custom</span>
             </div>
             <div class="classic" id="classic">
               <div class="color-picker">
@@ -162,13 +164,14 @@
                       </td>
                     </tr>
                   </table>
-                  
               </div>
+            </div>
           </mt-tab-container-item>
           <!-- music -->
           <mt-tab-container-item id="music">
+            <div class="page-item">
             <div class="tab-title page-title">
-                  <span id="tab-title-music" class="tab-title-left-true " @click="tabTitle('music')">Music</span><span id="tab-title-mic" class="tab-title-right-flase" @click="tabTitle('mic')">Mic&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                  <span id="tab-title-music" class="tab-title-left-true " @click="tabTitle('music')">Music</span><span id="tab-title-mic" class="tab-title-right-flase" @click="tabTitle('mic')">&nbsp;Mic&nbsp;&nbsp;&nbsp;</span>
               </div>
               <div class="music-main" id="music-main">
                 <div class="disk">
@@ -193,47 +196,54 @@
               <div class="music-picker">
                 <mt-picker :slots="music_picker" @change="musicModeChange"></mt-picker>
               </div>
+            </div>
           </mt-tab-container-item>
           <!-- timer -->
           <mt-tab-container-item id="timer">
-            <table class="table" width="100%">
-              <tr class="line">
-                <td>My Timer</td>
-              </tr>
-              <tr>
-                <td class="time" width="20%" v-show="timer.isSingle">{{timer.timeingDate}} {{timer.timeingHour}}</td>
-                <td class="time" width="20%" v-show="!timer.isSingle">{{timer.timeingHour}}</td>
-                <td class="set-timer" width="60%" @click="setTimer('go')">
-                  <span>{{timer.action ? "Light On" : "Light Off"}}</span> /
-                  <span>{{timer.repeat}}</span> /
-                  <span>{{timer.mode}}</span>
-                </td>
-                <td class="set-timer-switch" width="20%">
-                  <mt-switch></mt-switch>
-                </td>
-              </tr>
-            </table>
-            <div class="line"></div>
+            <div class="page-item">
+              <table class="table" width="100%">
+                <tr class="line">
+                  <td>My Timer</td>
+                </tr>
+                <tr>
+                  <td class="time" width="20%" v-show="timer.isSingle">{{timer.timeingDate}} {{timer.timeingHour}}</td>
+                  <td class="time" width="20%" v-show="!timer.isSingle">{{timer.timeingHour}}</td>
+                  <td class="set-timer" width="60%" @click="setTimer('go')">
+                    <span>{{timer.action ? "Light On" : "Light Off"}}</span> /
+                    <span>{{timer.repeat}}</span> /
+                    <span>{{timer.mode}}</span>
+                  </td>
+                  <td class="set-timer-switch" width="20%">
+                    <mt-switch></mt-switch>
+                  </td>
+                </tr>
+              </table>
+              <div class="line"></div>
+            </div>
           </mt-tab-container-item>
         </mt-tab-container>
       </div>
         
       <div class="footer" v-show="!isSetTimer">
-        <mt-tabbar v-model="selected">
+        <mt-tabbar v-model="selected"  @click.native="tabbarClick(selected)">
           <mt-tab-item id="color">
-            <img slot="icon" src="images/try/tab_color_true.png">
+            <img slot="icon" v-show="tabbar.color" src="images/try/tab_color_true.png">
+            <img slot="icon" v-show="!tabbar.color" src="images/try/tab_color_false.png">
             Color
           </mt-tab-item>
           <mt-tab-item id="mode">
-            <img slot="icon" src="images/try/tab_mode_false.png">
+            <img slot="icon" v-show="tabbar.mode" src="images/try/tab_mode_true.png">
+            <img slot="icon" v-show="!tabbar.mode" src="images/try/tab_mode_false.png">
             Mode
           </mt-tab-item>
           <mt-tab-item id="music">
-            <img slot="icon" src="images/try/tab_music_false.png">
+            <img slot="icon" v-show="tabbar.music" src="images/try/tab_music_true.png">
+            <img slot="icon" v-show="!tabbar.music" src="images/try/tab_music_false.png">
             Music
           </mt-tab-item>
           <mt-tab-item id="timer">
-            <img slot="icon" src="images/try/tab_timer_false.png">
+            <img slot="icon" v-show="tabbar.timer" src="images/try/tab_timer_true.png">
+            <img slot="icon" v-show="!tabbar.timer" src="images/try/tab_timer_false.png">
             Timer
           </mt-tab-item>
         </mt-tabbar>
@@ -273,10 +283,10 @@
               </td>
               <td width="75%">
                 <span v-show="!tempTimer.isSingle" @click="selectTimingTime(false)"> {{tempTimer.timeingHour}}</span>
-                <mt-datetime-picker ref="picker" cancel-text="Cancel" confirm-text = "Confirm" type="time" @confirm="ensure"></mt-datetime-picker>
+                <mt-datetime-picker ref="picker" cancel-text="Cancel" v-model="tempTimer.startDate" confirm-text = "Confirm" type="time" @confirm="ensure"></mt-datetime-picker>
                 
                 <span v-show="tempTimer.isSingle" @click="selectTimingTime(true)" >{{tempTimer.timeingDate}} {{tempTimer.timeingHour}}</span>
-                <mt-datetime-picker ref="pickerSingle" cancel-text="Cancel" confirm-text = "Confirm" type="datetime"  @confirm="ensureSingle"></mt-datetime-picker>
+                <mt-datetime-picker ref="pickerSingle" cancel-text="Cancel"  v-model="tempTimer.startDateSingle" confirm-text = "Confirm" type="datetime"  @confirm="ensureSingle"></mt-datetime-picker>
 
               </td>
             </tr>
