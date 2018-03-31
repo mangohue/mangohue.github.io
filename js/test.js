@@ -37,6 +37,10 @@ new Vue({
   		selected:"color",
   		rangeBright:100,
   		rangeSpeed:50,
+  		samllPage{
+  			mode:true;
+  			music:true;
+  		},
   		tabbar:{
   			color:true,
   			mode:false,

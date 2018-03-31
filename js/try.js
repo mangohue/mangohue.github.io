@@ -43,6 +43,10 @@ new Vue({
   			music:false,
   			timer:false,
   		},
+  		smallPage{
+  			mode:true;
+  			music:true;
+  		},
   		currentColor:{
 			r:255,
 			g:255,
