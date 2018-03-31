@@ -1,361 +1,379 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<title>MangoHome 虚拟设备</title>
-		<link rel="stylesheet"  href="../css/init.css"/>
-  		<link rel="stylesheet" href="../css/style.css">
-  		<link rel="stylesheet" href="../css/try.css" />
-	</head>
-	<body id="body">
-		<div id="pc">
-	  		<div id="page" class="page">
-	  		<div v-show="!isSetTimer">
-		  		<!--头部-->
-				<div class="header" id="header">
-				</div>
-				<!--开关-->
-				<div class="btn-switch" id="btn-switch">
-					<img class="btn-img" src="../images/try/btn_true.png" v-show="btn_switch" @click="btnSwitch(true)"/>
-					<img class="btn-img" src="../images/try/btn_false.png" v-show="!btn_switch" @click="btnSwitch(false)"/>
-				</div>
-				<!--主页面-->
-				<div class="main">
-					<!--color页面-->
-					<div class="body-tab" id="color">
-						<div class="block color-main">
-							<p class="title page-title">颜色</p>
-							<!-- <img class="color" style="border:1px solid #FEB101;" src="../images/try/color.png"/> -->
-							<canvas id="colorCanvas" class="canvas" width="420px" height="420px"></canvas>
-							
-						</div>
-						<div class="current-color">
-							<p>当前颜色</p> 
-							<p class="current-color-bg" v-bind:style="{ 'background-color': currentColor.color}"></p><br />
-							<p class="current-color-txt" @click="saveColor('color')">保存</p>
-						</div>
-						<div >
-							<table width="100%">
-								<tr height="50px">
-									<td width="10%">亮度</td>
-									<td width="70%">
-										<mt-range class="range" v-model="rangeBright" @change="brightChange">
-										</mt-range>
-									</td>
-									<td width="10%">
-										<img class="icon" src="../images/try/icon_light.png" />
-									</td>
-								</tr>
-								
-								<tr height="50px">
-									<td width="10%">常用</td>
-									<td width="90%">
-										<p class="normal" 
-											v-for="(item,index) in normal"  
-											v-bind:style="[{'background-color': item.color},{'color':item.color}]"
-											@click="normalColor(index)"
-											>
-										</p>
-									</td>
-								</tr>
-								
-								<tr height="50px">
-									<td width="10%">自定义</td>
-									<td width="90%">
-										<p class="normal" 
-											v-for="(item,index) in color_diy"  
-											v-bind:style="[{'background-color': item.color},{'color':item.color}]"
-											@click="colorDiyClick(index)" 
-											>
-										</p>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
-					<!--mode页面-->
-					<div class="body-tab" id="mode" hidden="hidden">
-						<div id="custom-current-color" class="current-color" hidden="hidden">
-							<p>当前颜色</p>
-							<p class="current-color-bg" v-bind:style="{ 'background-color': currentColor.color}"></p><br />
-							<p class="current-color-txt" @click="saveColor('custom')">保存</p>
-						</div>
-	  					<div class="tab-title page-title">
-	  							<span id="tab-title-classic" class="tab-title-left-true" @click="tabTitle('classic')">&nbsp;&nbsp;&nbsp;经典</span><span id="tab-title-custom" class="tab-title-right-flase" @click="tabTitle('custom')">自定义</span>
-	  					</div>
-	  					<div class="classic" id="classic">
-	  						<div class="color-picker">
-	  							<mt-picker :slots="color_picker" @change="pickerModeChange"></mt-picker>
-	  						</div>
-	  						<div >
-							<table width="100%">
-								<tr>
-									<td width="10%">亮度</td>
-									<td width="70%">
-										<mt-range class="range" v-model="rangeBright" @change="brightChange">
-										</mt-range>
-									</td>
-									<td width="10%">
-										<img class="icon" src="../images/try/icon_light.png" />
-									</td>
-								</tr>
-								
-								<tr>
-									<td width="10%">速度</td>
-									<td width="70%">
-										<mt-range class="range" v-model="rangeSpeed" @change="speedChange">
-										</mt-range>
-									</td>
-									<td width="10%">
-										<img class="icon" src="../images/try/icon_speed.png" />
-									</td>
-								</tr>
-								
-							</table>
-						</div>
-	  					</div>
-	  					<div  class="custom" id="custom" hidden="hidden">
-							<div class="block color-main"> 
-									<canvas id="customCanvas" class="canvas" width="420px" height="420px"></canvas>
-							</div>
-									<table width="100%">
-										<tr>
-											<td width="10%">自定义</td>
-											<td width="90%">
-												<p class="normal" 
-													v-for="(item,index) in color_custom"  
-													v-bind:style="[{'background-color': item.color},{'color':item.color}]">
-												</p>
-											</td>
-										</tr>
-										
-										<tr>
-											<td width="10%">模式</td>
-											<td width="70%">
-												<span class="change-mode change-mode-left change-mode-true" @click="changeMode('jump')">跳变</span><span @click="changeMode('breath')" class="change-mode change-mode-false">渐变</span><span @click="changeMode('falsh')" class="change-mode change-mode-right change-mode-false">闪变</span>
-											</td>
-											<td width="10%">
-												
-											</td>
-										</tr>
-										
-										<tr>
-											<td width="10%">亮度</td>
-											<td width="70%">
-												<mt-range class="range" v-model="rangeBright" @change="brightChange">
-												</mt-range>
-											</td>
-											<td width="10%">
-												<img class="icon" src="../images/try/icon_light.png" />
-											</td>
-										</tr>
-										
-										<tr>
-											<td width="10%">速度</td>
-											<td width="70%">
-												<mt-range class="range"  v-model="rangeSpeed" @change="speedChange">
-												</mt-range>
-											</td>
-											<td width="10%">
-												<img class="icon" src="../images/try/icon_speed.png" />
-											</td>
-										</tr>
-									</table>
-									
-	  					</div>
-					</div>
-					<!--Music页面-->
-					<div class="body-tab" id="music"hidden="hidden">
-						<div class="tab-title page-title">
-	  							<span id="tab-title-music" class="tab-title-left-true " @click="tabTitle('music')">  音乐 </span><span id="tab-title-mic" class="tab-title-right-flase" @click="tabTitle('mic')">麦克风</span>
-	  					</div>
-	  					<div class="music-main" id="music-main">
-	  						<div class="disk">
-	  							<img  class="img-disk" src="../images/try/disk.png"/>
-	  						</div>
-	  						<div class="music-control">
-	  							<img class="music-control-item" src="../images/try/play_pre.png"   @click="musicChange('pre')"/>
-	  							<img class="music-control-item" src="../images/try/play_start.png" @click="musicChange('stop')" v-show="musicIsPlay" />
-	  							<img class="music-control-item" src="../images/try/play_stop.png"  @click="musicChange('start')" v-show="!musicIsPlay" />
-	  							<img class="music-control-item" src="../images/try/play_next.png"  @click="musicChange('next')"/>
-	  						</div>
-	  					</div>
-	  					<div class="mic-main" id="mic-main" hidden="hidden">
-	  						<div class="disk">
-	  							<img  class="img-disk" id="wave" src="../images/try/wave.png"/>
-	  						</div>
-	  						<div class="music-control">
-	  							<img class="music-control-item" src="../images/try/play_start.png" @click="micChange(true)" v-show="micIsPlay" />
-	  							<img class="music-control-item" src="../images/try/play_stop.png"  @click="micChange(false)" v-show="!micIsPlay" />
-	  						</div>
-	  					</div>
-	  					<div class="music-picker">
-	  						<mt-picker :slots="music_picker" @change="musicModeChange"></mt-picker>
-	  					</div>
-					</div>
-					<!--timer页面-->
-					<div class="body-tab" id="timer"  hidden="hidden">
-						<table class="table" width="100%">
-							<tr class="line">
-								<td>我的定时</td>
-							</tr>
-							<tr>
-								<td class="time" width="20%" v-show = "isSingleTime">{{timer.time}}</td>
-								<td class="time" width="20%" v-show = "!isSingleTime">{{timer.singleTime}}</td>
-								<td class="set-timer" width="60%" @click="setTimer('go')">
-									<span>{{timer.action ? "开灯" : "关灯"}}</span> /
-									<span>{{timer.day}}</span> /
-									<span>{{timer.mode[0]}}</span>
-								</td>
-								<td class="set-timer-switch" width="20%">
-									<mt-switch  v-model="timer.open"></mt-switch>
-								</td>
-							</tr>
-						</table>
-						<div class="line"></div>
-					</div>
-				</div>
-				<div class="footer">
-					<div class="f-tab" data-tab="color" @click="tabClick('color')">
-						<img class="f-img" src="../images/try/tab_color_true.png" />
-						<!--<img class="f-img" src="../images/try/tab_color_false.png" style="display: none;"/>-->
-						<br />
-						<span class="tab-txt-true">颜色</span>
-					</div>
-					<div class="f-tab" data-tab="mode" @click="tabClick('mode')">
-						<!--<img class="f-img" src="../images/try/tab_mode_true.png" style="display: none;"/>-->
-						<img class="f-img" src="../images/try/tab_mode_false.png" />
-						<br />
-						<span class="tab-txt-false">模式</span>
-					</div>
-					<div class="f-tab" data-tab="music" @click="tabClick('music')">
-						<!--<img class="f-img" src="../images/try/tab_music_true.png" style="display: none;"/>-->
-						<img class="f-img" src="../images/try/tab_music_false.png" />
-						<br />
-						<span class="tab-txt-false">音乐</span>
-					</div>
-					<div class="f-tab" data-tab="timer" @click="tabClick('timer')">
-						<!--<img class="f-img" src="../images/try/tab_timer_true.png" style="display: none;"/>-->
-						<img class="f-img" src="../images/try/tab_timer_false.png" />
-						<br />
-						<span class="tab-txt-false">定时</span>
-					</div>
-				</div>
-			</div>
-			
-			<div v-show="isSetTimer">
-				<div class="timer-header">
-					<table width="100%">
-						<tr>
-							<td width="10%">
-								<img class="timer-back"  src="../images/try/back.png" @click="setTimer('back')" />
-							</td>
-							<td width="80%" style="text-align: center;">
-								<span class="timer-title">修改定时</span>
-							</td>
-							<td width="8%">
-								<span class="timer-ok" @click="setTimer('ok')">OK</span>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div class="timer-body">
-					<table width="100%">
-						<!--Current time-->
-						<tr class="tab-tr">
-							<td width="25">
-								<span>当前时间</span>
-							</td>
-							<td width="75%">
-								<span>{{timer.currentTime}}</span>
-							</td>
-						</tr>
-						<!--Timing time-->
-						<tr class="tab-tr">
-							<td width="25%" >
-								<span>定时时间</span>
-							</td>
-							<td width="75%">
-								<span @click="selectTime(false)" v-show = "isSingleTime">{{timer.time}}</span>
-								<mt-datetime-picker ref="picker" cancel-text="Cancel" confirm-text = "Confirm" type="time" v-model="timer.startDate" @confirm="ensure"></mt-datetime-picker>
-								
-								<span @click="selectTime(true)" v-show = "!isSingleTime">{{timer.singleTime}}</span>
-								<mt-datetime-picker ref="pickerSingle" cancel-text="Cancel" confirm-text = "Confirm" type="datetime" v-model="timer.singleStartDate"  @confirm="ensureSingle"></mt-datetime-picker>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>MangoHome 虚拟设备</title>
+      <link rel="stylesheet" href="../css/style.css">
+      <link rel="stylesheet" href="../css/try.css" />
+  </head>
+  <body id="body" class="body">
+    <div id="page" class="page">
 
-							</td>
-						</tr>
-						<!--Repeat-->
-						<tr class="tab-tr">
-							<td width="25%">
-								<span>重复</span>
-							</td>
-							<td width="75%">
-								<span class="repeat_btn_false" v-bind:class="{repeat_btn_true:timerMode.single}" @click="timerModeChange('single')">单次</span>
-								<span class="repeat_btn_false" v-bind:class="{repeat_btn_true:timerMode.daily}" @click="timerModeChange('daily')">每天</span>
-							</td>
-						</tr>
-						<!--Weekly-->
-						<tr class="tab-tr">
-							<td width="25%">
-								<span>每周</span>
-							</td>
-							<td width="75%">
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.mon}" @click="timerModeChange('mon')">一</span>
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.tue}" @click="timerModeChange('tue')">二</span>
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.wed}" @click="timerModeChange('wed')">三</span>
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.thu}" @click="timerModeChange('thu')">四</span>
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.fri}" @click="timerModeChange('fri')">五</span>
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.sat}" @click="timerModeChange('sat')">六</span>
-								<span class="weekly_btn_false" v-bind:class="{weekly_btn_true:timerMode.sun}" @click="timerModeChange('sun')">日</span>
-							</td>
-						</tr>
-						<!--action-->
-						<tr >
-							<td width="25%">
-								<span>动作</span>
-							</td>
-							<td width="75%">
-								<img class="timer-btn-switch" src="../images/try/btn_false.png" v-show="timer_btn_show" @click="timerBtnChange(true)"/>
-								<img class="timer-btn-switch" src="../images/try/btn_true.png" v-show="!timer_btn_show" @click="timerBtnChange(false)"/>
-								<span>开机/关机</span>
-							</td>
-						</tr>
-						<!--Mode-->
-						<tr >
-							<td width="25%">
-								<span>模式</span>
-							</td>
-							<td width="75%">
-								<mt-picker :slots="color_picker" @change="timerPickerModeChange"></mt-picker>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-			</div> 
-		</div>
-		<script src="../js/getcanvaspixelcolor.js"></script>
-		<script src="../js/vue.js"></script>
-  		<script src="../js/mint-ui-index.js"></script>
-  		<script src="js/try.js"></script>
+      <div class="main"  v-show="!isSetTimer">
+        <mt-tab-container v-model="selected">
+          <!-- color -->
+          <mt-tab-container-item id="color">
+          <div class="page-item">
+            <!--开关-->
+            <div class="btn-switch" id="btn-switch">
+              <img class="btn-img" src="../images/try/btn_true.png" v-show="btn_switch" @click="btnSwitch(true)"/>
+              <img class="btn-img" src="../images/try/btn_false.png" v-show="!btn_switch" @click="btnSwitch(false)"/>
+            </div>
+            <div class="block color-main">
+              <p class="title page-title">颜色</p>
+              <!-- <img class="color" style="border:1px solid #FEB101;" src="../images/try/color.png"/> -->
+              <canvas id="colorCanvas" class="canvas" width="420px" height="420px"></canvas>
+              
+            </div>
+            <div class="current-color">
+              <p>当前</p> 
+              <p class="current-color-bg" v-bind:style="{ 'background-color': currentColor.color}"></p><br />
+              <p class="current-color-txt" @click="saveColor('color')">保存</p>
+            </div>
+            <div >
+              <table width="100%">
+                <tr>
+                  <td width="10%">亮度</td>
+                  <td width="70%">
+                    <mt-range class="range" v-model="rangeBright" @change="brightChange">
+                    </mt-range>
+                  </td>
+                  <td width="10%">
+                    <img class="icon" src="../images/try/icon_light.png" />
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td width="10%">常用</td>
+                  <td width="90%">
+                    <p class="normal" 
+                      v-for="(item,index) in normal"  
+                      v-bind:style="[{'background-color': item.color},{'color':item.color}]"
+                      @click="normalColor(index)"
+                      >
+                    </p>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td width="10%">自定义</td>
+                  <td width="90%">
+                    <p class="normal" 
+                      v-for="(item,index) in color_diy"  
+                      v-bind:style="[{'background-color': item.color},{'color':item.color}]"
+                      @click="colorDiyClick(index)"
+                      >
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          </mt-tab-container-item>
+          <!-- mode -->
+          <mt-tab-container-item id="mode">
+            <div class="page-item">
+            <!--开关-->
+            <div class="btn-switch" id="btn-switch">
+              <img class="btn-img" src="../images/try/btn_true.png" v-show="btn_switch" @click="btnSwitch(true)"/>
+              <img class="btn-img" src="../images/try/btn_false.png" v-show="!btn_switch" @click="btnSwitch(false)"/>
+            </div>
+            
+            <div class="classic" id="classic" v-show="smallPage.mode">
+              <div class="tab-title page-title">
+                <span id="tab-title-classic" class="tab-title-left-true">&nbsp;经典&nbsp;</span><span id="tab-title-custom" class="tab-title-right-false"  @click="tabTitle('mode')">&nbsp;自定义&nbsp;</span>
+              </div>
+              <div class="color-picker">
+                 <mt-picker :slots="color_picker" @change="pickerModeChange"></mt-picker>
+              </div>
+              <div >
+                <table width="100%">
+                  <tr>
+                    <td width="10%">亮度</td>
+                    <td width="70%">
+                      <mt-range class="range" v-model="rangeBright" @change="brightChange">
+                      </mt-range>
+                    </td>
+                    <td width="10%">
+                      <img class="icon" src="../images/try/icon_light.png" />
+                    </td>
+                  </tr>
+                
+                  <tr>
+                    <td width="10%">速度</td>
+                    <td width="70%">
+                      <mt-range class="range" v-model="rangeSpeed" @change="speedChange">
+                      </mt-range>
+                    </td>
+                    <td width="10%">
+                      <img class="icon" src="../images/try/icon_speed.png" />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div  class="custom" id="custom" v-show="!smallPage.mode">
+              <div id="custom-current-color" class="current-color">
+                <p>当前</p>
+                <p class="current-color-bg" v-bind:style="{ 'background-color': currentColor.color}"></p><br />
+                <p class="current-color-txt" @click="saveColor('custom')">保存</p>
+              </div>
+              <div class="tab-title page-title">
+                <span id="tab-title-classic" class="tab-title-left-false" @click="tabTitle('mode')">&nbsp;经典&nbsp;</span><span id="tab-title-custom" class="tab-title-right-true">&nbsp;自定义&nbsp;</span>
+              </div>
+              <div class="block color-main"> 
+                  <canvas id="customCanvas" class="canvas" width="420px" height="420px"></canvas>
+              </div>
+                  <table width="100%">
+                    <tr>
+                      <td width="10%">自定义</td>
+                      <td width="90%">
+                        <p class="normal" 
+                          v-for="(item,index) in color_custom"  
+                          v-bind:style="[{'background-color': item.color},{'color':item.color}]">
+                        </p>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td width="10%">模式</td>
+                      <td width="70%">
+                        <span class="change-mode change-mode-left change-mode-true" @click="changeMode('jump')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;跳变&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span @click="changeMode('breath')" class="change-mode change-mode-false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;渐变&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span @click="changeMode('falsh')" class="change-mode change-mode-right change-mode-false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;闪变&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      </td>
+                      <td width="10%">
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td width="10%">亮度</td>
+                      <td width="70%">
+                        <mt-range class="range" v-model="rangeBright" @change="brightChange">
+                        </mt-range>
+                      </td>
+                      <td width="10%">
+                        <img class="icon" src="../images/try/icon_light.png" />
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td width="10%">速度</td>
+                      <td width="70%">
+                        <mt-range class="range"  v-model="rangeSpeed" @change="speedChange">
+                        </mt-range>
+                      </td>
+                      <td width="10%">
+                        <img class="icon" src="../images/try/icon_speed.png" />
+                      </td>
+                    </tr>
+                  </table>
+              </div>
+            </div>
+          </mt-tab-container-item>
+          <!-- music -->
+          <mt-tab-container-item id="music">
+            <div class="page-item">
+              <!--开关-->
+	          <div class="btn-switch" id="btn-switch">
+	            <img class="btn-img" src="../images/try/btn_true.png" v-show="btn_switch" @click="btnSwitch(true)"/>
+	            <img class="btn-img" src="../images/try/btn_false.png" v-show="!btn_switch" @click="btnSwitch(false)"/>
+	          </div>
+              <div class="music-main" id="music-main" v-show="smallPage.music">
+              	<div class="tab-title page-title">
+                	<span id="tab-title-music" class="tab-title-left-true">&nbsp;音乐&nbsp;</span><span id="tab-title-mic" class="tab-title-right-false" @click="tabTitle('music')">&nbsp;麦克风&nbsp;</span>
+              	</div>
+                <div class="disk">
+                  <img  class="img-disk" src="../images/try/disk.png"/>
+                </div>
+                <div class="music-control">
+                  <img class="music-control-item" src="../images/try/play_pre.png"   @click="musicChange('pre')"/>
+                  <img class="music-control-item" src="../images/try/play_start.png" @click="musicChange('stop')" v-show="musicIsPlay" />
+                  <img class="music-control-item" src="../images/try/play_stop.png"  @click="musicChange('start')" v-show="!musicIsPlay" />
+                  <img class="music-control-item" src="../images/try/play_next.png"  @click="musicChange('next')"/>
+                </div>
+              </div>
+              <div class="mic-main" id="mic-main" v-show="!smallPage.music">
+              	<div class="tab-title page-title">
+                	<span id="tab-title-music" class="tab-title-left-false"  @click="tabTitle('music')">&nbsp;音乐&nbsp;<</span><span id="tab-title-mic" class="tab-title-right-true">&nbsp;麦克风&nbsp;</span>
+              	</div>
+                <div class="disk">
+                  <img  class="img-disk" id="wave" src="../images/try/wave.png"/>
+                </div>
+                <div class="music-control">
+                  <img class="music-control-item" src="../images/try/play_start.png" @click="micChange(true)" v-show="micIsPlay" />
+                  <img class="music-control-item" src="../images/try/play_stop.png"  @click="micChange(false)" v-show="!micIsPlay" />
+                </div>
+              </div>
+              <div class="music-picker">
+                <mt-picker :slots="music_picker" @change="musicModeChange"></mt-picker>
+              </div>
+            </div>
+          </mt-tab-container-item>
+          <!-- timer -->
+          <mt-tab-container-item id="timer">
+            <div class="page-item">
+              <table class="table" width="100%">
+                <tr class="line">
+                  <td>我的定时</td>
+                </tr>
+                <tr>
+                  <td class="time" width="20%" v-show="timer.isSingle">{{timer.timeingDate}} {{timer.timeingHour}}</td>
+                  <td class="time" width="20%" v-show="!timer.isSingle">{{timer.timeingHour}}</td>
+                  <td class="set-timer" width="60%" @click="setTimer('go')">
+                    <span>{{timer.action ? "开灯" : "关灯"}}</span> /
+                    <span>{{timer.repeat}}</span> /
+                    <span>{{timer.mode}}</span>
+                  </td>
+                  <td class="set-timer-switch" width="20%">
+                    <mt-switch></mt-switch>
+                  </td>
+                </tr>
+              </table>
+              <div class="line"></div>
+            </div>
+          </mt-tab-container-item>
+        </mt-tab-container>
+      </div>
+        
+      <div class="footer" v-show="!isSetTimer">
+        <mt-tabbar v-model="selected"  @click.native="tabbarClick(selected)">
+          <mt-tab-item id="color">
+            <img slot="icon" v-show="tabbar.color" src="../images/try/tab_color_true.png">
+            <img slot="icon" v-show="!tabbar.color" src="../images/try/tab_color_false.png">
+            色彩
+          </mt-tab-item>
+          <mt-tab-item id="mode">
+            <img slot="icon" v-show="tabbar.mode" src="../images/try/tab_mode_true.png">
+            <img slot="icon" v-show="!tabbar.mode" src="../images/try/tab_mode_false.png">
+            模式
+          </mt-tab-item>
+          <mt-tab-item id="music">
+            <img slot="icon" v-show="tabbar.music" src="../images/try/tab_music_true.png">
+            <img slot="icon" v-show="!tabbar.music" src="../images/try/tab_music_false.png">
+            音乐
+          </mt-tab-item>
+          <mt-tab-item id="timer">
+            <img slot="icon" v-show="tabbar.timer" src="../images/try/tab_timer_true.png">
+            <img slot="icon" v-show="!tabbar.timer" src="../images/try/tab_timer_false.png">
+            定时
+          </mt-tab-item>
+        </mt-tabbar>
+      </div>
+       
+      <div class="set-timer" v-show="isSetTimer">
+        <div class="timer-header">
+          <table width="100%">
+            <tr>
+              <td width="10%">
+                <img class="timer-back"  src="../images/try/back.png" @click="setTimer('back')"/>
+              </td>
+              <td width="80%" style="text-align: center;">
+                <span class="timer-title">修改定时</span>
+              </td>
+              <td width="8%">
+                <span class="timer-ok" @click="setTimer('ok')">OK</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="timer-body">
+          <table width="100%">
+            <!--Current time-->
+            <tr class="tab-tr">
+              <td width="25">
+                <span>当前时间</span>
+              </td>
+              <td width="75%">
+                <span>{{timer.currentTime}}</span>
+              </td>
+            </tr>
+            <!--Timing time-->
+            <tr class="tab-tr">
+              <td width="25%" >
+                <span>定时时间</span>
+              </td>
+              <td width="75%">
+                <span v-show="!tempTimer.isSingle" @click="selectTimingTime(false)"> {{tempTimer.timeingHour}}</span>
+                <mt-datetime-picker ref="picker" cancel-text="Cancel" v-model="tempTimer.startDate" confirm-text = "Confirm" type="time" @confirm="ensure"></mt-datetime-picker>
+                
+                <span v-show="tempTimer.isSingle" @click="selectTimingTime(true)" >{{tempTimer.timeingDate}} {{tempTimer.timeingHour}}</span>
+                <mt-datetime-picker ref="pickerSingle" cancel-text="Cancel"  v-model="tempTimer.startDateSingle" confirm-text = "Confirm" type="datetime"  @confirm="ensureSingle"></mt-datetime-picker>
 
-  		<script>
-  			function drawCanvas(id,path){
-				var c = document.getElementById(id);
-		      	var cxt = c.getContext("2d");
-		      	var img = new Image();
-		      	img.src = path;
-		      	img.onload = function(){
-		      		cxt.drawImage(img,0,0);
-		      	}
-  			}
-  			drawCanvas("colorCanvas","../images/try/color.png");
-  			drawCanvas("customCanvas","../images/try/color.png");
-			
-		</script>
+              </td>
+            </tr>
+            <!--Repeat-->
+            <tr class="tab-tr">
+              <td width="25%">
+                <span>重复</span>
+              </td>
+              <td width="75%">
+                <span class="repeat_btn_false" v-bind:class="{repeat_btn_true:repeat[0].class}" @click="setTimerDate('Single')">{{repeat[0].show}}</span>
+                <span class="repeat_btn_false" v-bind:class="{repeat_btn_true:repeat[1].class}" @click="setTimerDate('Daily')">{{repeat[1].show}}</span>
+              </td>
+            </tr>
+            <!--Weekly-->
+            <tr class="tab-tr">
+              <td width="25%">
+                <span>每周</span>
+              </td>
+              <td width="75%">
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[2].class}" @click="setTimerDate('Mon')">{{repeat[2].show}}</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[3].class}" @click="setTimerDate('Tue')">{{repeat[3].show}}</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[4].class}" @click="setTimerDate('Wed')">{{repeat[4].show}}</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[5].class}" @click="setTimerDate('Thu')">{{repeat[5].show}}</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[6].class}" @click="setTimerDate('Fri')">{{repeat[6].show}}</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[7].class}" @click="setTimerDate('Sat')">{{repeat[7].show}}</span>
+                <span class="weekly_btn_false" v-bind:class="{weekly_btn_true:repeat[8].class}" @click="setTimerDate('Sun')">{{repeat[8].show}}</span>
+              </td>
+            </tr>
+            <!--action-->
+            <tr >
+              <td width="25%">
+                <span>动作</span>
+              </td>
+              <td width="75%">
+                <img class="timer-btn-switch" @click="tiemrBtnClick" v-show="!tempTimer.action" src="../images/try/btn_false.png"  />
+                <img class="timer-btn-switch" @click="tiemrBtnClick" v-show="tempTimer.action" src="../images/try/btn_true.png"  />
+                <span>开机 / 关机</span>
+              </td>
+            </tr>
+            <!--Mode-->
+            <tr >
+              <td width="25%">
+                <span>模式</span>
+              </td>
+              <td width="75%">
+                <mt-picker :slots="color_picker" @change="timerModeChange"></mt-picker>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
 
-	</body>
-	
-  	
+    <script src="../js/getcanvaspixelcolor.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/mint-ui-index.js"></script>
+    <script src="js/try.js"></script>
+
+    <script>
+      function drawCanvas(id,path){
+      var c = document.getElementById(id);
+          var cxt = c.getContext("2d");
+          var img = new Image();
+          img.src = path;
+          img.onload = function(){
+            cxt.drawImage(img,0,0);
+          }
+      }
+      drawCanvas("colorCanvas","../images/try/color.png");
+      drawCanvas("customCanvas","../images/try/color.png");
+     
+   </script>
+
+  </body>
+  
+  
+    
 </html>
