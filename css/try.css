@@ -59,7 +59,7 @@ a:visited{color:#800080;}
 	padding: 4px 4px 4px 8px;
 }
 
-.tab-title-right-flase{
+.tab-title-right-false{
 	background-color: white;
 	color: #FEB101;
 	border-bottom-right-radius: 20px;
@@ -68,7 +68,7 @@ a:visited{color:#800080;}
 	padding: 4px 8px 4px 4px;
 }
 
-.tab-title-left-flase{
+.tab-title-left-false{
 	background-color: white;
 	color: #FEB101;
 	border-bottom-left-radius: 20px;

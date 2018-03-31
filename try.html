@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>MangoHome Try</title>
       <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/test.css" />
+      <link rel="stylesheet" href="css/try.css" />
   </head>
   <body id="body" class="body">
     <div id="page" class="page">
@@ -79,15 +79,11 @@
               <img class="btn-img" src="images/try/btn_true.png" v-show="btn_switch" @click="btnSwitch(true)"/>
               <img class="btn-img" src="images/try/btn_false.png" v-show="!btn_switch" @click="btnSwitch(false)"/>
             </div>
-            <div id="custom-current-color" class="current-color" hidden="hidden">
-              <p>Current</p>
-              <p class="current-color-bg" v-bind:style="{ 'background-color': currentColor.color}"></p><br />
-              <p class="current-color-txt" @click="saveColor('custom')">save</p>
-            </div>
-            <div class="tab-title page-title">
-                  <span id="tab-title-classic" class="tab-title-left-true" @click="tabTitle('classic')">&nbsp;Classic</span><span id="tab-title-custom" class="tab-title-right-flase" @click="tabTitle('custom')">Custom</span>
-            </div>
-            <div class="classic" id="classic">
+            
+            <div class="classic" id="classic" v-show="smallPage.mode">
+              <div class="tab-title page-title">
+                <span id="tab-title-classic" class="tab-title-left-true">&nbsp;Classic</span><span id="tab-title-custom" class="tab-title-right-false"  @click="tabTitle('mode')">Custom</span>
+              </div>
               <div class="color-picker">
                  <mt-picker :slots="color_picker" @change="pickerModeChange"></mt-picker>
               </div>
@@ -117,7 +113,15 @@
                 </table>
               </div>
             </div>
-            <div  class="custom" id="custom" hidden="hidden">
+            <div  class="custom" id="custom" v-show="!smallPage.mode">
+              <div id="custom-current-color" class="current-color">
+                <p>Current</p>
+                <p class="current-color-bg" v-bind:style="{ 'background-color': currentColor.color}"></p><br />
+                <p class="current-color-txt" @click="saveColor('custom')">save</p>
+              </div>
+              <div class="tab-title page-title">
+                <span id="tab-title-classic" class="tab-title-left-false" @click="tabTitle('mode')">&nbsp;Classic</span><span id="tab-title-custom" class="tab-title-right-true">Custom</span>
+              </div>
               <div class="block color-main"> 
                   <canvas id="customCanvas" class="canvas" width="420px" height="420px"></canvas>
               </div>
@@ -170,10 +174,15 @@
           <!-- music -->
           <mt-tab-container-item id="music">
             <div class="page-item">
-            	<div class="tab-title page-title">
-                  <span id="tab-title-music" class="tab-title-left-true " @click="tabTitle('music')">Music</span><span id="tab-title-mic" class="tab-title-right-flase" @click="tabTitle('mic')">&nbsp;Mic&nbsp;&nbsp;&nbsp;</span>
-              </div>
-              <div class="music-main" id="music-main">
+              <!--开关-->
+	          <div class="btn-switch" id="btn-switch">
+	            <img class="btn-img" src="images/try/btn_true.png" v-show="btn_switch" @click="btnSwitch(true)"/>
+	            <img class="btn-img" src="images/try/btn_false.png" v-show="!btn_switch" @click="btnSwitch(false)"/>
+	          </div>
+              <div class="music-main" id="music-main" v-show="smallPage.music">
+              	<div class="tab-title page-title">
+                	<span id="tab-title-music" class="tab-title-left-true">Music</span><span id="tab-title-mic" class="tab-title-right-false" @click="tabTitle('music')">&nbsp;Mic&nbsp;&nbsp;&nbsp;</span>
+              	</div>
                 <div class="disk">
                   <img  class="img-disk" src="images/try/disk.png"/>
                 </div>
@@ -184,7 +193,10 @@
                   <img class="music-control-item" src="images/try/play_next.png"  @click="musicChange('next')"/>
                 </div>
               </div>
-              <div class="mic-main" id="mic-main" hidden="hidden">
+              <div class="mic-main" id="mic-main" v-show="!smallPage.music">
+              	<div class="tab-title page-title">
+                	<span id="tab-title-music" class="tab-title-left-false"  @click="tabTitle('music')">Music</span><span id="tab-title-mic" class="tab-title-right-true">&nbsp;Mic&nbsp;&nbsp;&nbsp;</span>
+              	</div>
                 <div class="disk">
                   <img  class="img-disk" id="wave" src="images/try/wave.png"/>
                 </div>
@@ -343,7 +355,7 @@
     <script src="js/getcanvaspixelcolor.js"></script>
     <script src="js/vue.js"></script>
     <script src="js/mint-ui-index.js"></script>
-    <script type="text/javascript" src="js/test.js"></script>
+    <script src="js/try.js"></script>
 
     <script>
       function drawCanvas(id,path){

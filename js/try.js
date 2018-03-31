@@ -43,9 +43,9 @@ new Vue({
   			music:false,
   			timer:false,
   		},
-  		smallPage{
-  			mode:true;
-  			music:true;
+  		smallPage:{
+  			mode:true,
+  			music:true,
   		},
   		currentColor:{
 			r:255,
@@ -199,38 +199,10 @@ new Vue({
 			console.log("speed set to " + value);
 		},
 		tabTitle:function(e){
-			var classic = document.getElementById("classic");
-			var custom = document.getElementById("custom");
-			var tabTitleClassic = document.getElementById("tab-title-classic");
-			var tabTitleCustom = document.getElementById("tab-title-custom");
-			var modeCurrent = document.getElementById("custom-current-color");
-			if(e == "classic"){
-				classic.hidden="";
-				custom.hidden="hidden";
-				tabTitleClassic.className="tab-title-left-true";
-				tabTitleCustom.className="tab-title-right-flase";
-				modeCurrent.hidden="hidden";
-			}else if(e == "custom"){
-				classic.hidden="hidden";
-				custom.hidden="";
-				tabTitleClassic.className="tab-title-left-flase";
-				tabTitleCustom.className="tab-title-right-true";
-				modeCurrent.hidden="";
-			}
-			var tabtitleMusic = document.getElementById("tab-title-music");
-			var tabtitleMic = document.getElementById("tab-title-mic");
-			var musicMain = document.getElementById("music-main");
-			var micMain = document.getElementById("mic-main");
 			if(e == "music"){
-				musicMain.hidden="";
-				micMain.hidden="hidden";
-				tabtitleMusic.className="tab-title-left-true";
-				tabtitleMic.className="tab-title-right-flase";
-			}else if(e == "mic"){
-				musicMain.hidden="hidden";
-				micMain.hidden="";
-				tabtitleMusic.className="tab-title-left-flase";
-				tabtitleMic.className="tab-title-right-true";
+				this._data.smallPage.music = !this._data.smallPage.music;
+			}else if(e == "mode"){
+				this._data.smallPage.mode = !this._data.smallPage.mode;
 			}
 		},
 		changeMode:function(e){
