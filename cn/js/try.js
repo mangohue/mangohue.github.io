@@ -62,6 +62,7 @@ new Vue({
 			repeat:"单次",
 			action:true,
 			mode:"晚餐模式",
+			open:false,
 		},
 		tempTimer:{
 			isSingle:true,
@@ -112,7 +113,7 @@ new Vue({
         		],
         		className: 'slot',
         		textAlign: 'center',
-        		textSize: '10px',
+        		textSize: '10px', 
       		}, 
 	 	],
 	 	music_picker: [{
