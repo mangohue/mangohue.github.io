@@ -76,15 +76,15 @@ new Vue({
 			startDateSingle:""
 		},
 		repeat:[
-			{class:true, show:"单次"},
-			{class:false, show:"每天"},
-			{class:false, show:" 一 "},
-			{class:false, show:" 二 "},
-			{class:false, show:" 三 "},
-			{class:false, show:" 四 "},
-			{class:false, show:" 五 "},
-			{class:false, show:" 六 "},
-			{class:false, show:" 日 "},
+			{class:true, show:"单次",name:"Single"},
+			{class:false, show:"每天",name:"Daily"},
+			{class:false, show:" 一 ",name:"Mon"},
+			{class:false, show:" 二 ",name:"Tue"},
+			{class:false, show:" 三 ",name:"Wed"},
+			{class:false, show:" 四 ",name:"Thu"},
+			{class:false, show:" 五 ",name:"Fri"},
+			{class:false, show:" 六 ",name:"Sat"},
+			{class:false, show:" 日 ",name:"Sun"},
 		],
 
 		normal:[ 
@@ -338,8 +338,9 @@ new Vue({
 		},
 
 		setTimerDate:function(e){
+			console.log(e);
 			for (var temp in this._data.repeat) {
-				if( e == this._data.repeat[temp].show){
+				if( e == this._data.repeat[temp].name){
 					this._data.repeat[temp].class = true;
 					this._data.tempTimer.repeat = this._data.repeat[temp].show;
 					console.log("set timer data to " + this._data.repeat[temp].show);

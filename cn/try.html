@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>MangoHome 虚拟设备</title>
+    <title>MangoHome Try</title>
       <link rel="stylesheet" href="../css/style.css">
       <link rel="stylesheet" href="../css/try.css" />
   </head>
@@ -27,9 +27,9 @@
               
             </div>
             <div class="current-color">
-              <p>当前</p> 
+              <p>Current</p> 
               <p class="current-color-bg" v-bind:style="{ 'background-color': currentColor.color}"></p><br />
-              <p class="current-color-txt" @click="saveColor('color')">保存</p>
+              <p class="current-color-txt" @click="saveColor('color')">save</p>
             </div>
             <div >
               <table width="100%">
@@ -82,7 +82,7 @@
             
             <div class="classic" id="classic" v-show="smallPage.mode">
               <div class="tab-title page-title">
-                <span id="tab-title-classic" class="tab-title-left-true">&nbsp;经典&nbsp;</span><span id="tab-title-custom" class="tab-title-right-false"  @click="tabTitle('mode')">&nbsp;自定义&nbsp;</span>
+                <span id="tab-title-classic" class="tab-title-left-true">&nbsp;&nbsp;经典&nbsp;</span><span id="tab-title-custom" class="tab-title-right-false"  @click="tabTitle('mode')">自定义</span>
               </div>
               <div class="color-picker">
                  <mt-picker :slots="color_picker" @change="pickerModeChange"></mt-picker>
@@ -120,7 +120,7 @@
                 <p class="current-color-txt" @click="saveColor('custom')">保存</p>
               </div>
               <div class="tab-title page-title">
-                <span id="tab-title-classic" class="tab-title-left-false" @click="tabTitle('mode')">&nbsp;经典&nbsp;</span><span id="tab-title-custom" class="tab-title-right-true">&nbsp;自定义&nbsp;</span>
+                <span id="tab-title-classic" class="tab-title-left-false" @click="tabTitle('mode')">&nbsp;&nbsp;经典&nbsp;</span><span id="tab-title-custom" class="tab-title-right-true">自定义</span>
               </div>
               <div class="block color-main"> 
                   <canvas id="customCanvas" class="canvas" width="420px" height="420px"></canvas>
@@ -175,14 +175,14 @@
           <mt-tab-container-item id="music">
             <div class="page-item">
               <!--开关-->
-	          <div class="btn-switch" id="btn-switch">
-	            <img class="btn-img" src="../images/try/btn_true.png" v-show="btn_switch" @click="btnSwitch(true)"/>
-	            <img class="btn-img" src="../images/try/btn_false.png" v-show="!btn_switch" @click="btnSwitch(false)"/>
-	          </div>
+            <div class="btn-switch" id="btn-switch">
+              <img class="btn-img" src="../images/try/btn_true.png" v-show="btn_switch" @click="btnSwitch(true)"/>
+              <img class="btn-img" src="../images/try/btn_false.png" v-show="!btn_switch" @click="btnSwitch(false)"/>
+            </div>
               <div class="music-main" id="music-main" v-show="smallPage.music">
-              	<div class="tab-title page-title">
-                	<span id="tab-title-music" class="tab-title-left-true">&nbsp;音乐&nbsp;</span><span id="tab-title-mic" class="tab-title-right-false" @click="tabTitle('music')">&nbsp;麦克风&nbsp;</span>
-              	</div>
+                <div class="tab-title page-title">
+                  <span id="tab-title-music" class="tab-title-left-true">音乐</span><span id="tab-title-mic" class="tab-title-right-false" @click="tabTitle('music')">麦克风</span>
+                </div>
                 <div class="disk">
                   <img  class="img-disk" src="../images/try/disk.png"/>
                 </div>
@@ -194,9 +194,9 @@
                 </div>
               </div>
               <div class="mic-main" id="mic-main" v-show="!smallPage.music">
-              	<div class="tab-title page-title">
-                	<span id="tab-title-music" class="tab-title-left-false"  @click="tabTitle('music')">&nbsp;音乐&nbsp;<</span><span id="tab-title-mic" class="tab-title-right-true">&nbsp;麦克风&nbsp;</span>
-              	</div>
+                <div class="tab-title page-title">
+                  <span id="tab-title-music" class="tab-title-left-false"  @click="tabTitle('music')">音乐</span><span id="tab-title-mic" class="tab-title-right-true">麦克风</span>
+                </div>
                 <div class="disk">
                   <img  class="img-disk" id="wave" src="../images/try/wave.png"/>
                 </div>
@@ -225,7 +225,7 @@
                     <span>{{timer.repeat}}</span> /
                     <span>{{timer.mode}}</span>
                   </td>
-                  <td class="set-timer-switch" v-model="timer.open" width="20%">
+                  <td class="set-timer-switch" width="20%">
                     <mt-switch></mt-switch>
                   </td>
                 </tr>
@@ -335,7 +335,7 @@
               <td width="75%">
                 <img class="timer-btn-switch" @click="tiemrBtnClick" v-show="!tempTimer.action" src="../images/try/btn_false.png"  />
                 <img class="timer-btn-switch" @click="tiemrBtnClick" v-show="tempTimer.action" src="../images/try/btn_true.png"  />
-                <span>开机 / 关机</span>
+                <span>开灯 / 关灯</span>
               </td>
             </tr>
             <!--Mode-->
