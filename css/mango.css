@@ -23,7 +23,7 @@ body,
 			background-color: white;
 			color: #333;
 			font-size: 16px;
-			font-family: "微软雅黑", "SimSun", "宋体", "Arial Narrow";
+			font-family:"Arial","Times New Roman","微软雅黑","Verdana","SimSun","PingFang SC","Hiragino Sans GB";
 		}
 		
 		ol {
@@ -170,5 +170,5 @@ body,
 	width: 800px;
 	height: auto;
 	margin: auto;
-	font-family: PingFangSC-Regular, Verdana, Arial, '微软雅黑','宋体';
+	font-family:"Arial","Times New Roman","微软雅黑","Verdana","SimSun","PingFang SC","Hiragino Sans GB";
 }
