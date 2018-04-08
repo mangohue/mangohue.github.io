@@ -16,6 +16,7 @@ function isPc(){
 
 
 
+
 function setNormalHeight(){
 	var normal = document.getElementsByClassName("normal");
 	var height = window.getComputedStyle(normal[0]).width;

@@ -6,15 +6,8 @@ function isPc(){
 		// alert('手机端');
 	}else{
 		// alert('PC端');
-		
-
-
 	}
 }
-
-
-
-
 
 function setNormalHeight(){
 	var normal = document.getElementsByClassName("normal");
@@ -37,9 +30,9 @@ new Vue({
   		selected:"color",
   		rangeBright:100,
   		rangeSpeed:50,
-  		samllPage{
-  			mode:true;
-  			music:true;
+  		samllPage:{
+  			mode:true,
+  			music:true,
   		},
   		tabbar:{
   			color:true,
