@@ -1,0 +1,49 @@
+.main{
+	width: 100%;
+	height: 100%;
+}
+
+.pc-main{
+	width: 600px;
+	height: auto;
+	margin: auto;
+	padding: 10px 0 10px 0;
+}
+.item{
+	position: relative;
+}
+img{
+	width: 100%;
+	height: auto;
+}
+
+.txt_page{
+	position: absolute;
+	margin: 15px 15px 0 20px;
+	z-index: 100;
+}
+
+.page_title{
+	font-size: 22px;
+	font-weight: 500;
+}
+
+.page_content{
+	margin-top: 15px;
+	font-size: 16px;
+	line-height: 30px;
+	font-family: PingFangSC-Regular, Verdana, Arial, '微软雅黑','宋体';
+}
+
+.white{
+	color: white;
+	/*color: #FEB101;*/
+}
+
+.black{
+	color: black;
+	/*color: #FEB101;*/
+}
+
+
+
