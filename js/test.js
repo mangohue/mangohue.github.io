@@ -414,7 +414,7 @@ new Vue({
 
 		//在色环上滑动
 		getColorMove:function(e){
-			e.preventDefault();
+			// e.preventDefault();
 			var that =this;
 			var id = new Array("colorCanvas","customCanvas");
 			
@@ -426,6 +426,7 @@ new Vue({
 					document.getElementById(id[i]).addEventListener(
 					"touchmove",function(e){
 		                that.getColor(e.changedTouches[0].pageX,e.changedTouches[0].pageY);
+		                e.preventDefault();
 		            });
 
 		            document.getElementById(id[i]).addEventListener(
