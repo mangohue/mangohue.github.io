@@ -309,10 +309,17 @@ a:visited{color:#800080;}
 	height: 100%;
 }
 
-.pc-page{
-	width:450px;
-	height: 800px;
+.pc_page{
+	width:552px;
+	height: 600px;
 	border:1px solid #FEB101;
+	border-bottom: none;
+}
+
+.pc_footer{
+	width:552px;
+	border:1px solid #FEB101;
+	border-top: none;
 }
 
 tr{

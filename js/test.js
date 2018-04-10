@@ -6,8 +6,24 @@ function isPc(){
 		// alert('手机端');
 	}else{
 		// alert('PC端');
+		var main = document.getElementById("page");
+		main.className="pc_page";
+		var footer = document.getElementById("footer");
+		footer.className="pc_footer";
+		var w = document.documentElement.clientWidth || document.body.clientWidth;
+		var h = document.documentElement.clientHeight || document.body.clientHeight;
+		console.log(w+"--->"+h);
+		var mar = (w - 552)/2;
+		main.style.height = h-2+"px";
+		footer.style.marginLeft = main.style.marginLeft = mar + "px";
+
+		
+
+
 	}
 }
+
+isPc();
 
 function setNormalHeight(){
 	var normal = document.getElementsByClassName("normal");
@@ -30,15 +46,15 @@ new Vue({
   		selected:"color",
   		rangeBright:100,
   		rangeSpeed:50,
-  		samllPage:{
-  			mode:true,
-  			music:true,
-  		},
   		tabbar:{
   			color:true,
   			mode:false,
   			music:false,
   			timer:false,
+  		},
+  		smallPage:{
+  			mode:true,
+  			music:true,
   		},
   		currentColor:{
 			r:255,
@@ -55,6 +71,7 @@ new Vue({
 			repeat:"Single",
 			action:true,
 			mode:"Dinner Mode",
+			isOpenTimer:false,
 		},
 		tempTimer:{
 			isSingle:true,
@@ -116,13 +133,36 @@ new Vue({
 	    	className: 'slot',
       		textAlign: 'center',
       		textSize: '10px',
-    	}]
+    	}],
+    	pc:{
+    		isPc:false,
+    		canvasX:0,
+    		canvasY:0,
+    	},
   		
 	},
 	mounted:function(){
 		this.getColorMove();
+		this.isPc();
 	},
 	methods:{
+		isPc:function(){
+			var userAgentInfo = navigator.userAgent;     
+			var Agents = ["Android","iPhone","SymbianOS","Windows Phone","iPad","iPod"];    
+			var flag = true;     
+			for (var v = 0; v < Agents.length; v++) {         
+				if (userAgentInfo.indexOf(Agents[v]) > 0) {             
+					flag = false;             
+					break;         
+				}     
+			}
+			if(flag){
+				this._data.pc.isPc = true;
+			}
+			console.log(this._data.pc.isPc);
+		},
+
+
 		//设置亮度
 		brightChange:function(value){
 			console.log("bright set to " + value);
@@ -192,38 +232,10 @@ new Vue({
 			console.log("speed set to " + value);
 		},
 		tabTitle:function(e){
-			var classic = document.getElementById("classic");
-			var custom = document.getElementById("custom");
-			var tabTitleClassic = document.getElementById("tab-title-classic");
-			var tabTitleCustom = document.getElementById("tab-title-custom");
-			var modeCurrent = document.getElementById("custom-current-color");
-			if(e == "classic"){
-				classic.hidden="";
-				custom.hidden="hidden";
-				tabTitleClassic.className="tab-title-left-true";
-				tabTitleCustom.className="tab-title-right-flase";
-				modeCurrent.hidden="hidden";
-			}else if(e == "custom"){
-				classic.hidden="hidden";
-				custom.hidden="";
-				tabTitleClassic.className="tab-title-left-flase";
-				tabTitleCustom.className="tab-title-right-true";
-				modeCurrent.hidden="";
-			}
-			var tabtitleMusic = document.getElementById("tab-title-music");
-			var tabtitleMic = document.getElementById("tab-title-mic");
-			var musicMain = document.getElementById("music-main");
-			var micMain = document.getElementById("mic-main");
 			if(e == "music"){
-				musicMain.hidden="";
-				micMain.hidden="hidden";
-				tabtitleMusic.className="tab-title-left-true";
-				tabtitleMic.className="tab-title-right-flase";
-			}else if(e == "mic"){
-				musicMain.hidden="hidden";
-				micMain.hidden="";
-				tabtitleMusic.className="tab-title-left-flase";
-				tabtitleMic.className="tab-title-right-true";
+				this._data.smallPage.music = !this._data.smallPage.music;
+			}else if(e == "mode"){
+				this._data.smallPage.mode = !this._data.smallPage.mode;
 			}
 		},
 		changeMode:function(e){
@@ -324,6 +336,8 @@ new Vue({
 				this._data.timer.repeat = this._data.tempTimer.repeat;
 				this._data.timer.action = this._data.tempTimer.action;
 				this._data.timer.mode = this._data.tempTimer.mode;
+
+				this._data.timer.isOpenTimer = true;
 			}
 		},
 
@@ -335,15 +349,26 @@ new Vue({
 		//获取颜色
 		getColor:function(pageX,pageY){
 			// console.log("getColor");
-			// console.log( "e.pageX=" + e.pageX + "-->" + "e.pageY=" + e.pageY);
+			var w = document.documentElement.clientWidth || document.body.clientWidth;
+			var h = document.documentElement.clientHeight || document.body.clientHeight;
+			// console.log("w:"+w+"-->h:"+h);		
+			// console.log( "e.pageX=" + pageX + "-->" + "e.pageY=" + pageY);
 			var canvasWidth = document.getElementById(this._data.pageId).clientHeight;
+			// console.log("canvasWidth-->"+canvasWidth)
 
 			var c = document.getElementById(this._data.pageId);
-			var canvasX = Math.floor((pageX - c.offsetLeft) * (420/canvasWidth) );
-			var canvasY = Math.floor((pageY - c.offsetTop) * (420/canvasWidth) );
+			if(!this._data.pc.isPc){
+				this._data.pc.canvasX = Math.floor((pageX - c.offsetLeft) * (420/canvasWidth) );
+				this._data.pc.canvasY = Math.floor((pageY - c.offsetTop) * (420/canvasWidth) );
+			}else{
+				this._data.pc.canvasX = Math.floor(((pageX - 8 - c.offsetLeft)-(w-552)/2 ) );
+				this._data.pc.canvasY = Math.floor(((pageY - 14 - c.offsetTop)) );
+			}
+			
+			
 			// console.log( "canvasOffsetX=" + c.offsetLeft + "-->" + "canvasOffsetY=" + c.offsetTop);
-			// console.log("canvasX：" + canvasX + "-->" + "canvasY:" + canvasY );
-			var colorData = document.getElementById(this._data.pageId).getPixelColor(canvasX, canvasY);
+			// console.log("canvasX：" + this._data.pc.canvasX  + "-->" + "canvasY:" + this._data.pc.canvasY );
+			var colorData = document.getElementById(this._data.pageId).getPixelColor(this._data.pc.canvasX, this._data.pc.canvasY);
 			
 			console.log("set color to " + colorData.hex);
 
@@ -389,6 +414,7 @@ new Vue({
 
 		//在色环上滑动
 		getColorMove:function(e){
+			e.preventDefault();
 			var that =this;
 			var id = new Array("colorCanvas","customCanvas");
 			
@@ -406,10 +432,10 @@ new Vue({
 					"mousedown",function(e){
 	                    that.getColor(e.pageX,e.pageY);
 	                });
-					document.getElementById(id[i]).addEventListener(
-					"mousemove",function(e){
-		                   that.getColor(e.pageX,e.pageY);
-		            });
+					// document.getElementById(id[i]).addEventListener(
+					// "mousemove",function(e){
+		   //                 that.getColor(e.pageX,e.pageY);
+		   //          });
 	            
 			}
 		},
@@ -427,7 +453,7 @@ new Vue({
 			}else if (e == "color") {
 				this._data.pageId = "colorCanvas";
 			}
-		}
+		},
 
 
 	}
