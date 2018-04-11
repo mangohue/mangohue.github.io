@@ -13,15 +13,15 @@ function isPc(){
 		var w = document.documentElement.clientWidth || document.body.clientWidth;
 		var h = document.documentElement.clientHeight || document.body.clientHeight;
 		console.log(w+"--->"+h);
-		var mar = (w - 552)/2;
 		main.style.height = h-2+"px";
-		footer.style.marginLeft = main.style.marginLeft = mar + "px";
+		footer.style.marginLeft = main.style.marginLeft = (w - 552)/2 + "px";
 
 		
 
 
 	}
 }
+
 
 isPc();
 
@@ -383,6 +383,7 @@ new Vue({
 		},
 
 		setTimerDate:function(e){
+			console.log(e);
 			for (var temp in this._data.repeat) {
 				if( e == this._data.repeat[temp].show){
 					this._data.repeat[temp].class = true;
