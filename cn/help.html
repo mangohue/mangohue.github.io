@@ -361,9 +361,11 @@
 						<li>"turn on/off the bedroom light"</li>
 						<li>"brighten/dim the bedroom light"</li>
 						<li>"set/change the bedroom light to 10 percent"</li>
-						<li>"set/change the bedroom light to red"</li>
-						<li>"set/change the kitchen light to dinner mode"</li>
-						<li>"set/change the kitchen light to party mode"</li>
+						<div  id="alexaPlus">
+							<li>"set/change the bedroom light to red"</li>
+							<li>"set/change the kitchen light to dinner mode"</li>
+							<li>"set/change the kitchen light to party mode"</li>
+						</div>
 					</ul>
 				</ol>
 				<p>
@@ -414,7 +416,7 @@
 	
 	</body>
 		<script type="text/javascript">
-						//设备检测  
+			//设备检测
 			if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
 // 				alert('手机端');
 			}else{
@@ -434,18 +436,15 @@
 			var custom_magic=document.getElementById("custom_magic");
 			var notice_color=document.getElementById("notice_color");
 			var notice_color_single=document.getElementById("notice_color_single");
+			var alexaPlus = document.getElementById("alexaPlus");
 			
 			function rgb(){
 				page_title.innerText="LED Strip(RGB/RGBW)";
 				led_mode.innerText="LED Strip(RGB/RGBW)";
 				setHidden(header,true);
 				setHidden(content,false);
-				setHidden(music,false);
-				setHidden(timer,false);
 				setHidden(custom_rgb,false);
 				setHidden(custom_magic,true);
-				setHidden(notice_color_single,true);
-				setHidden(notice_color,false);
 			}
 			
 			function single(){
@@ -460,6 +459,7 @@
 				setHidden(custom_magic,true);
 				setHidden(notice_color_single,false);
 				setHidden(notice_color,true);
+				setHidden(alexaPlus,true);
 
 			}
 			
@@ -468,17 +468,20 @@
 				led_mode.innerText="Magic LED Strip";
 				setHidden(header,true);
 				setHidden(content,false);
-				setHidden(music,false);
-				setHidden(timer,false);
 				setHidden(custom_rgb,true);
 				setHidden(custom_magic,false);
-				setHidden(notice_color_single,true);
-				setHidden(notice_color,false);
+
+				
 			}
 			
 			function test(){
 				setHidden(header,false);
 				setHidden(content,true);
+				setHidden(music,false);
+				setHidden(timer,false);
+				setHidden(notice_color_single,true);
+				setHidden(notice_color,false);
+				setHidden(alexaPlus,false);
 			}
 			
 			function setHidden(id,isHidden){
